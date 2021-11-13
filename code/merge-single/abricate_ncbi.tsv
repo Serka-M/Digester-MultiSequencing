@@ -1,0 +1,48 @@
+SEQUENCE	GENE	%IDENTITY	PRODUCT	RESISTANCE
+contig_11251	erm(B)	99.59	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(B)	MACROLIDE
+contig_1230	ant(6)-Ia	100.00	aminoglycoside nucleotidyltransferase ANT(6)-Ia	STREPTOMYCIN
+contig_1230	sat4	100.00	streptothricin N-acetyltransferase Sat4	STREPTOTHRICIN
+contig_1230	aph(3')-IIIa	100.00	aminoglycoside O-phosphotransferase APH(3')-IIIa	AMIKACIN;KANAMYCIN
+contig_1263	erm(A)	87.30	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(A)	MACROLIDE
+contig_1426	lnu(B)	100.00	lincosamide nucleotidyltransferase Lnu(B)	LINCOSAMIDE
+contig_1426	lsa(E)	90.31	ABC-F type ribosomal protection protein Lsa(E)	LINCOSAMIDE;STREPTOGRAMIN
+contig_17800	lnu(D)	84.24	lincosamide nucleotidyltransferase Lnu(D)	LINCOSAMIDE
+contig_19270	tet(W)	99.95	tetracycline resistance ribosomal protection protein Tet(W)	TETRACYCLINE
+contig_2010	vanR-I	80.72	VanI-type vancomycin resistance DNA-binding response regulator VanR	VANCOMYCIN
+contig_21745	lnu(D)	83.43	lincosamide nucleotidyltransferase Lnu(D)	LINCOSAMIDE
+contig_22844	tet(M)	99.95	tetracycline resistance ribosomal protection protein Tet(M)	TETRACYCLINE
+contig_2287	tet(T)	97.55	tetracycline resistance ribosomal protection protein Tet(T)	TETRACYCLINE
+contig_23505	lnu(B)	100.00	lincosamide nucleotidyltransferase Lnu(B)	LINCOSAMIDE
+contig_23505	lsa(E)	98.18	ABC-F type ribosomal protection protein Lsa(E)	LINCOSAMIDE;STREPTOGRAMIN
+contig_24182	tet(T)	91.46	tetracycline resistance ribosomal protection protein Tet(T)	TETRACYCLINE
+contig_24695	lnu(G)	98.38	lincosamide nucleotidyltransferase Lnu(G)	LINCOSAMIDE
+contig_3141	erm(F)	99.50	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_3645	erm(A)	87.58	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(A)	MACROLIDE
+contig_3660	erm(F)	99.62	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_3886	erm(F)	99.50	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_4027	tet(36)	99.84	tetracycline resistance ribosomal protection protein Tet(36)	TETRACYCLINE
+contig_4201	erm(F)	99.62	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_4730	erm(F)	98.88	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_515	erm(F)	99.50	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_5247	ant(6)-Ia	97.17	aminoglycoside nucleotidyltransferase ANT(6)-Ia	STREPTOMYCIN
+contig_5247	sat4	99.82	streptothricin N-acetyltransferase Sat4	STREPTOTHRICIN
+contig_5247	aph(3')-IIIa	99.37	aminoglycoside O-phosphotransferase APH(3')-IIIa	AMIKACIN;KANAMYCIN
+contig_5247	erm(G)	99.59	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(G)	MACROLIDE
+contig_5249	msr(D)	91.88	ABC-F type ribosomal protection protein Msr(D)	MACROLIDE
+contig_5303	lnu(D)	83.64	lincosamide nucleotidyltransferase Lnu(D)	LINCOSAMIDE
+contig_5564	erm(F)	99.62	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_7292	sul4	100.00	sulfonamide-resistant dihydropteroate synthase Sul4	SULFONAMIDE
+contig_7424	erm(F)	99.50	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_7425	erm(F)	99.62	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_7426	erm(F)	99.50	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(F)	MACROLIDE
+contig_7662	erm(47)	99.73	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(47)	MACROLIDE
+contig_837	mef(A)	94.52	macrolide efflux MFS transporter Mef(A)	MACROLIDE
+contig_837	msr(D)	93.99	ABC-F type ribosomal protection protein Msr(D)	MACROLIDE
+contig_844	erm(G)	99.46	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(G)	MACROLIDE
+contig_8615	erm(B)	100.00	23S rRNA (adenine(2058)-N(6))-methyltransferase Erm(B)	MACROLIDE
+contig_8615	aadE	100.00	aminoglycoside 6-adenylyltransferase AadE	STREPTOMYCIN
+contig_870	lnu(D)	86.33	lincosamide nucleotidyltransferase Lnu(D)	LINCOSAMIDE
+contig_891	spw	90.16	ANT(9) family aminoglycoside nucleotidyltransferase Spw	AMINOGLYCOSIDE
+contig_892	spw	93.78	ANT(9) family aminoglycoside nucleotidyltransferase Spw	AMINOGLYCOSIDE
+contig_9254	lsa(E)	86.65	ABC-F type ribosomal protection protein Lsa(E)	LINCOSAMIDE;STREPTOGRAMIN
+contig_962	spw	90.03	ANT(9) family aminoglycoside nucleotidyltransferase Spw	AMINOGLYCOSIDE
