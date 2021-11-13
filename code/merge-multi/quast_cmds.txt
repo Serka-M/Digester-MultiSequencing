@@ -1,0 +1,143 @@
+
+quast.py r103-il_bin.0100.fa r103_bin.0106.fa r104-il_bin.0046.fa r104_bin.0061.fa r9-il_bin.0049.fa r9_bin.0161.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0157.fa --output-dir $output/2_1
+quast.py ilmn_bin.0047.fa r103-il_bin.0122.fa r103_bin.0029.fa r104-il_bin.0015.fa r104_bin.0074.fa r9-il_bin.0208.fa r9_bin.0146.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0155.fa --output-dir $output/3_1
+quast.py r9-il_bin.0121.fa r9_bin.0072.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0101.fa --output-dir $output/4_1
+quast.py r9-il_bin.0095.fa r9_bin.0205.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0051.fa --output-dir $output/5_1
+quast.py ilmn_bin.0071.fa r103-il_bin.0113.fa r103_bin.0067.fa r9-il_bin.0195.fa r9_bin.0143.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0066.fa --output-dir $output/6_1
+quast.py r9-il_bin.0080.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0017.fa --output-dir $output/6_2
+quast.py ilmn_bin.0039.fa r103-il_bin.0074.fa r103_bin.0078.fa r104-il_bin.0114.fa r104_bin.0044.fa r9-il_bin.0154.fa r9_bin.0204.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0065.fa --output-dir $output/8_1
+quast.py r9-il_bin.0153.fa r9_bin.0127.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0169.fa --output-dir $output/10_1
+quast.py r9-il_bin.0022.fa r9_bin.0006.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0136.fa --output-dir $output/11_1
+quast.py r103-il_bin.0056.fa r103_bin.0120.fa r104-il_bin.0074.fa r104_bin.0079.fa r9-il_bin.0007.fa r9_bin.0116.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0159.fa --output-dir $output/13_1
+quast.py ilmn_bin.0000.fa r103-il_bin.0013.fa r103_bin.0061.fa r104-il_bin.0084.fa r104_bin.0008.fa r9-il_bin.0164.fa r9_bin.0190.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0059.fa --output-dir $output/15_1
+quast.py ilmn_bin.0086.fa r103-il_bin.0012.fa r103_bin.0042.fa r104-il_bin.0040.fa r104_bin.0026.fa r9-il_bin.0158.fa r9_bin.0024.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0156.fa --output-dir $output/17_1
+quast.py ilmn_bin.0099.fa r103-il_bin.0047.fa r103_bin.0017.fa r104-il_bin.0002.fa r104_bin.0037.fa r9-il_bin.0045.fa r9_bin.0048.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0049.fa --output-dir $output/18_1
+quast.py ilmn_bin.0035.fa r103-il_bin.0024.fa r103_bin.0114.fa r104-il_bin.0043.fa r104_bin.0039.fa r9-il_bin.0077.fa r9_bin.0141.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0026.fa --output-dir $output/19_1
+quast.py ilmn_bin.0052.fa r104-il_bin.0012.fa r104_bin.0102.fa r9-il_bin.0129.fa r9_bin.0020.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0160.fa --output-dir $output/20_1
+quast.py ilmn_bin.0057.fa r103-il_bin.0007.fa r103_bin.0075.fa r104-il_bin.0118.fa r104_bin.0058.fa r9-il_bin.0085.fa r9_bin.0021.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0011.fa --output-dir $output/21_1
+quast.py ilmn_bin.0003.fa r103-il_bin.0006.fa r103_bin.0073.fa r104-il_bin.0024.fa r104_bin.0014.fa r9-il_bin.0011.fa r9_bin.0100.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0133.fa --output-dir $output/22_1
+quast.py r9-il_bin.0089.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0067.fa --output-dir $output/25_1
+quast.py r103-il_bin.0020.fa r104-il_bin.0033.fa r104_bin.0020.fa r9-il_bin.0168.fa r9_bin.0159.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0007.fa --output-dir $output/26_1
+quast.py ilmn_bin.0018.fa r104-il_bin.0094.fa r104_bin.0015.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0146.fa --output-dir $output/27_1
+quast.py ilmn_bin.0096.fa r103-il_bin.0043.fa r103_bin.0063.fa r104-il_bin.0003.fa r104_bin.0022.fa r9-il_bin.0013.fa r9_bin.0077.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0167.fa --output-dir $output/28_1
+quast.py ilmn_bin.0005.fa r103-il_bin.0090.fa r103_bin.0093.fa r104-il_bin.0064.fa r104_bin.0018.fa r9-il_bin.0117.fa r9_bin.0126.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0004.fa --output-dir $output/29_1
+quast.py ilmn_bin.0036.fa r103-il_bin.0123.fa r103_bin.0069.fa r104-il_bin.0026.fa r104_bin.0064.fa r9-il_bin.0146.fa r9_bin.0183.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0154.fa --output-dir $output/32_1
+quast.py ilmn_bin.0085.fa r103-il_bin.0044.fa r103_bin.0076.fa r104-il_bin.0098.fa r104_bin.0032.fa r9-il_bin.0008.fa r9_bin.0129.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0178.fa --output-dir $output/34_1
+quast.py ilmn_bin.0028.fa r103-il_bin.0041.fa r103_bin.0055.fa r104-il_bin.0017.fa r104_bin.0067.fa r9-il_bin.0003.fa r9_bin.0166.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0131.fa --output-dir $output/35_1
+quast.py ilmn_bin.0019.fa r103-il_bin.0079.fa r103_bin.0118.fa r104_bin.0110.fa r9-il_bin.0196.fa r9_bin.0120.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0144.fa --output-dir $output/36_1
+quast.py ilmn_bin.0026.fa r103-il_bin.0018.fa r103_bin.0056.fa r104-il_bin.0030.fa r104_bin.0097.fa r9-il_bin.0138.fa r9_bin.0033.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0048.fa --output-dir $output/37_1
+quast.py ilmn_bin.0061.fa r103-il_bin.0076.fa r103_bin.0013.fa r104-il_bin.0078.fa r104_bin.0071.fa r9-il_bin.0118.fa r9_bin.0168.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0002.fa --output-dir $output/38_1
+quast.py ilmn_bin.0073.fa r103-il_bin.0005.fa r103_bin.0060.fa r104-il_bin.0096.fa r104_bin.0099.fa r9-il_bin.0006.fa r9_bin.0123.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0054.fa --output-dir $output/39_1
+quast.py ilmn_bin.0046.fa r104-il_bin.0097.fa r104_bin.0007.fa r9-il_bin.0205.fa r9_bin.0199.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0171.fa --output-dir $output/41_2
+quast.py ilmn_bin.0062.fa r103-il_bin.0101.fa r103_bin.0090.fa r104-il_bin.0066.fa r104_bin.0075.fa r9-il_bin.0043.fa r9_bin.0124.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0177.fa --output-dir $output/42_1
+quast.py ilmn_bin.0082.fa r104-il_bin.0108.fa r104_bin.0072.fa r9-il_bin.0033.fa r9_bin.0209.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0153.fa --output-dir $output/43_1
+quast.py ilmn_bin.0007.fa r103-il_bin.0038.fa r103_bin.0087.fa r104-il_bin.0050.fa r104_bin.0060.fa r9-il_bin.0124.fa r9_bin.0018.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0108.fa --output-dir $output/44_1
+quast.py ilmn_bin.0008.fa r103-il_bin.0108.fa r103_bin.0038.fa r104-il_bin.0095.fa r104_bin.0086.fa r9-il_bin.0157.fa r9_bin.0052.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0040.fa --output-dir $output/45_1
+quast.py ilmn_bin.0013.fa r103-il_bin.0094.fa r103_bin.0003.fa r9-il_bin.0009.fa r9_bin.0071.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0094.fa --output-dir $output/46_1
+quast.py r9-il_bin.0177.fa r9_bin.0171.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0062.fa --output-dir $output/47_1
+quast.py r103-il_bin.0046.fa r104-il_bin.0038.fa r104_bin.0045.fa r9-il_bin.0051.fa r9_bin.0002.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0106.fa --output-dir $output/48_1
+quast.py ilmn_bin.0060.fa r103-il_bin.0028.fa r103_bin.0040.fa r104-il_bin.0110.fa r104_bin.0011.fa r9-il_bin.0046.fa r9_bin.0050.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0050.fa --output-dir $output/49_1
+quast.py ilmn_bin.0053.fa r103-il_bin.0102.fa r103_bin.0044.fa r104-il_bin.0092.fa r104_bin.0042.fa r9-il_bin.0181.fa r9_bin.0085.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0100.fa --output-dir $output/50_1
+quast.py ilmn_bin.0093.fa r103-il_bin.0105.fa r103_bin.0091.fa r104-il_bin.0042.fa r104_bin.0081.fa r9-il_bin.0097.fa r9_bin.0046.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0078.fa --output-dir $output/51_1
+quast.py r103_bin.0074.fa r9-il_bin.0039.fa r9_bin.0197.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0173.fa --output-dir $output/52_1
+quast.py ilmn_bin.0079.fa r103-il_bin.0066.fa r103_bin.0058.fa r104-il_bin.0091.fa r104_bin.0103.fa r9-il_bin.0057.fa r9_bin.0165.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0105.fa --output-dir $output/55_1
+quast.py ilmn_bin.0066.fa r103-il_bin.0037.fa r103_bin.0030.fa r104-il_bin.0088.fa r104_bin.0029.fa r9-il_bin.0053.fa r9_bin.0131.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0104.fa --output-dir $output/58_1
+quast.py r103-il_bin.0095.fa r103_bin.0071.fa r104-il_bin.0116.fa r9-il_bin.0081.fa r9_bin.0160.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0025.fa --output-dir $output/59_1
+quast.py r103-il_bin.0119.fa r103_bin.0007.fa r104-il_bin.0113.fa r104_bin.0070.fa r9-il_bin.0187.fa r9_bin.0125.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0164.fa --output-dir $output/60_1
+quast.py ilmn_bin.0012.fa r103-il_bin.0092.fa r103_bin.0101.fa r104-il_bin.0072.fa r104_bin.0066.fa r9_bin.0198.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0024.fa --output-dir $output/61_1
+quast.py ilmn_bin.0014.fa r103-il_bin.0085.fa r9-il_bin.0017.fa r9_bin.0083.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0124.fa --output-dir $output/62_1
+quast.py ilmn_bin.0080.fa r103-il_bin.0080.fa r103_bin.0065.fa r104-il_bin.0056.fa r104_bin.0047.fa r9-il_bin.0133.fa r9_bin.0011.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0079.fa --output-dir $output/63_1
+quast.py ilmn_bin.0059.fa r103-il_bin.0091.fa r103_bin.0112.fa r104-il_bin.0000.fa r104_bin.0098.fa r9-il_bin.0067.fa r9_bin.0179.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0039.fa --output-dir $output/64_1
+quast.py ilmn_bin.0002.fa r103-il_bin.0110.fa r103_bin.0064.fa r104-il_bin.0079.fa r104_bin.0028.fa r9-il_bin.0170.fa r9_bin.0087.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0047.fa --output-dir $output/65_1
+quast.py r103-il_bin.0081.fa r104-il_bin.0069.fa r104_bin.0005.fa r9-il_bin.0058.fa r9_bin.0075.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0012.fa --output-dir $output/66_1
+quast.py ilmn_bin.0068.fa r104-il_bin.0013.fa r104_bin.0025.fa r9-il_bin.0204.fa r9_bin.0117.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0061.fa --output-dir $output/67_1
+quast.py r104-il_bin.0099.fa r104_bin.0095.fa r9-il_bin.0119.fa r9_bin.0090.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0044.fa --output-dir $output/70_1
+quast.py r103-il_bin.0021.fa r103_bin.0116.fa r104-il_bin.0054.fa r104_bin.0084.fa r9-il_bin.0136.fa r9_bin.0142.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0128.fa --output-dir $output/71_1
+quast.py ilmn_bin.0090.fa r103-il_bin.0055.fa r103_bin.0070.fa r104-il_bin.0070.fa r104_bin.0017.fa r9-il_bin.0206.fa r9_bin.0188.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0152.fa --output-dir $output/72_1
+quast.py ilmn_bin.0098.fa r103-il_bin.0014.fa r103_bin.0011.fa r104-il_bin.0004.fa r104_bin.0000.fa r9-il_bin.0211.fa r9_bin.0023.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0158.fa --output-dir $output/73_1
+quast.py ilmn_bin.0044.fa r103-il_bin.0069.fa r103_bin.0057.fa r104-il_bin.0051.fa r104_bin.0040.fa r9-il_bin.0134.fa r9_bin.0155.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0151.fa --output-dir $output/75_1
+quast.py r9-il_bin.0167.fa r9_bin.0119.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0099.fa --output-dir $output/76_1
+quast.py r9-il_bin.0091.fa r9_bin.0005.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0087.fa --output-dir $output/78_1
+quast.py ilmn_bin.0063.fa r103-il_bin.0103.fa r103_bin.0083.fa r104-il_bin.0032.fa r104_bin.0096.fa r9-il_bin.0217.fa r9_bin.0137.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0076.fa --output-dir $output/79_1
+quast.py ilmn_bin.0076.fa r103-il_bin.0111.fa r103_bin.0100.fa r104-il_bin.0102.fa r104_bin.0052.fa r9-il_bin.0140.fa r9_bin.0017.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0009.fa --output-dir $output/80_1
+quast.py r103-il_bin.0107.fa r103_bin.0039.fa r9-il_bin.0165.fa r9_bin.0066.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0122.fa --output-dir $output/81_1
+quast.py ilmn_bin.0042.fa r103-il_bin.0075.fa r103_bin.0095.fa r104-il_bin.0104.fa r104_bin.0088.fa r9-il_bin.0176.fa r9_bin.0058.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0149.fa --output-dir $output/82_1
+quast.py ilmn_bin.0027.fa r103-il_bin.0097.fa r103_bin.0082.fa r104-il_bin.0049.fa r104_bin.0003.fa r9-il_bin.0156.fa r9_bin.0152.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0132.fa --output-dir $output/83_1
+quast.py ilmn_bin.0100.fa r103-il_bin.0017.fa r103_bin.0046.fa r104-il_bin.0103.fa r104_bin.0059.fa r9-il_bin.0069.fa r9_bin.0138.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0064.fa --output-dir $output/85_1
+quast.py ilmn_bin.0083.fa r104-il_bin.0063.fa r104_bin.0073.fa r9-il_bin.0102.fa r9_bin.0096.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0179.fa --output-dir $output/86_1
+quast.py r103-il_bin.0032.fa r103_bin.0002.fa r9-il_bin.0182.fa r9_bin.0056.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0092.fa --output-dir $output/87_1
+quast.py ilmn_bin.0103.fa r103-il_bin.0036.fa r103_bin.0019.fa r104-il_bin.0101.fa r104_bin.0077.fa r9-il_bin.0199.fa r9_bin.0195.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0130.fa --output-dir $output/88_1
+quast.py r103-il_bin.0023.fa r103_bin.0085.fa r104-il_bin.0057.fa r104_bin.0101.fa r9-il_bin.0172.fa r9_bin.0172.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0142.fa --output-dir $output/89_1
+quast.py ilmn_bin.0006.fa r103-il_bin.0015.fa r103_bin.0010.fa r104-il_bin.0022.fa r104_bin.0093.fa r9-il_bin.0018.fa r9_bin.0019.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0125.fa --output-dir $output/90_1
+quast.py ilmn_bin.0064.fa r103-il_bin.0053.fa r103_bin.0025.fa r104-il_bin.0077.fa r104_bin.0048.fa r9-il_bin.0076.fa r9_bin.0076.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0145.fa --output-dir $output/92_1
+quast.py r9-il_bin.0078.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0003.fa --output-dir $output/95_1
+quast.py ilmn_bin.0010.fa r103-il_bin.0071.fa r104-il_bin.0109.fa r104_bin.0016.fa r9-il_bin.0193.fa r9_bin.0084.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0015.fa --output-dir $output/97_1
+quast.py r9-il_bin.0060.fa r9_bin.0109.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0005.fa --output-dir $output/98_1
+quast.py ilmn_bin.0088.fa r103-il_bin.0089.fa r103_bin.0072.fa r104-il_bin.0062.fa r104_bin.0085.fa r9-il_bin.0004.fa r9_bin.0082.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0022.fa --output-dir $output/99_1
+quast.py ilmn_bin.0065.fa r103-il_bin.0048.fa r103_bin.0015.fa r104-il_bin.0055.fa r104_bin.0010.fa r9-il_bin.0105.fa r9_bin.0070.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0032.fa --output-dir $output/101_1
+quast.py ilmn_bin.0011.fa r103-il_bin.0120.fa r103_bin.0041.fa r104-il_bin.0014.fa r104_bin.0094.fa r9-il_bin.0166.fa r9_bin.0167.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0016.fa --output-dir $output/102_1
+quast.py ilmn_bin.0045.fa r103-il_bin.0116.fa r103_bin.0080.fa r104-il_bin.0006.fa r104_bin.0030.fa r9-il_bin.0150.fa r9_bin.0162.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0143.fa --output-dir $output/103_1
+quast.py ilmn_bin.0051.fa r103-il_bin.0064.fa r103_bin.0068.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0037.fa --output-dir $output/104_1
+quast.py ilmn_bin.0034.fa r9-il_bin.0149.fa r9_bin.0103.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0162.fa --output-dir $output/105_1
+quast.py r103-il_bin.0070.fa r104-il_bin.0047.fa r104_bin.0089.fa r9-il_bin.0215.fa r9_bin.0105.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0036.fa --output-dir $output/106_1
+quast.py r9-il_bin.0219.fa r9_bin.0177.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0019.fa --output-dir $output/107_1
+quast.py ilmn_bin.0077.fa r103-il_bin.0054.fa r103_bin.0051.fa r104-il_bin.0009.fa r104_bin.0056.fa r9-il_bin.0000.fa r9_bin.0038.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0110.fa --output-dir $output/108_1
+quast.py ilmn_bin.0084.fa r104-il_bin.0071.fa r104_bin.0050.fa r9-il_bin.0141.fa r9_bin.0153.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0168.fa --output-dir $output/109_1
+quast.py r9-il_bin.0050.fa r9_bin.0194.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0148.fa --output-dir $output/111_1
+quast.py ilmn_bin.0040.fa r103-il_bin.0011.fa r103_bin.0018.fa r104-il_bin.0112.fa r104_bin.0112.fa r9-il_bin.0116.fa r9_bin.0089.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0096.fa --output-dir $output/112_1
+quast.py r103-il_bin.0052.fa r9-il_bin.0126.fa r9_bin.0054.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0086.fa --output-dir $output/113_1
+quast.py ilmn_bin.0050.fa r103-il_bin.0062.fa r103_bin.0102.fa r104-il_bin.0036.fa r104_bin.0046.fa r9-il_bin.0112.fa r9_bin.0157.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0176.fa --output-dir $output/114_1
+quast.py ilmn_bin.0074.fa r103-il_bin.0057.fa r103_bin.0097.fa r104-il_bin.0082.fa r104_bin.0041.fa r9-il_bin.0183.fa r9_bin.0014.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0085.fa --output-dir $output/115_1
+quast.py ilmn_bin.0048.fa r103-il_bin.0096.fa r103_bin.0079.fa r104-il_bin.0105.fa r104_bin.0078.fa r9-il_bin.0030.fa r9_bin.0144.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0038.fa --output-dir $output/116_1
+quast.py ilmn_bin.0043.fa r103-il_bin.0115.fa r103_bin.0045.fa r9-il_bin.0160.fa r9_bin.0180.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0081.fa --output-dir $output/118_1
+quast.py ilmn_bin.0067.fa r103-il_bin.0083.fa r103_bin.0081.fa r104-il_bin.0100.fa r104_bin.0013.fa r9-il_bin.0083.fa r9_bin.0088.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0090.fa --output-dir $output/119_1
+quast.py ilmn_bin.0095.fa r103-il_bin.0026.fa r103_bin.0006.fa r104-il_bin.0023.fa r104_bin.0091.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0058.fa --output-dir $output/120_1
+quast.py r9-il_bin.0059.fa r9_bin.0134.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0163.fa --output-dir $output/121_1
+quast.py ilmn_bin.0101.fa r103-il_bin.0030.fa r9-il_bin.0111.fa r9_bin.0207.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0120.fa --output-dir $output/122_1
+quast.py ilmn_bin.0055.fa r103-il_bin.0063.fa r103_bin.0001.fa r104-il_bin.0034.fa r104_bin.0082.fa r9-il_bin.0202.fa r9_bin.0135.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0118.fa --output-dir $output/123_1
+quast.py ilmn_bin.0092.fa r103-il_bin.0040.fa r103_bin.0048.fa r104-il_bin.0010.fa r104_bin.0069.fa r9-il_bin.0110.fa r9_bin.0121.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0018.fa --output-dir $output/124_1
+quast.py ilmn_bin.0015.fa r103-il_bin.0001.fa r103_bin.0105.fa r104-il_bin.0025.fa r104_bin.0055.fa r9-il_bin.0212.fa r9_bin.0140.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0174.fa --output-dir $output/125_1
+quast.py ilmn_bin.0025.fa r103-il_bin.0004.fa r103_bin.0016.fa r9-il_bin.0185.fa r9_bin.0031.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0127.fa --output-dir $output/126_1
+quast.py r103-il_bin.0033.fa r103_bin.0035.fa r9-il_bin.0010.fa r9_bin.0094.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0046.fa --output-dir $output/129_1
+quast.py ilmn_bin.0017.fa r103-il_bin.0025.fa r103_bin.0008.fa r104-il_bin.0083.fa r104_bin.0063.fa r9-il_bin.0054.fa r9_bin.0055.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0134.fa --output-dir $output/131_1
+quast.py r9-il_bin.0098.fa r9_bin.0118.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0091.fa --output-dir $output/132_1
+quast.py ilmn_bin.0001.fa r103-il_bin.0087.fa r103_bin.0004.fa r104-il_bin.0067.fa r104_bin.0006.fa r9-il_bin.0152.fa r9_bin.0163.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0181.fa --output-dir $output/133_1
+quast.py r9-il_bin.0214.fa r9_bin.0193.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0117.fa --output-dir $output/134_1
+quast.py r9-il_bin.0139.fa r9_bin.0034.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0129.fa --output-dir $output/135_1
+quast.py ilmn_bin.0089.fa r103-il_bin.0058.fa r103_bin.0028.fa r104-il_bin.0039.fa r9-il_bin.0209.fa r9_bin.0130.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0114.fa --output-dir $output/136_1
+quast.py ilmn_bin.0102.fa r103-il_bin.0109.fa r103_bin.0096.fa r104-il_bin.0089.fa r104_bin.0043.fa r9-il_bin.0016.fa r9_bin.0064.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0056.fa --output-dir $output/139_1
+quast.py ilmn_bin.0097.fa r9-il_bin.0027.fa r9_bin.0035.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0069.fa --output-dir $output/140_1
+quast.py ilmn_bin.0032.fa r103-il_bin.0000.fa r103_bin.0086.fa r104-il_bin.0001.fa r104_bin.0049.fa r9-il_bin.0171.fa r9_bin.0201.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0121.fa --output-dir $output/141_1
+quast.py ilmn_bin.0070.fa r103-il_bin.0104.fa r103_bin.0021.fa r104-il_bin.0081.fa r104_bin.0036.fa r9-il_bin.0074.fa r9_bin.0045.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0082.fa --output-dir $output/143_1
+quast.py r9-il_bin.0029.fa r9_bin.0068.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0041.fa --output-dir $output/144_1
+quast.py ilmn_bin.0033.fa r103_bin.0037.fa r104-il_bin.0115.fa r104_bin.0033.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0055.fa --output-dir $output/147_1
+quast.py ilmn_bin.0049.fa r103-il_bin.0106.fa r103_bin.0108.fa r104-il_bin.0016.fa r104_bin.0057.fa r9-il_bin.0130.fa r9_bin.0093.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0102.fa --output-dir $output/149_1
+quast.py r103-il_bin.0078.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0093.fa --output-dir $output/150_1
+quast.py ilmn_bin.0056.fa r103-il_bin.0050.fa r103_bin.0014.fa r104-il_bin.0048.fa r9-il_bin.0096.fa r9_bin.0211.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0113.fa --output-dir $output/151_1
+quast.py r9-il_bin.0064.fa r9_bin.0192.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0088.fa --output-dir $output/154_1
+quast.py r9-il_bin.0210.fa r9_bin.0037.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0035.fa --output-dir $output/158_1
+quast.py r9-il_bin.0094.fa r9_bin.0110.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0175.fa --output-dir $output/159_1
+quast.py r9-il_bin.0079.fa r9_bin.0112.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0029.fa --output-dir $output/161_1
+quast.py r103-il_bin.0073.fa r104-il_bin.0044.fa r104_bin.0109.fa r9-il_bin.0128.fa r9_bin.0028.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0053.fa --output-dir $output/162_1
+quast.py r9-il_bin.0190.fa r9_bin.0185.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0109.fa --output-dir $output/163_1
+quast.py r9-il_bin.0125.fa r9_bin.0102.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0000.fa --output-dir $output/164_1
+quast.py r9-il_bin.0028.fa r9_bin.0001.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0137.fa --output-dir $output/165_1
+quast.py ilmn_bin.0058.fa r103-il_bin.0099.fa r103_bin.0027.fa r104-il_bin.0021.fa r104_bin.0104.fa r9-il_bin.0040.fa r9_bin.0092.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0006.fa --output-dir $output/166_1
+quast.py ilmn_bin.0009.fa r103-il_bin.0072.fa r103_bin.0033.fa r104-il_bin.0090.fa r104_bin.0106.fa r9-il_bin.0218.fa r9_bin.0187.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0010.fa --output-dir $output/167_1
+quast.py ilmn_bin.0023.fa r103-il_bin.0002.fa r103_bin.0053.fa r104-il_bin.0028.fa r104_bin.0080.fa r9-il_bin.0086.fa r9_bin.0081.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0014.fa --output-dir $output/168_1
+quast.py r9-il_bin.0082.fa r9_bin.0053.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0138.fa --output-dir $output/170_1
+quast.py r104-il_bin.0087.fa r104_bin.0021.fa r9_bin.0079.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0034.fa --output-dir $output/171_1
+quast.py r103-il_bin.0061.fa r103_bin.0104.fa r9-il_bin.0192.fa r9_bin.0040.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0140.fa --output-dir $output/175_1
+quast.py r9-il_bin.0189.fa r9_bin.0097.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0001.fa --output-dir $output/177_1
+quast.py r103-il_bin.0042.fa r9-il_bin.0180.fa r9_bin.0091.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0071.fa --output-dir $output/179_1
+quast.py r9-il_bin.0055.fa r9_bin.0000.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0141.fa --output-dir $output/180_1
+quast.py r9-il_bin.0002.fa r9_bin.0039.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0126.fa --output-dir $output/181_1
+quast.py ilmn_bin.0087.fa r103-il_bin.0009.fa r103_bin.0084.fa r104-il_bin.0086.fa r104_bin.0105.fa r9-il_bin.0092.fa r9_bin.0169.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0107.fa --output-dir $output/183_1
+quast.py r103-il_bin.0086.fa r103_bin.0034.fa r9-il_bin.0042.fa r9_bin.0136.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0103.fa --output-dir $output/184_1
+quast.py r9-il_bin.0063.fa r9_bin.0156.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0042.fa --output-dir $output/185_1
+quast.py r103-il_bin.0027.fa r103_bin.0054.fa r104-il_bin.0008.fa r104_bin.0062.fa r9-il_bin.0114.fa r9_bin.0101.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0112.fa --output-dir $output/186_1
+quast.py r9-il_bin.0179.fa r9_bin.0061.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0147.fa --output-dir $output/187_1
+quast.py r9-il_bin.0191.fa r9_bin.0113.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0028.fa --output-dir $output/188_1
+quast.py ilmn_bin.0072.fa r103-il_bin.0034.fa r103_bin.0059.fa r104-il_bin.0052.fa r104_bin.0034.fa r9-il_bin.0148.fa r9_bin.0203.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0045.fa --output-dir $output/190_1
+quast.py r104-il_bin.0005.fa r104_bin.0083.fa r9-il_bin.0142.fa r9_bin.0042.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0077.fa --output-dir $output/191_1
+quast.py r103-il_bin.0035.fa r103_bin.0066.fa r104-il_bin.0037.fa r104_bin.0004.fa r9-il_bin.0065.fa r9_bin.0098.fa --no-icarus --no-html --no-plots -t 5 -R pbccs_bin.0068.fa --output-dir $output/192_1
