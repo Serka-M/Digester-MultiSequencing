@@ -1,9 +1,9 @@
 Merge-single-il
 ================
 
-## Description: alternative “merge-single” script, meant to be used with Illumina-only metagenomics data.
+### Description: alternative “merge-single” script, meant to be used with Illumina-only metagenomics data.
 
-### Since the main purpose is dataframe compatibility with downstream processes, some features will be empty/erroneous and will have to be re-calculated, if relevant for the analysis
+#### Since the main purpose is dataframe compatibility with downstream processes, some features will be empty/erroneous and will have to be re-calculated, if relevant for the analysis
 
 ``` r
 name=read.table(file="name.txt", sep=",", header=F)
