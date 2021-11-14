@@ -910,7 +910,7 @@ plot_abund_2
 
 ![](plotting-mags_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
-# Generate Figure 1
+### Generate Figure 1
 
 ``` r
 leg <- get_legend(plot_cont3)
