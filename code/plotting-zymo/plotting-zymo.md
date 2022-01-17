@@ -419,51 +419,28 @@ hp$datatype <- factor(hp$datatype, levels = c("Nanopore R9","Nanopore R10.4"))
 ### Summarise Counterr observations
 
 ``` r
-hp_5 <- hp_ %>% select(V6,length, id, datatype)
-hp_5_ <- hp_5[(hp_5$length == 5), ]
-colnames(hp_5_) <- c("sum_corr","length","id","datatype")
-hp_5 <- aggregate(hp_5$V6, by=list(hp_5$id,hp_5$datatype), FUN=sum)
-colnames(hp_5) <- c("id","datatype","sum")
-hp_5 <- merge(hp_5,hp_5_, by=c("id","datatype"))
+hp_proc <- function(df,hp_len) {
 
-hp_6 <- hp_ %>% select(V7,length, id, datatype)
-hp_6_ <- hp_6[(hp_6$length == 6), ]
-colnames(hp_6_) <- c("sum_corr","length","id","datatype")
-hp_6 <- aggregate(hp_6$V7, by=list(hp_6$id,hp_6$datatype), FUN=sum)
-colnames(hp_6) <- c("id","datatype","sum")
-hp_6 <- merge(hp_6,hp_6_, by=c("id","datatype"))
+hp_n <- df
+colnames(hp_n) <- c("hp_count","length","id","datatype")
 
-hp_7 <- hp_ %>% select(V8,length, id, datatype)
-hp_7_ <- hp_7[(hp_7$length == 7), ]
-colnames(hp_7_) <- c("sum_corr","length","id","datatype")
-hp_7 <- aggregate(hp_7$V8, by=list(hp_7$id,hp_7$datatype), FUN=sum)
-colnames(hp_7) <- c("id","datatype","sum")
-hp_7 <- merge(hp_7,hp_7_, by=c("id","datatype"))
+hp_n_ <- hp_n[(hp_n$length == hp_len), ]
+colnames(hp_n_) <- c("sum_corr","length","id","datatype")
 
-hp_8 <- hp_ %>% select(V9,length, id, datatype)
-hp_8_ <- hp_8[(hp_8$length == 8), ]
-colnames(hp_8_) <- c("sum_corr","length","id","datatype")
-hp_8 <- aggregate(hp_8$V9, by=list(hp_8$id,hp_8$datatype), FUN=sum)
-colnames(hp_8) <- c("id","datatype","sum")
-hp_8 <- merge(hp_8,hp_8_, by=c("id","datatype"))
+hp_n <- aggregate(hp_n$hp_count, by=list(hp_n$id,hp_n$datatype), FUN=sum)
+colnames(hp_n) <- c("id","datatype","sum")
+hp_n <- merge(hp_n,hp_n_, by=c("id","datatype"))
 
-hp_9 <- hp_ %>% select(V10,length, id, datatype)
-hp_9_ <- hp_9[(hp_9$length == 9), ]
-colnames(hp_9_) <- c("sum_corr","length","id","datatype")
-hp_9 <- aggregate(hp_9$V10, by=list(hp_9$id,hp_9$datatype), FUN=sum)
-colnames(hp_9) <- c("id","datatype","sum")
-hp_9 <- merge(hp_9,hp_9_, by=c("id","datatype"))
+return(hp_n)}
 
-hp_10 <- hp_ %>% select(V11,length, id, datatype)
-hp_10_ <- hp_10[(hp_10$length == 10), ]
-colnames(hp_10_) <- c("sum_corr","length","id","datatype")
-hp_10 <- aggregate(hp_10$V11, by=list(hp_10$id,hp_10$datatype), FUN=sum)
-colnames(hp_10) <- c("id","datatype","sum")
-hp_10 <- merge(hp_10,hp_10_, by=c("id","datatype"))
-
+hp_5 <- hp_proc(subset(hp_, select=c("V6","length","id","datatype")),5)
+hp_6 <- hp_proc(subset(hp_, select=c("V7","length","id","datatype")),6)
+hp_7 <- hp_proc(subset(hp_, select=c("V8","length","id","datatype")),7)
+hp_8 <- hp_proc(subset(hp_, select=c("V9","length","id","datatype")),8)
+hp_9 <- hp_proc(subset(hp_, select=c("V10","length","id","datatype")),9)
+hp_10 <- hp_proc(subset(hp_, select=c("V11","length","id","datatype")),10)
 
 hp_gen <- rbind(hp_5,hp_6,hp_7,hp_8,hp_9,hp_10)
-
 hp_gen_ <- hp_gen %>% select(length, sum, id, datatype) %>% pivot_wider(names_from = id, values_from = sum, values_fill = 0)
 hp_gen_ <- hp_gen_[ , c("length","datatype","A","T","C","G")]
 
