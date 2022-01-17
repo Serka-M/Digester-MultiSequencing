@@ -483,51 +483,31 @@ hp_plot$datatype  <- gsub('Nanopore R10.4', "R10.4", hp_plot$datatype)
 hp_plot$datatype <- factor(hp_plot$datatype, levels = c("R9.4.1","R10.4"))
 hp_plot$id<- factor(hp_plot$id, levels = c("A","T","G","C"))
 
+hp_merged <- function(hp_plot,obs,hp_len,label) {
+  
+plot_hp <- ggplot(data=hp_plot, aes(x=length, y=obs, color=id, linetype=datatype)) + 
+  geom_line(size=1) + 
+  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), limits = c(3,11), expand = c(0.01, 0))  +
+  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1)) + 
+  coord_cartesian(clip = 'off') + labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
+  geom_vline(xintercept=hp_len, lty=2, color="gray70", size=0.8) +  scale_linetype_manual(values=c("R9.4.1"="dotted", "R10.4"="solid")) +
+  theme_bw() + theme(legend.position = c(0.9, 0.6), legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
+  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), 
+  strip.text = element_text(size=10), legend.title = element_text(size=12), legend.background=element_blank()) + 
+  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b"))  +
+  annotate(geom = "text", x = 3.2, y = 0.92, size=4, color = "grey70", hjust = 0, fontface=2, label = label)
 
-plot_hp7 <- ggplot(data=hp_plot, aes(x=length, y=V8, color=id, linetype=datatype)) + 
-  geom_line(size=1) + scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), limits = c(3,11), expand = c(0.01, 0))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + coord_cartesian(clip = 'off') +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=7, lty=2, color="gray70", size=0.8) +  scale_linetype_manual(values=c("R9.4.1"="dotted", "R10.4"="solid")) +
-  theme(legend.position = c(0.9, 0.6),legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10),
-  legend.title = element_text(size=12), legend.background=element_blank()) + scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) + 
-  guides(linetype = FALSE, color=guide_legend(override.aes=list(size=1.2, fill=NA)))  +
-         annotate(geom = "text", x = 3.2, y = 0.92, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 7")
-
-plot_hp7 <- plot_hp7 + theme(plot.margin=unit(c(-0.05,0,-0.04,0), "null"))
-
-
-
-plot_hp8 <- ggplot(data=hp_plot, aes(x=length, y=V9, color=id, linetype=datatype)) + 
-  geom_line(size=1) + scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), limits = c(3,11), expand = c(0.01, 0))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + coord_cartesian(clip = 'off') +
-  labs(title="", y="", x="", color="Nucleotide:", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=8, lty=2, color="gray70", size=0.8) +  scale_linetype_manual(values=c("R9.4.1"="dotted", "R10.4"="solid")) +
-  theme(legend.position = c(0.9, 0.6),legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10),
-  legend.title = element_text(size=12), legend.background=element_blank()) + scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b"))  + 
-  guides(colour=FALSE, linetype=guide_legend(override.aes=list(size=1.2, fill=NA))) +  annotate(geom = "text", x = 3.2, y = 0.92, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 8")
-
-plot_hp8 <- plot_hp8 + theme(plot.margin=unit(c(-0.05,0,-0.04,0), "null"))
+return(plot_hp) }
 
 
+plot_hp7 <- hp_merged(hp_plot,hp_plot$V8,7,"True length: 7") + 
+  guides(linetype = FALSE, color=guide_legend(override.aes=list(size=1.2, fill=NA))) + theme(plot.margin=unit(c(-0.05,0,-0.04,0), "null"))
 
-plot_hp9 <- ggplot(data=hp_plot, aes(x=length, y=V10, color=id, linetype=datatype)) + 
-  geom_line(size=1) + scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), limits = c(3,11), expand = c(0.01, 0))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + coord_cartesian(clip = 'off') +
-  labs(title="", y="", x="Observed homopolymer length", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=9, lty=2, color="gray70", size=0.8) +  scale_linetype_manual(values=c("R9.4.1"="dotted", "R10.4"="solid")) +
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10),
-  legend.title = element_text(size=12)) + scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-       annotate(geom = "text", x = 3.2, y = 0.92, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 9")
+plot_hp8 <- hp_merged(hp_plot,hp_plot$V9,8,"True length: 8") + 
+  guides(colour=FALSE, linetype=guide_legend(override.aes=list(size=1.2, fill=NA))) + theme(plot.margin=unit(c(-0.05,0,-0.04,0), "null"))
 
-plot_hp9 <- plot_hp9 + theme(plot.margin=unit(c(-0.05,0,0,0), "null"))
-
+plot_hp9 <- hp_merged(hp_plot,hp_plot$V10,9,"True length: 9") + 
+  guides(colour=FALSE, linetype=FALSE) + theme(plot.margin=unit(c(-0.05,0,0,0), "null"))
 
 plot_hp_merged <- ggarrange(plot_hp7, plot_hp8, plot_hp9, nrow=3, ncol=1, align = c("v"), common.legend = FALSE)
 plot_hp_merged <- annotate_figure(plot_hp_merged, left = text_grob("Fraction observed", size = 12, , rot = 90))
@@ -553,6 +533,33 @@ plot_fig1
 
 ![](plotting-zymo_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
+### Function for unmerged homopolymer plots
+
+``` r
+hp_single <- function(hp_gen,hp_plot,obs,hp_len,label) {
+
+plot_hp <- ggplot(data=hp_plot, aes(x=length, y=obs, color=id)) + geom_line(size=0.75) + 
+  geom_vline(xintercept=hp_len, lty=2, color="gray70", size=0.8) +
+  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
+  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
+  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) + labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
+  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
+  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10),
+  strip.text = element_text(size=10), legend.title = element_text(size=12), legend.background=element_blank()) + 
+  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
+  annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
+            label = paste("A: ",hp_gen[(hp_gen$id == "A" & hp_gen$length == hp_len), ]$sum)) +
+  annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
+            label = paste("T: ",hp_gen[(hp_gen$id == "T" & hp_gen$length == hp_len), ]$sum)) +
+  annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
+            label = paste("G: ",hp_gen[(hp_gen$id == "G" & hp_gen$length == hp_len), ]$sum)) +
+  annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
+            label = paste("C: ",hp_gen[(hp_gen$id == "C" & hp_gen$length == hp_len), ]$sum)) +
+  annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2, label = label)
+
+return(plot_hp) }
+```
+
 ### Homopolymer plot: R9.4.1, 5-10
 
 ``` r
@@ -564,304 +571,12 @@ hp_plot$datatype <- factor(hp_plot$datatype, levels = c("Nanopore R9.4.1", "Nano
 hp_plot_R9 <- hp_plot[(hp_plot$datatype == "Nanopore R9.4.1"), ]
 hp_gen_R9 <- hp_gen[(hp_gen$datatype == "Nanopore R9"), ]
 
-
-plot_hp_5 <- ggplot(data=hp_plot_R9, aes(x=length, y=V6, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=5, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R9[(hp_gen_R9$id == "A" & hp_gen_R9$length == 5), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R9[(hp_gen_R9$id == "T" & hp_gen_R9$length == 5), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R9[(hp_gen_R9$id == "G" & hp_gen_R9$length == 5), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R9[(hp_gen_R9$id == "C" & hp_gen_R9$length == 5), ]$sum)) +
-       annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 5")
-
-
-plot_hp_6 <- ggplot(data=hp_plot_R9, aes(x=length, y=V7, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=6, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R9[(hp_gen_R9$id == "A" & hp_gen_R9$length == 6), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R9[(hp_gen_R9$id == "T" & hp_gen_R9$length == 6), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R9[(hp_gen_R9$id == "G" & hp_gen_R9$length == 6), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R9[(hp_gen_R9$id == "C" & hp_gen_R9$length == 6), ]$sum)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 6")
-
-
-plot_hp_7 <- ggplot(data=hp_plot_R9, aes(x=length, y=V8, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=7, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R9[(hp_gen_R9$id == "A" & hp_gen_R9$length == 7), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R9[(hp_gen_R9$id == "T" & hp_gen_R9$length == 7), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R9[(hp_gen_R9$id == "G" & hp_gen_R9$length == 7), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R9[(hp_gen_R9$id == "C" & hp_gen_R9$length == 7), ]$sum)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 7")
-
-
-plot_hp_8 <- ggplot(data=hp_plot_R9, aes(x=length, y=V9, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=8, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R9[(hp_gen_R9$id == "A" & hp_gen_R9$length == 8), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R9[(hp_gen_R9$id == "T" & hp_gen_R9$length == 8), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R9[(hp_gen_R9$id == "G" & hp_gen_R9$length == 8), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R9[(hp_gen_R9$id == "C" & hp_gen_R9$length == 8), ]$sum)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 8")
-
-
-
-plot_hp_9 <- ggplot(data=hp_plot_R9, aes(x=length, y=V10, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=9, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R9[(hp_gen_R9$id == "A" & hp_gen_R9$length == 9), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R9[(hp_gen_R9$id == "T" & hp_gen_R9$length == 9), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R9[(hp_gen_R9$id == "G" & hp_gen_R9$length == 9), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R9[(hp_gen_R9$id == "C" & hp_gen_R9$length == 9), ]$sum)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 9")
-
-
-
-plot_hp_10 <- ggplot(data=hp_plot_R9, aes(x=length, y=V11, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=10, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R9[(hp_gen_R9$id == "A" & hp_gen_R9$length == 10), ]$sum_corr)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R9[(hp_gen_R9$id == "T" & hp_gen_R9$length == 10), ]$sum_corr)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R9[(hp_gen_R9$id == "G" & hp_gen_R9$length == 10), ]$sum_corr)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R9[(hp_gen_R9$id == "C" & hp_gen_R9$length == 10), ]$sum_corr)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 10")
-
-
-
-
-plot_hp_merged <- ggarrange(plot_hp_5,plot_hp_6, plot_hp_7, plot_hp_8, plot_hp_9,plot_hp_10,
-                            ncol=2, nrow = 3, align = c("h"), common.legend = FALSE)
-plot_hp_merged
-```
-
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
-
-### Homopolymer plot: R10.4, 5-10
-
-``` r
-hp_plot_R10 <- hp_plot[(hp_plot$datatype == "Nanopore R10.4"), ]
-hp_gen_R10 <- hp_gen[(hp_gen$datatype == "Nanopore R10.4"), ]
-
-
-plot_hp_5 <- ggplot(data=hp_plot_R10, aes(x=length, y=V6, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=5, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R10[(hp_gen_R10$id == "A" & hp_gen_R10$length == 5), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R10[(hp_gen_R10$id == "T" & hp_gen_R10$length == 5), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R10[(hp_gen_R10$id == "G" & hp_gen_R10$length == 5), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R10[(hp_gen_R10$id == "C" & hp_gen_R10$length == 5), ]$sum)) +
-       annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 5")
-
-
-plot_hp_6 <- ggplot(data=hp_plot_R10, aes(x=length, y=V7, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=6, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R10[(hp_gen_R10$id == "A" & hp_gen_R10$length == 6), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R10[(hp_gen_R10$id == "T" & hp_gen_R10$length == 6), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R10[(hp_gen_R10$id == "G" & hp_gen_R10$length == 6), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R10[(hp_gen_R10$id == "C" & hp_gen_R10$length == 6), ]$sum)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 6")
-
-
-plot_hp_7 <- ggplot(data=hp_plot_R10, aes(x=length, y=V8, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=7, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R10[(hp_gen_R10$id == "A" & hp_gen_R10$length == 7), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R10[(hp_gen_R10$id == "T" & hp_gen_R10$length == 7), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R10[(hp_gen_R10$id == "G" & hp_gen_R10$length == 7), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R10[(hp_gen_R10$id == "C" & hp_gen_R10$length == 7), ]$sum)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 7")
-
-
-plot_hp_8 <- ggplot(data=hp_plot_R10, aes(x=length, y=V9, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=8, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R10[(hp_gen_R10$id == "A" & hp_gen_R10$length == 8), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R10[(hp_gen_R10$id == "T" & hp_gen_R10$length == 8), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R10[(hp_gen_R10$id == "G" & hp_gen_R10$length == 8), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R10[(hp_gen_R10$id == "C" & hp_gen_R10$length == 8), ]$sum)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 8")
-
-
-
-plot_hp_9 <- ggplot(data=hp_plot_R10, aes(x=length, y=V10, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=9, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R10[(hp_gen_R10$id == "A" & hp_gen_R10$length == 9), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R10[(hp_gen_R10$id == "T" & hp_gen_R10$length == 9), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R10[(hp_gen_R10$id == "G" & hp_gen_R10$length == 9), ]$sum)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R10[(hp_gen_R10$id == "C" & hp_gen_R10$length == 9), ]$sum)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 9")
-
-
-
-plot_hp_10 <- ggplot(data=hp_plot_R10, aes(x=length, y=V11, color=id)) + 
-  geom_line(size=0.75) + 
-  scale_x_continuous(breaks=c(1,2,3,4,5,6,7,8,9,10,11), expand = c(0.01, 0), limits = c(2,12))  +
-  scale_y_continuous(expand = c(0.01, 0), breaks=c(0.0,0.25,0.5,0.75,1), limits = c(0,1))+ theme_bw() + 
-  coord_cartesian(clip = 'on', xlim = c(2.5,11.5)) +
-  labs(title="", y="", x="", color="", linetype="") + guides(shape = FALSE) +
-   geom_vline(xintercept=10, lty=2, color="gray70", size=0.8) +  
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), strip.text = element_text(size=10), 
-  legend.title = element_text(size=12), legend.background=element_blank()) + 
-  scale_color_manual(values = c("A"="#7f3b08","T"="#fdb863","C"="#b2abd2","G"="#2d004b")) +
-   annotate(geom = "text", x = 10.1, y = 0.95, size=4, color = "#7f3b08", hjust = 0, fontface=2,
-            label = paste("A: ",hp_gen_R10[(hp_gen_R10$id == "A" & hp_gen_R10$length == 10), ]$sum_corr)) +
-     annotate(geom = "text", x = 10.1, y = 0.88, size=4, color = "#fdb863", hjust = 0, fontface=2,
-            label = paste("T: ",hp_gen_R10[(hp_gen_R10$id == "T" & hp_gen_R10$length == 10), ]$sum_corr)) +
-     annotate(geom = "text", x = 10.1, y = 0.81, size=4, color = "#2d004b", hjust = 0, fontface=2,
-            label = paste("G: ",hp_gen_R10[(hp_gen_R10$id == "G" & hp_gen_R10$length == 10), ]$sum_corr)) +
-     annotate(geom = "text", x = 10.1, y = 0.74, size=4, color = "#b2abd2", hjust = 0, fontface=2,
-            label = paste("C: ",hp_gen_R10[(hp_gen_R10$id == "C" & hp_gen_R10$length == 10), ]$sum_corr)) +
-         annotate(geom = "text", x = 2.6, y = 0.95, size=4, color = "grey70", hjust = 0, fontface=2,
-            label = "True length: 10")
-
-
-
+plot_hp_5 <- hp_single(hp_gen_R9,hp_plot_R9,hp_plot_R9$V6,5,"True length: 5")
+plot_hp_6 <- hp_single(hp_gen_R9,hp_plot_R9,hp_plot_R9$V7,6,"True length: 6")
+plot_hp_7 <- hp_single(hp_gen_R9,hp_plot_R9,hp_plot_R9$V8,7,"True length: 7")
+plot_hp_8 <- hp_single(hp_gen_R9,hp_plot_R9,hp_plot_R9$V9,8,"True length: 8")
+plot_hp_9 <- hp_single(hp_gen_R9,hp_plot_R9,hp_plot_R9$V10,9,"True length: 9")
+plot_hp_10 <- hp_single(hp_gen_R9,hp_plot_R9,hp_plot_R9$V11,10,"True length: 10")
 
 plot_hp_merged <- ggarrange(plot_hp_5,plot_hp_6, plot_hp_7, plot_hp_8, plot_hp_9,plot_hp_10,
                             ncol=2, nrow = 3, align = c("h"), common.legend = FALSE)
@@ -869,3 +584,23 @@ plot_hp_merged
 ```
 
 ![](plotting-zymo_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+
+### Homopolymer plot: R10.4, 5-10
+
+``` r
+hp_plot_R10 <- hp_plot[(hp_plot$datatype == "Nanopore R10.4"), ]
+hp_gen_R10 <- hp_gen[(hp_gen$datatype == "Nanopore R10.4"), ]
+
+plot_hp_5 <- hp_single(hp_gen_R10,hp_plot_R10,hp_plot_R10$V6,5,"True length: 5")
+plot_hp_6 <- hp_single(hp_gen_R10,hp_plot_R10,hp_plot_R10$V7,6,"True length: 6")
+plot_hp_7 <- hp_single(hp_gen_R10,hp_plot_R10,hp_plot_R10$V8,7,"True length: 7")
+plot_hp_8 <- hp_single(hp_gen_R10,hp_plot_R10,hp_plot_R10$V9,8,"True length: 8")
+plot_hp_9 <- hp_single(hp_gen_R10,hp_plot_R10,hp_plot_R10$V10,9,"True length: 9")
+plot_hp_10 <- hp_single(hp_gen_R10,hp_plot_R10,hp_plot_R10$V11,10,"True length: 10")
+
+plot_hp_merged <- ggarrange(plot_hp_5,plot_hp_6, plot_hp_7, plot_hp_8, plot_hp_9,plot_hp_10,
+                            ncol=2, nrow = 3, align = c("h"), common.legend = FALSE)
+plot_hp_merged
+```
+
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
