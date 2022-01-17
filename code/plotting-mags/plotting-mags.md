@@ -722,48 +722,34 @@ hp$datatype <- factor(hp$datatype, levels = c("Illumina","Nanopore R9 + Illumina
 ### Calculate observations for Counterr data
 
 ``` r
-hp_6 <- hp_ %>% select(V7,length, id, datatype)
-hp_6_ <- hp_6[(hp_6$length == 6), ]
-colnames(hp_6_) <- c("sum_corr","length","id","datatype")
-hp_6 <- aggregate(hp_6$V7, by=list(hp_6$id,hp_6$datatype), FUN=sum)
-colnames(hp_6) <- c("id","datatype","sum")
-hp_6 <- merge(hp_6,hp_6_, by=c("id","datatype"))
+hp_proc <- function(df,hp_len) {
 
-hp_7 <- hp_ %>% select(V8,length, id, datatype)
-hp_7_ <- hp_7[(hp_7$length == 7), ]
-colnames(hp_7_) <- c("sum_corr","length","id","datatype")
-hp_7 <- aggregate(hp_7$V8, by=list(hp_7$id,hp_7$datatype), FUN=sum)
-colnames(hp_7) <- c("id","datatype","sum")
-hp_7 <- merge(hp_7,hp_7_, by=c("id","datatype"))
+hp_n <- df
+colnames(hp_n) <- c("hp_count","length","id","datatype")
 
-hp_8 <- hp_ %>% select(V9,length, id, datatype)
-hp_8_ <- hp_8[(hp_8$length == 8), ]
-colnames(hp_8_) <- c("sum_corr","length","id","datatype")
-hp_8 <- aggregate(hp_8$V9, by=list(hp_8$id,hp_8$datatype), FUN=sum)
-colnames(hp_8) <- c("id","datatype","sum")
-hp_8 <- merge(hp_8,hp_8_, by=c("id","datatype"))
+hp_n_ <- hp_n[(hp_n$length == hp_len), ]
+colnames(hp_n_) <- c("sum_corr","length","id","datatype")
 
-hp_9 <- hp_ %>% select(V10,length, id, datatype)
-hp_9_ <- hp_9[(hp_9$length == 9), ]
-colnames(hp_9_) <- c("sum_corr","length","id","datatype")
-hp_9 <- aggregate(hp_9$V10, by=list(hp_9$id,hp_9$datatype), FUN=sum)
-colnames(hp_9) <- c("id","datatype","sum")
-hp_9 <- merge(hp_9,hp_9_, by=c("id","datatype"))
+hp_n <- aggregate(hp_n$hp_count, by=list(hp_n$id,hp_n$datatype), FUN=sum)
+colnames(hp_n) <- c("id","datatype","sum")
+hp_n <- merge(hp_n,hp_n_, by=c("id","datatype"))
 
-hp_10 <- hp_ %>% select(V11,length, id, datatype)
-hp_10_ <- hp_10[(hp_10$length == 10), ]
-colnames(hp_10_) <- c("sum_corr","length","id","datatype")
-hp_10 <- aggregate(hp_10$V11, by=list(hp_10$id,hp_10$datatype), FUN=sum)
-colnames(hp_10) <- c("id","datatype","sum")
-hp_10 <- merge(hp_10,hp_10_, by=c("id","datatype"))
+return(hp_n)}
 
+
+hp_6 <- hp_proc(subset(hp_, select=c("V7","length","id","datatype")),6)
+hp_7 <- hp_proc(subset(hp_, select=c("V8","length","id","datatype")),7)
+hp_8 <- hp_proc(subset(hp_, select=c("V9","length","id","datatype")),8)
+hp_9 <- hp_proc(subset(hp_, select=c("V10","length","id","datatype")),9)
+hp_10 <- hp_proc(subset(hp_, select=c("V11","length","id","datatype")),10)
 
 hp_gen <- rbind(hp_6,hp_7,hp_8,hp_9,hp_10)
 
 hp_gen_ <- hp_gen %>% select(length, sum, id, datatype) %>% pivot_wider(names_from = id, values_from = sum, values_fill = 0)
 hp_gen_ <- hp_gen_[ , c("length","datatype","A","T","C","G")]
 
-hp_gen$datatype <- factor(hp_gen$datatype, levels = c("Illumina","Nanopore R9 + Illumina","Nanopore R9","Nanopore R10.4 + Illumina","Nanopore R10.4"))
+hp_gen$datatype <- factor(hp_gen$datatype, levels = c("Illumina","Nanopore R9 + Illumina","Nanopore R9",
+                                                      "Nanopore R10.4 + Illumina","Nanopore R10.4"))
 
 hp_gen$fraction_corr <- round(hp_gen$sum_corr/hp_gen$sum*100,3)
 ```
@@ -781,49 +767,26 @@ hp_c <- hp_gen_[(hp_gen_$id == "C"), ]
 
 level_order <- c("Nanopore R10.4 + Illumina","Nanopore R10.4", "Nanopore R9.4.1 + Illumina","Nanopore R9.4.1","Illumina")
 
+hp_heatmap <- function(df,label) {
 
-plot_hpa <- ggplot(data = hp_a, mapping = aes(x = length, y = factor(datatype,level=level_order), fill = fraction_corr )) + 
+hp_plot <- ggplot(data = df, mapping = aes(x = length, y = factor(datatype,level=level_order), fill = fraction_corr )) + 
   geom_tile(width=1) + geom_text(aes(label = paste("(",round(sum, 1),")",sep=""), vjust=1.5), size=3, fontface = "bold") + 
   geom_text(aes(label = round(sum_corr, 1), vjust=-0.5), size=3, fontface = "bold") + theme_bw() +
-  labs(title="Adenine", y="", x="Homopolymer length", fill="Correctly called (%):")  + 
+  labs(title=label, y="", x="Homopolymer length", fill="Correctly called (%):")  + 
   scale_x_continuous(expand = c(0, 0), breaks=c(6,7,8,9,10,11,12)) + scale_y_discrete(expand = c(0, 0)) +
   scale_fill_gradient2(midpoint = 50, low = "#8e0152", mid= "#f7f7f7", high = "#276419",
                         limits=c(0,100), breaks=c(0,25,50,75,100), labels=c("0","25","50","75","100")) +
   theme(legend.position = "bottom", legend.text=element_text(size=10), legend.title=element_text(size=12),
-        axis.title.y = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), axis.title.x = element_text(size=12))
-
-plot_hpt <- ggplot(data = hp_t, mapping = aes(x = length, y = factor(datatype,level=level_order), fill = fraction_corr )) + 
-  geom_tile(width=1) + geom_text(aes(label = paste("(",round(sum, 1),")",sep=""), vjust=1.5), size=3, fontface = "bold") + 
-  geom_text(aes(label = round(sum_corr, 1), vjust=-0.5), size=3, fontface = "bold") + theme_bw() + 
-  labs(title="Thymine", y="", x="Homopolymer length", fill="Correctly called (%):")  + 
-  scale_x_continuous(expand = c(0, 0), breaks=c(6,7,8,9,10,11,12)) + scale_y_discrete(expand = c(0, 0)) +
-  scale_fill_gradient2(midpoint = 50, low = "#8e0152", mid= "#f7f7f7", high = "#276419",
-                        limits=c(0,100), breaks=c(0,25,50,75,100), labels=c("0","25","50","75","100")) +
-  theme(legend.position = "bottom", legend.text=element_text(size=10), legend.title=element_text(size=12),
-        axis.title.y = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_blank(),
+        axis.title.y = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10),
         axis.title.x = element_text(size=12))
 
-plot_hpg <- ggplot(data = hp_g, mapping = aes(x = length, y = factor(datatype,level=level_order), fill = fraction_corr )) + 
-  geom_tile(width=1) + geom_text(aes(label = paste("(",round(sum, 1),")",sep=""), vjust=1.5), size=3, fontface = "bold") +
-  geom_text(aes(label = round(sum_corr, 1), vjust=-0.5), size=3, fontface = "bold") + theme_bw() +
-  labs(title="Guanine", y="", x="Homopolymer length", fill="Correctly called (%):")  + 
-  scale_x_continuous(expand = c(0, 0), breaks=c(6,7,8,9,10,11,12)) + scale_y_discrete(expand = c(0, 0)) +
-  scale_fill_gradient2(midpoint = 50, low = "#8e0152", mid= "#f7f7f7", high = "#276419",
-                        limits=c(0,100), breaks=c(0,25,50,75,100), labels=c("0","25","50","75","100")) +
-  theme(legend.position = "bottom", legend.text=element_text(size=10), legend.title=element_text(size=12),
-        axis.title.y = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), axis.title.x = element_text(size=12))
+return(hp_plot)}
 
 
-plot_hpc <- ggplot(data = hp_c, mapping = aes(x = length, y = factor(datatype,level=level_order), fill = fraction_corr )) + 
-  geom_tile(width=1) + geom_text(aes(label = paste("(",round(sum, 1),")",sep=""), vjust=1.5), size=3, fontface = "bold") + 
-  geom_text(aes(label = round(sum_corr, 1), vjust=-0.5), size=3, fontface = "bold") + theme_bw() + 
-  labs(title="Cytosine", y="", x="Homopolymer length", fill="Correctly called (%):")  + 
-  scale_x_continuous(expand = c(0, 0), breaks=c(6,7,8,9,10,11,12)) + scale_y_discrete(expand = c(0, 0)) +
-  scale_fill_gradient2(midpoint = 50, low = "#8e0152", mid= "#f7f7f7", high = "#276419",
-                        limits=c(0,100), breaks=c(0,25,50,75,100), labels=c("0","25","50","75","100")) +
-  theme(legend.position = "bottom", legend.text=element_text(size=10), legend.title=element_text(size=12),
-        axis.title.y = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_blank(),
-        axis.title.x = element_text(size=12))
+plot_hpa <- hp_heatmap(hp_a,"Adenine")
+plot_hpg <- hp_heatmap(hp_g,"Guanine")
+plot_hpt <- hp_heatmap(hp_t,"Thymine") + theme(axis.text.y = element_blank())
+plot_hpc <- hp_heatmap(hp_c,"Cytosine") + theme(axis.text.y = element_blank())
 
 
 plot_hp_nuc <- ggarrange(plot_hpa, plot_hpt, plot_hpg, plot_hpc, ncol=2, nrow=2, widths=c(1.35,1),
@@ -845,57 +808,33 @@ bins_abund_2 <- bins[((bins$mags_workflow_mode=="PacBio CCS" & bins$cov_pb >= 10
 bins_abund_2 <- bins_abund_2[!is.na(bins_abund_2$cluster), ]
 bins_abund_2 <- bins_abund_2 %>% group_by(bins_abund_2$cluster) %>% dplyr::filter(n() == 4)
 
-plot_abund_pb <- ggplot(data=bins_abund_2,aes(x=r_abund_r9,y=r_abund_pb)) + geom_abline() +
+
+abund_plot <- function(df,x,y,x_label,y_label) {
+
+plot <- ggplot(data=df,aes(x=x,y=y)) + geom_abline() +
   geom_point(aes(col=GC, shape=mags_workflow_mode, size=5), alpha=0.8) +
   geom_line(aes(group=cluster),col="black", size=0.5, alpha=0.6) + theme_bw() +
   scale_x_continuous(trans = "log2", breaks=c(0.25,0.5,1,2,4,8), labels=c(0.25,0.5,1,2,4,8), expand = c(0,0), limits=c(0.13,12)) +
   scale_y_continuous(trans = "log2", breaks=c(0.25,0.5,1,2,4,8), labels=c(0.25,0.5,1,2,4,8), expand = c(0,0), limits=c(0.13,12)) +
-  ylab("Bin relative abundance (PacBio CCS, %)") + xlab("Bin relative abundance (Nanopore R9, %)") +
-  labs(col="Platform:",size="Bin size (bp)", shape="MAG classification") +
+  ylab(y_label) + xlab(x_label) + labs(col="Platform:",size="Bin size (bp)", shape="MAG classification") +
   theme(legend.position = "right", legend.text=element_text(size=10), axis.title.y = element_text(size = 12),
       axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10),
       axis.text.y = element_text(size = 10), legend.title = element_text(size=12))  + 
   scale_shape_manual(values = c("Illumina" = 16, "Nanopore R9.4.1"=17,"Nanopore R10.4"=15,"PacBio CCS"=18)) +
   scale_color_gradient2(midpoint = 50, low = "#2c7fb8", mid= "#fed976", high = "#800026", limits=c(25,70), breaks=c(25,40,55,70)) +
-  labs(col="GC (%)", shape="Platform:") +
-    guides(size = FALSE,
-         shape = guide_legend(order = 2, override.aes = list(size = 3.5)))
+  labs(col="GC (%)", shape="Platform:") + guides(size = FALSE, shape = guide_legend(order = 2, override.aes = list(size = 3.5)))
+
+return(plot)}
 
 
-plot_abund_il <- ggplot(data=bins_abund_2,aes(x=r_abund_r9,y=r_abund_il)) + geom_abline() +
-  geom_point(aes(col=GC, shape=mags_workflow_mode, size=5), alpha=0.8) +
-  geom_line(aes(group=cluster),col="black", size=0.5, alpha=0.6)  + theme_bw() +
-  scale_x_continuous(trans = "log2", breaks=c(0.25,0.5,1,2,4,8), labels=c(0.25,0.5,1,2,4,8), expand = c(0,0), limits=c(0.13,12)) +
-  scale_y_continuous(trans = "log2", breaks=c(0.25,0.5,1,2,4,8), labels=c(0.25,0.5,1,2,4,8), expand = c(0,0), limits=c(0.13,12)) +
-  ylab("Bin relative abundance (Illumina, %)") + xlab("Bin relative abundance (Nanopore R9.4.1, %)") +
-  labs(col="Platform:",size="Bin size (bp)", shape="MAG classification") +
-  theme(legend.position = "right", legend.text=element_text(size=10), axis.title.y = element_text(size = 12),
-      axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10),
-      axis.text.y = element_text(size = 10), legend.title = element_text(size=12))  + 
-  scale_shape_manual(values = c("Illumina" = 16, "Nanopore R9.4.1"=17,  "Nanopore R10.4"=15,"PacBio CCS"=18)) +
-  scale_color_gradient2(midpoint = 50, low = "#2c7fb8", mid= "#fed976", high = "#800026", limits=c(25,70), breaks=c(25,40,55,70)) +
-  labs(col="GC (%)", shape="Platform:") +
-    guides(size = FALSE,
-         shape = guide_legend(order = 2, override.aes = list(size = 3.5)))
+plot_abund_pb <- abund_plot(bins_abund_2,bins_abund_2$r_abund_r9,bins_abund_2$r_abund_pb,
+                            "Bin relative abundance (Nanopore R9, %)","Bin relative abundance (PacBio CCS, %)")
 
+plot_abund_il <- abund_plot(bins_abund_2,bins_abund_2$r_abund_r9,bins_abund_2$r_abund_il,
+                            "Bin relative abundance (Nanopore R9, %)","Bin relative abundance (Illumina, %)")
 
-plot_abund_r104 <- ggplot(data=bins_abund_2,aes(x=r_abund_r9,y=r_abund_r104)) + geom_abline() +
-  geom_point(aes(col=GC, shape=mags_workflow_mode, size=5), alpha=0.8) +
-  geom_line(aes(group=cluster),col="black", size=0.5, alpha=0.6)  + theme_bw() +
-  scale_x_continuous(trans = "log2", breaks=c(0.25,0.5,1,2,4,8), labels=c(0.25,0.5,1,2,4,8), expand = c(0,0), limits=c(0.13,12)) +
-  scale_y_continuous(trans = "log2", breaks=c(0.25,0.5,1,2,4,8), labels=c(0.25,0.5,1,2,4,8), expand = c(0,0), limits=c(0.13,12)) +
-  ylab("Bin relative abundance (Nanopore R10.4, %)") + xlab("Bin relative abundance (Nanopore R9.4.1, %)") +
-  labs(col="Platform:",size="Bin size (bp)", shape="MAG classification") +
-  theme(legend.position = "right", legend.text=element_text(size=10), axis.title.y = element_text(size = 12),
-      axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10),
-      axis.text.y = element_text(size = 10), legend.title = element_text(size=12))  + 
-  scale_shape_manual(values = c("Illumina" = 16, "Nanopore R9.4.1"=17,"Nanopore R10.4"=15, "PacBio CCS"=18)) +
-  scale_color_gradient2(midpoint = 50, low = "#2c7fb8", mid= "#fed976", high = "#800026", limits=c(25,70), breaks=c(25,40,55,70)) +
-  labs(col="GC (%)", shape="Platform:") +
-  guides(size = FALSE,
-         shape = guide_legend(order = 2, override.aes = list(size = 3.5)))
-
-
+plot_abund_r104 <- abund_plot(bins_abund_2,bins_abund_2$r_abund_r9,bins_abund_2$r_abund_r104,
+                            "Bin relative abundance (Nanopore R9, %)","Bin relative abundance (Nanopore R10.4, %)")
 
 plot_leg <- get_legend(plot_abund_pb)
 plot_leg <- as_ggplot(plot_leg)
