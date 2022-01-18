@@ -207,7 +207,7 @@ plot_mm
 
 ![](plotting-zymo_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
-# ANI plot
+### ANI plot
 
 ``` r
 plot_ani <- ggplot(data=df, aes(x=cov, y=ANI_Q, color=type)) + 
