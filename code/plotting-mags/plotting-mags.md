@@ -87,65 +87,32 @@ estimate_mode <- function(x) {
   d <- density(x)
   d$x[which.max(d$y)] }
 
-
-message("Modal estimated accuracies estimated from Q scores")
+message("Estimated read accuracies (modal estimate) derived from read PHRED scores\n",
+        " ILM: ",round((1-10**(-estimate_mode(mp_reads_il$V1)/10))*100,2), " %\n",
+        " PBCCS: ",round((1-10**(-estimate_mode(mp_reads_pb$V2)/10))*100,2), " %\n",
+        " R9: ",round((1-10**(-estimate_mode(mp_reads_r9$V2)/10))*100,2), " %\n",
+        " R104: ",round((1-10**(-estimate_mode(mp_reads_r104$V2)/10))*100,2), " %\n")
 ```
 
-    ## Modal estimated accuracies estimated from Q scores
+    ## Estimated read accuracies (modal estimate) derived from read PHRED scores
+    ##  ILM: 99.98 %
+    ##  PBCCS: 99.97 %
+    ##  R9: 96.49 %
+    ##  R104: 97.61 %
 
 ``` r
-message("ILM: ",round((1-10**(-estimate_mode(mp_reads_il$V1)/10))*100,2), " %")
+message("Observed read accuracies (modal estimate) derived from mapping identities \n", 
+        " ILM: ",round((estimate_mode(mp_reads_il$V6)),2), " %\n",
+        " PBCCS: ",round((estimate_mode(mp_reads_pb$V7)),2), " %\n",
+        " R9: ",round((estimate_mode(mp_reads_r9$V7)),2), " %\n",
+        " R104: ",round((estimate_mode(mp_reads_r104$V7)),2), " %\n")
 ```
 
-    ## ILM: 99.98 %
-
-``` r
-message("PBCCS: ",round((1-10**(-estimate_mode(mp_reads_pb$V2)/10))*100,2), " %")
-```
-
-    ## PBCCS: 99.97 %
-
-``` r
-message("R9: ",round((1-10**(-estimate_mode(mp_reads_r9$V2)/10))*100,2), " %")
-```
-
-    ## R9: 96.49 %
-
-``` r
-message("R104: ",round((1-10**(-estimate_mode(mp_reads_r104$V2)/10))*100,2), " %")
-```
-
-    ## R104: 97.61 %
-
-``` r
-message("Modal observed accuracies estimated from Q scores")
-```
-
-    ## Modal observed accuracies estimated from Q scores
-
-``` r
-message("ILM: ",round((estimate_mode(mp_reads_il$V6)),2), " %")
-```
-
-    ## ILM: 100.02 %
-
-``` r
-message("PBCCS: ",round((estimate_mode(mp_reads_pb$V7)),2), " %")
-```
-
-    ## PBCCS: 99.86 %
-
-``` r
-message("R9: ",round((estimate_mode(mp_reads_r9$V7)),2), " %")
-```
-
-    ## R9: 96.76 %
-
-``` r
-message("R104: ",round((estimate_mode(mp_reads_r104$V7)),2), " %")
-```
-
-    ## R104: 98.21 %
+    ## Observed read accuracies (modal estimate) derived from mapping identities 
+    ##  ILM: 100.02 %
+    ##  PBCCS: 99.86 %
+    ##  R9: 96.76 %
+    ##  R104: 98.21 %
 
 ### 2D density plot for read lengths/estimated accuracy
 
@@ -422,117 +389,66 @@ plot_cont4
 
 ![](plotting-mags_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
-### Wrangle data for polishing improvements on 9.4.1 bins
+### Wrangle data for polishing improvements
 
 ``` r
-bins_clean <- bins[!is.na(bins$cluster), ]
-bins_clean <- bins_clean[(bins_clean$percent_snp_rate <= 0.5), ]
+wrangle_quast <- function(df, control_id, control_cov, unpolished_id, unpolished_cov, polished_id, polished_cov,id) {
 
-bins_clean <- bins_clean[((bins_clean$mags_workflow_mode == "PacBio CCS" & bins_clean$cov_pb > 10) | 
-              (bins_clean$mags_workflow_mode == "Nanopore R9.4.1" & bins_clean$cov_r9 >= 10 ) | 
-(bins_clean$mags_workflow_mode == "Nanopore R9.4.1 + Illumina" & bins_clean$cov_r9 >= 10 & bins_clean$cov_il >= 5)), ]
+df <- df[!is.na(df$cluster), ]
+df <- df[(df$percent_snp_rate <= 0.5), ]
 
-bins_clean <- bins_clean %>% group_by(bins_clean$cluster) %>% dplyr::filter(n() == 3)
+df <- df[((df$mags_workflow_mode == control_id & df[,control_cov] > 10) | 
+              (df$mags_workflow_mode == unpolished_id & df[,unpolished_cov] >= 10 ) | 
+(df$mags_workflow_mode == polished_id & df[,unpolished_cov] >= 10 & df[,polished_cov] >= 5)), ]
 
-bins_clean <- bins_clean[!is.na(bins_clean$genome_frac), ]
-bins_clean = bins_clean[(bins_clean$genome_frac > 0.75), ]
-bins_clean = bins_clean[(bins_clean$unalligned_bp < 250000), ]
-bins_clean <- bins_clean %>% group_by(bins_clean$cluster) %>% dplyr::filter(n() > 1)
+df <- df %>% group_by(df$cluster) %>% dplyr::filter(n() == 3)
+df <- df[!is.na(df$genome_frac), ]
+df <- df[(df$genome_frac > 0.75), ]
+df <- df[(df$unalligned_bp < 250000), ]
+df <- df %>% group_by(df$cluster) %>% dplyr::filter(n() == 2)
 
-bins_clean_R9 <- bins_clean
-bins_clean_R9$coverage <- bins_clean_R9$cov_r9
-bins_clean_R9$secondary_cluster <- paste("R9_",bins_clean_R9$cluster,sep="")
+df2 <- df
+df2[,"coverage"] <- df2[,unpolished_cov]
+df2$secondary_cluster <- paste(id,df2$cluster,sep="")
 
-ratio_change <- bins_clean[,c("cluster","mags_workflow_mode","MMs_per_100kb","Indels_per_100kb")]
-ratio_change1 <- ratio_change[ratio_change$mags_workflow_mode == "Nanopore R9.4.1", ]
-ratio_change2 <- ratio_change[ratio_change$mags_workflow_mode == "Nanopore R9.4.1 + Illumina", ]
+ratio_change <- df[,c("cluster","mags_workflow_mode","MMs_per_100kb","Indels_per_100kb")]
+ratio_change1 <- ratio_change[ratio_change$mags_workflow_mode == unpolished_id, ]
+ratio_change2 <- ratio_change[ratio_change$mags_workflow_mode == polished_id, ]
 
-ratio_change_r9 <-  merge(ratio_change1,ratio_change2, by="cluster") 
-ratio_change_r9$changeMM <- 1-(ratio_change_r9$MMs_per_100kb.y)/(ratio_change_r9$MMs_per_100kb.x)
-ratio_change_r9$changeIND <- 1-(ratio_change_r9$Indels_per_100kb.y)/(ratio_change_r9$Indels_per_100kb.x)
+ratio_change <-  merge(ratio_change1,ratio_change2, by="cluster") 
+ratio_change$changeMM <- 1-(ratio_change$MMs_per_100kb.y)/(ratio_change$MMs_per_100kb.x)
+ratio_change$changeIND <- 1-(ratio_change$Indels_per_100kb.y)/(ratio_change$Indels_per_100kb.x)
 
-bins_clean_R9_ <- bins_clean_R9 %>% select(cluster,cov_r9) %>% distinct(cluster, .keep_all= TRUE)
+# Adds bin coverage to the ratio change dataframe
+#cov <- df2 %>% select(cluster,coverage) %>% distinct(cluster, .keep_all= TRUE)
+#ratio_change <- merge(ratio_change,cov, by="cluster")
+
+message("For ",unpolished_id,":")
+message("Mismatches: change of ",round(median(ratio_change$changeMM),2),"±",round(sd(ratio_change$changeMM),2),
+        ", more than 50 % improvement in ",nrow(ratio_change[(ratio_change$changeMM >= 0.5), ]),"/",nrow(ratio_change)," bins")
+message("Indels: change of ",round(median(ratio_change$changeIND),2),"±",round(sd(ratio_change$changeIND),2),
+        ", more than 50 % improvement in ",nrow(ratio_change[(ratio_change$changeIND >= 0.5), ]),"/",nrow(ratio_change)," bins \n")
+
+return(as.data.frame(df2))}
+
+bins_clean_R9 <- wrangle_quast(bins,"PacBio CCS", "cov_pb", "Nanopore R9.4.1","cov_r9", "Nanopore R9.4.1 + Illumina", "cov_il","R9_")
 ```
 
-    ## Adding missing grouping variables: `bins_clean$cluster`
+    ## For Nanopore R9.4.1:
+
+    ## Mismatches: change of 0.08±0.67, more than 50 % improvement in 3/18 bins
+
+    ## Indels: change of 0.75±0.2, more than 50 % improvement in 16/18 bins
 
 ``` r
-ratio_change_r9 <- merge(ratio_change_r9,bins_clean_R9_, by="cluster")
-
-message("For R9:")
+bins_clean_R104 <- wrangle_quast(bins,"PacBio CCS", "cov_pb", "Nanopore R10.4","cov_r104", "Nanopore R10.4 + Illumina", "cov_il","R104_")
 ```
 
-    ## For R9:
+    ## For Nanopore R10.4:
 
-``` r
-message("Mismatches: change of ",round(median(ratio_change_r9$changeMM),2),"±",round(sd(ratio_change_r9$changeMM),2),
-        ",improvement in ",nrow(ratio_change_r9[(ratio_change_r9$changeMM >= 0.5), ]),"/",nrow(ratio_change_r9))
-```
+    ## Mismatches: change of 0.18±0.7, more than 50 % improvement in 5/16 bins
 
-    ## Mismatches: change of 0.08±0.67,improvement in 3/18
-
-``` r
-message("Indels: change of ",round(median(ratio_change_r9$changeIND),2),"±",round(sd(ratio_change_r9$changeIND),2),
-        ", more than 50 % improvement in ",nrow(ratio_change_r9[(ratio_change_r9$changeIND >= 0.5), ]),"/",nrow(ratio_change_r9))
-```
-
-    ## Indels: change of 0.75±0.2, more than 50 % improvement in 16/18
-
-### Wrangle data for polishing improvements on 10.4 bins
-
-``` r
-bins_clean <- bins[!is.na(bins$cluster), ]
-bins_clean <- bins_clean[(bins_clean$percent_snp_rate <= 0.5), ]
-
-bins_clean <- bins_clean[((bins_clean$mags_workflow_mode == "PacBio CCS" & bins_clean$cov_pb > 10) | 
-              (bins_clean$mags_workflow_mode == "Nanopore R10.4" & bins_clean$cov_r104 >= 10 ) | 
-(bins_clean$mags_workflow_mode == "Nanopore R10.4 + Illumina" & bins_clean$cov_r104 >= 10 & bins_clean$cov_il >= 5)), ]
-
-bins_clean <- bins_clean %>% group_by(bins_clean$cluster) %>% dplyr::filter(n() == 3)
-
-bins_clean <- bins_clean[!is.na(bins_clean$genome_frac), ]
-bins_clean = bins_clean[(bins_clean$genome_frac > 0.75), ]
-bins_clean = bins_clean[(bins_clean$unalligned_bp < 250000), ]
-bins_clean <- bins_clean %>% group_by(bins_clean$cluster) %>% dplyr::filter(n() > 1)
-
-bins_clean_R104 <- bins_clean
-bins_clean_R104$coverage <- bins_clean_R104$cov_r104
-bins_clean_R104$secondary_cluster <- paste("R104_",bins_clean_R104$cluster,sep="")
-
-ratio_change <- bins_clean[,c("cluster","mags_workflow_mode","MMs_per_100kb","Indels_per_100kb")]
-ratio_change1 <- ratio_change[ratio_change$mags_workflow_mode == "Nanopore R10.4", ]
-ratio_change2 <- ratio_change[ratio_change$mags_workflow_mode == "Nanopore R10.4 + Illumina", ]
-
-ratio_change_r104 <-  merge(ratio_change1,ratio_change2, by="cluster") 
-ratio_change_r104$changeMM <- 1-(ratio_change_r104$MMs_per_100kb.y)/(ratio_change_r104$MMs_per_100kb.x)
-ratio_change_r104$changeIND <- 1-(ratio_change_r104$Indels_per_100kb.y)/(ratio_change_r104$Indels_per_100kb.x)
-
-bins_clean_R104_ <- bins_clean_R104 %>% select(cluster,cov_r104) %>% distinct(cluster, .keep_all= TRUE)
-```
-
-    ## Adding missing grouping variables: `bins_clean$cluster`
-
-``` r
-ratio_change_r104 <- merge(ratio_change_r104,bins_clean_R104_, by="cluster")
-
-message("For R10.4:")
-```
-
-    ## For R10.4:
-
-``` r
-message("Mismatches: change of ",round(median(ratio_change_r104$changeMM),2),"±",round(sd(ratio_change_r104$changeMM),2),
-        ",improvement in ",nrow(ratio_change_r104[(ratio_change_r104$changeMM >= 0.5), ]),"/",nrow(ratio_change_r104))
-```
-
-    ## Mismatches: change of 0.18±0.7,improvement in 5/16
-
-``` r
-message("Indels: change of ",round(median(ratio_change_r104$changeIND),2),"±",round(sd(ratio_change_r104$changeIND),2),
-        ", more than 50 % improvement in ",nrow(ratio_change_r104[(ratio_change_r104$changeIND >= 0.5), ]),"/",nrow(ratio_change_r104))
-```
-
-    ## Indels: change of 0.46±0.45, more than 50 % improvement in 8/16
+    ## Indels: change of 0.46±0.45, more than 50 % improvement in 8/16 bins
 
 ### Mismatch and Indel plots
 
@@ -543,7 +459,7 @@ quast_data <- quast_data %>% group_by(quast_data$secondary_cluster) %>% dplyr::f
 plot_mm <- ggplot(data=quast_data,aes(x=coverage,y=MMs_per_100kb, size=5)) +
 geom_point(aes(col=mags_workflow_mode, shape=MAG_status), alpha=0.9) + 
 geom_line(aes(group=secondary_cluster),col="black", size=0.5, alpha =0.7) + theme_bw() +
-scale_x_continuous(breaks=c(2.5,5,10,20,40,80,160,320,640),trans = "log2") +
+scale_x_continuous(breaks=c(2.5,5,10,20,40,80,160,320,640,1280),trans = "log2") +
 scale_y_continuous(breaks=c(0.08,0.31,1.25,5,20,80,320), limits = c(0.03,650),  expand = c(0,0),
                    labels=c("0.08","0.31","1.25","5","20","80","320"),trans = "log2") +
 ylab("Mismatches per 100 kbp") + xlab("Bin coverage") +
@@ -562,7 +478,7 @@ ylab("Mismatches per 100 kbp") + xlab("Bin coverage") +
 plot_indel <- ggplot(data=quast_data,aes(x=coverage,y=Indels_per_100kb, size=5)) +
 geom_point(aes(col=mags_workflow_mode, shape=MAG_status), alpha=0.9) + 
 geom_line(aes(group=secondary_cluster),col="black", size=0.5, alpha =0.7) + theme_bw() +
-scale_x_continuous(breaks=c(2.5,5,10,20,40,80,160,320,640),trans = "log2") +
+scale_x_continuous(breaks=c(2.5,5,10,20,40,80,160,320,640,1280),trans = "log2") +
 scale_y_continuous(breaks=c(0.08,0.31,1.25,5,20,80,320), limits = c(0.03,650), expand = c(0,0),
                    labels=c("0.08","0.31","1.25","5","20","80","320"),trans = "log2") +
 ylab("Indels per 100 kbp") + xlab("Bin coverage") +
@@ -584,7 +500,7 @@ quast_plot <- ggarrange(plot_indel,plot_mm, ncol=2, nrow=1, common.legend = TRUE
 quast_plot
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 ### Load protein search results (with Diamond) for IDEEL analysis
 
@@ -865,7 +781,7 @@ plot_hp_nuc <- ggarrange(plot_hpa, plot_hpt, plot_hpg, plot_hpc, ncol=2, nrow=2,
 plot_hp_nuc
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 ### Clustered MAG relative abundace plots
 
@@ -917,7 +833,7 @@ plot_abund_2 <- ggarrange(plot_abund_pb, plot_abund_il, plot_abund_r104,plot_leg
 plot_abund_2
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
 ### Generate Figure 1
 
@@ -935,7 +851,7 @@ fig1 <- ggarrange(fig1, cov_plot, ncol=1, nrow=2, legend = "none", align = c("h"
 fig1
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
 
 ### Generate Figure 2
 
@@ -962,4 +878,4 @@ fig2 <- ggarrange(fig2, leg1, ncol=1, nrow=2, legend = "none", align = c("h"), h
 fig2
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
