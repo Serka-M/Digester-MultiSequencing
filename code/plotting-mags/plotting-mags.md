@@ -89,18 +89,63 @@ estimate_mode <- function(x) {
 
 
 message("Modal estimated accuracies estimated from Q scores")
+```
+
+    ## Modal estimated accuracies estimated from Q scores
+
+``` r
 message("ILM: ",round((1-10**(-estimate_mode(mp_reads_il$V1)/10))*100,2), " %")
+```
+
+    ## ILM: 99.98 %
+
+``` r
 message("PBCCS: ",round((1-10**(-estimate_mode(mp_reads_pb$V2)/10))*100,2), " %")
+```
+
+    ## PBCCS: 99.97 %
+
+``` r
 message("R9: ",round((1-10**(-estimate_mode(mp_reads_r9$V2)/10))*100,2), " %")
+```
+
+    ## R9: 96.49 %
+
+``` r
 message("R104: ",round((1-10**(-estimate_mode(mp_reads_r104$V2)/10))*100,2), " %")
+```
 
+    ## R104: 97.61 %
 
+``` r
 message("Modal observed accuracies estimated from Q scores")
+```
+
+    ## Modal observed accuracies estimated from Q scores
+
+``` r
 message("ILM: ",round((estimate_mode(mp_reads_il$V6)),2), " %")
+```
+
+    ## ILM: 100.02 %
+
+``` r
 message("PBCCS: ",round((estimate_mode(mp_reads_pb$V7)),2), " %")
+```
+
+    ## PBCCS: 99.86 %
+
+``` r
 message("R9: ",round((estimate_mode(mp_reads_r9$V7)),2), " %")
+```
+
+    ## R9: 96.76 %
+
+``` r
 message("R104: ",round((estimate_mode(mp_reads_r104$V7)),2), " %")
 ```
+
+    ## R104: 98.21 %
 
 ### 2D density plot for read lengths/estimated accuracy
 
@@ -341,23 +386,19 @@ ylab("MAG contamination (%)") + xlab("") + labs(fill="") +
   scale_x_discrete(guide = guide_axis(angle = 45)) +
 scale_y_continuous(expand = c(0, 0), limits = c(0,10.2)) + guides(fill = guide_legend(nrow = 1)) +
 theme(legend.position = "bottom", legend.text=element_text(size=14), axis.title.y = element_text(size = 12),
-        axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14)) + scale_fill_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837", "Nanopore R9.4.1 + Illumina"="#a6dba0", "Nanopore R10.4 + Illumina"="#eee8aa",  "Nanopore R10.4"="#ffd700", "PacBio CCS"="#8e0152"))
+        axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14)) +
+  scale_fill_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837", "Nanopore R9.4.1 + Illumina"="#a6dba0", "Nanopore R10.4 + Illumina"="#eee8aa",  "Nanopore R10.4"="#ffd700", "PacBio CCS"="#8e0152"))
 
 # Vertical legend - 6 values, 1 row
-plot_cont2 <- ggplot(data=bins_cont ,aes(x=factor(mags_workflow_mode,level=level_order),y=Contamination)) +
-geom_violin(aes(fill=mags_workflow_mode)) + 
-geom_jitter(position = position_jitter(width = 0.2, height = 0)) + theme_bw() +
-ylab("MAG contamination (%)") + xlab("") + labs(fill="") +
-  scale_x_discrete(guide = guide_axis(angle = 45)) +
-scale_y_continuous(expand = c(0, 0), limits = c(0,10.2)) + guides(fill = guide_legend(ncol = 1)) +
+plot_cont2 <- plot_cont + guides(fill = guide_legend(ncol = 1)) +
 theme(legend.position = "right", legend.text=element_text(size=14), axis.title.y = element_text(size = 12),
-        axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14)) + scale_fill_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837", "Nanopore R9.4.1 + Illumina"="#a6dba0", "Nanopore R10.4 + Illumina"="#eee8aa",  "Nanopore R10.4"="#ffd700", "PacBio CCS"="#8e0152"))
+        axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14))
 
 
+# Horizontal legend - 4 values
 bins_cont2 <- bins_cont[((bins_cont$mags_workflow_mode=="PacBio CCS") | (bins_cont$mags_workflow_mode=="Nanopore R9.4.1") |
                            (bins_cont$mags_workflow_mode=="Illumina") |  (bins_cont$mags_workflow_mode=="Nanopore R10.4")), ]
 
-# Horizontal legend - 4 values
 plot_cont3 <- ggplot(data=bins_cont2 ,aes(x=factor(mags_workflow_mode,level=level_order),y=Contamination)) +
 geom_violin(aes(fill=mags_workflow_mode)) + 
 geom_jitter(position = position_jitter(width = 0.2, height = 0)) + theme_bw() +
@@ -365,17 +406,14 @@ ylab("MAG contamination (%)") + xlab("") + labs(fill="") +
   scale_x_discrete(guide = guide_axis(angle = 45)) +
 scale_y_continuous(expand = c(0, 0), limits = c(0,10.2)) + guides(fill = guide_legend(nrow = 1)) +
 theme(legend.position = "bottom", legend.text=element_text(size=14), axis.title.y = element_text(size = 12),
-        axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14)) + scale_fill_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837",   "Nanopore R10.4"="#ffd700", "PacBio CCS"="#8e0152"))
+        axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14)) +
+  scale_fill_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837",   "Nanopore R10.4"="#ffd700", "PacBio CCS"="#8e0152"))
 
 # Horizontal legend - 6 values, 2 rows
-plot_cont4 <- ggplot(data=bins_cont ,aes(x=factor(mags_workflow_mode,level=level_order),y=Contamination)) +
-geom_violin(aes(fill=mags_workflow_mode)) + 
-geom_jitter(position = position_jitter(width = 0.2, height = 0)) + theme_bw() +
-ylab("MAG contamination (%)") + xlab("") + labs(fill="") +
-  scale_x_discrete(guide = guide_axis(angle = 45)) +
-scale_y_continuous(expand = c(0, 0), limits = c(0,10.2)) + guides(fill = guide_legend(nrow = 2, byrow=FALSE)) +
+plot_cont4 <- plot_cont + guides(fill = guide_legend(nrow = 2, byrow=FALSE)) +
 theme(legend.position = "bottom", legend.text=element_text(size=14), axis.title.y = element_text(size = 12),
-        axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14)) + scale_fill_manual(values = c("Illumina" = "#543005", "PacBio CCS"="#8e0152", "Nanopore R9.4.1"="#008837", "Nanopore R9.4.1 + Illumina"="#a6dba0",   "Nanopore R10.4"="#ffd700", "Nanopore R10.4 + Illumina"="#eee8aa"))
+        axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14))
+
 
 Contamination <- data.frame(rbind(tapply(bins_cont$Contamination,bins_cont$mags_workflow_mode, median), tapply(bins_cont$Contamination,bins_cont$mags_workflow_mode, sd)))
 
@@ -410,20 +448,35 @@ ratio_change1 <- ratio_change[ratio_change$mags_workflow_mode == "Nanopore R9.4.
 ratio_change2 <- ratio_change[ratio_change$mags_workflow_mode == "Nanopore R9.4.1 + Illumina", ]
 
 ratio_change_r9 <-  merge(ratio_change1,ratio_change2, by="cluster") 
-
-ratio_change_r9$changeMM <- (ratio_change_r9$MMs_per_100kb.x)/ratio_change_r9$MMs_per_100kb.y
-ratio_change_r9$changeIND <- (ratio_change_r9$Indels_per_100kb.x)/ratio_change_r9$Indels_per_100kb.y
+ratio_change_r9$changeMM <- 1-(ratio_change_r9$MMs_per_100kb.y)/(ratio_change_r9$MMs_per_100kb.x)
+ratio_change_r9$changeIND <- 1-(ratio_change_r9$Indels_per_100kb.y)/(ratio_change_r9$Indels_per_100kb.x)
 
 bins_clean_R9_ <- bins_clean_R9 %>% select(cluster,cov_r9) %>% distinct(cluster, .keep_all= TRUE)
+```
 
+    ## Adding missing grouping variables: `bins_clean$cluster`
+
+``` r
 ratio_change_r9 <- merge(ratio_change_r9,bins_clean_R9_, by="cluster")
 
 message("For R9:")
-message("Mismatches: ratio change of ",round(median(ratio_change_r9$changeMM),2),"±",round(sd(ratio_change_r9$changeMM),2),
-        ",improvement in ",nrow(ratio_change_r9[(ratio_change_r9$changeMM >= 1.2), ]),"/",nrow(ratio_change_r9))
-message("Indels: ratio change of ",round(median(ratio_change_r9$changeIND),2),"±",round(sd(ratio_change_r9$changeIND),2),
-        ",improvement in ",nrow(ratio_change_r9[(ratio_change_r9$changeIND >= 1.2), ]),"/",nrow(ratio_change_r9))
 ```
+
+    ## For R9:
+
+``` r
+message("Mismatches: change of ",round(median(ratio_change_r9$changeMM),2),"±",round(sd(ratio_change_r9$changeMM),2),
+        ",improvement in ",nrow(ratio_change_r9[(ratio_change_r9$changeMM >= 0.5), ]),"/",nrow(ratio_change_r9))
+```
+
+    ## Mismatches: change of 0.08±0.67,improvement in 3/18
+
+``` r
+message("Indels: change of ",round(median(ratio_change_r9$changeIND),2),"±",round(sd(ratio_change_r9$changeIND),2),
+        ", more than 50 % improvement in ",nrow(ratio_change_r9[(ratio_change_r9$changeIND >= 0.5), ]),"/",nrow(ratio_change_r9))
+```
+
+    ## Indels: change of 0.75±0.2, more than 50 % improvement in 16/18
 
 ### Wrangle data for polishing improvements on 10.4 bins
 
@@ -451,19 +504,35 @@ ratio_change1 <- ratio_change[ratio_change$mags_workflow_mode == "Nanopore R10.4
 ratio_change2 <- ratio_change[ratio_change$mags_workflow_mode == "Nanopore R10.4 + Illumina", ]
 
 ratio_change_r104 <-  merge(ratio_change1,ratio_change2, by="cluster") 
-
-ratio_change_r104$changeMM <- (ratio_change_r104$MMs_per_100kb.x)/ratio_change_r104$MMs_per_100kb.y
-ratio_change_r104$changeIND <- (ratio_change_r104$Indels_per_100kb.x)/ratio_change_r104$Indels_per_100kb.y
+ratio_change_r104$changeMM <- 1-(ratio_change_r104$MMs_per_100kb.y)/(ratio_change_r104$MMs_per_100kb.x)
+ratio_change_r104$changeIND <- 1-(ratio_change_r104$Indels_per_100kb.y)/(ratio_change_r104$Indels_per_100kb.x)
 
 bins_clean_R104_ <- bins_clean_R104 %>% select(cluster,cov_r104) %>% distinct(cluster, .keep_all= TRUE)
-ratio_change_R104 <- merge(ratio_change_r104,bins_clean_R104_, by="cluster")
+```
+
+    ## Adding missing grouping variables: `bins_clean$cluster`
+
+``` r
+ratio_change_r104 <- merge(ratio_change_r104,bins_clean_R104_, by="cluster")
 
 message("For R10.4:")
-message("Mismatches: ratio change of ",round(median(ratio_change_r104$changeMM),2),"±",round(sd(ratio_change_r104$changeMM),2),
-        ",improvement in ",nrow(ratio_change_r104[(ratio_change_r104$changeMM >= 1.2), ]),"/",nrow(ratio_change_r104))
-message("Indels: ratio change of ",round(median(ratio_change_r104$changeIND),2),"±",round(sd(ratio_change_r104$changeIND),2),
-        ",improvement in ",nrow(ratio_change_r104[(ratio_change_r104$changeIND >= 1.2), ]),"/",nrow(ratio_change_r104))
 ```
+
+    ## For R10.4:
+
+``` r
+message("Mismatches: change of ",round(median(ratio_change_r104$changeMM),2),"±",round(sd(ratio_change_r104$changeMM),2),
+        ",improvement in ",nrow(ratio_change_r104[(ratio_change_r104$changeMM >= 0.5), ]),"/",nrow(ratio_change_r104))
+```
+
+    ## Mismatches: change of 0.18±0.7,improvement in 5/16
+
+``` r
+message("Indels: change of ",round(median(ratio_change_r104$changeIND),2),"±",round(sd(ratio_change_r104$changeIND),2),
+        ", more than 50 % improvement in ",nrow(ratio_change_r104[(ratio_change_r104$changeIND >= 0.5), ]),"/",nrow(ratio_change_r104))
+```
+
+    ## Indels: change of 0.46±0.45, more than 50 % improvement in 8/16
 
 ### Mismatch and Indel plots
 
@@ -510,7 +579,8 @@ ylab("Indels per 100 kbp") + xlab("Bin coverage") +
 
 
 
-quast_plot <- ggarrange(plot_indel,plot_mm, ncol=2, nrow=1, common.legend = TRUE, legend = "none", labels = c("(c)", "(d)"), hjust=0.03, font.label = list(size = 16))
+quast_plot <- ggarrange(plot_indel,plot_mm, ncol=2, nrow=1, common.legend = TRUE, legend = "none",
+                        labels = c("(c)", "(d)"), hjust=0.03, font.label = list(size = 16))
 quast_plot
 ```
 
