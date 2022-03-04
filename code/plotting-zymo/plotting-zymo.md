@@ -163,6 +163,19 @@ df$ANI <- as.numeric(as.character(df$ANI))
 df$ANI_Q <- -10*log10(1-df$ANI*0.01)
 ```
 
+### Make table for 40x cov
+
+``` r
+df_40 <- df[(df$cov == 40), ]
+df_40 <- subset(df_40, select=c("species","contigs","assembly_len_bp","N50","MMs_per_100kb","Indels_per_100kb","ANI","proteins_full_frac","type"))
+df_40$proteins_full_frac <- round(df_40$proteins_full_frac * 100,2)
+df_40$ANI <- round(df_40$ANI,3)
+df_40$assembly_len_bp <- round(df_40$assembly_len_bp / 1000000,1)
+df_40$N50 <- round(df_40$N50 / 1000000,1)
+colnames(df_40) <- c("species","contigs","assembly_len_mb","contig_N50_mb","MMs_per_100kb","Indels_per_100kb","ANI","IDEEL","datatype")
+#write.table(df_40,"df_40.tsv", quote=F,row.names=FALSE,col.names=TRUE,sep = "\t")
+```
+
 ### Indel plot
 
 ``` r
@@ -178,12 +191,13 @@ plot_indel <- ggplot(data=df, aes(x=cov, y=Indels_per_100kb, color=type)) +
         axis.title.y = element_text(size = 12), axis.text.x = element_text(size = 10), strip.text = element_text(size=10),
         axis.text.y = element_text(size = 10), legend.title = element_text(size=14),
         axis.title.x = element_text(size = 12), legend.box = "horizontal") +
-  guides(color = guide_legend(nrow = 1, byrow=FALSE, override.aes = list(size =2, shape = NA))) + facet_grid(. ~ species)
+  guides(color = guide_legend(nrow = 1, byrow=FALSE, override.aes = list(size =2, shape = NA))) + 
+  geom_vline(aes(xintercept = 40), size=0.6, lty=2, color="grey70", alpha=0.9) + facet_grid(. ~ species)
 
 plot_indel 
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 ### Mismatch plot
 
@@ -199,13 +213,14 @@ plot_mm <- ggplot(data=df, aes(x=cov, y=MMs_per_100kb, color=type)) +
   theme(legend.position = "bottom", legend.text=element_text(size=14), legend.box.just = "center",
         axis.title.y = element_text(size = 12), axis.text.x = element_text(size = 10), strip.text = element_text(size=10),
         axis.text.y = element_text(size = 10), legend.title = element_text(size=14),
-        axis.title.x = element_text(size = 12), legend.box = "horizontal") + guides(color = guide_legend(nrow = 1, byrow=FALSE, override.aes = list(size = 2, shape = NA))) +
+        axis.title.x = element_text(size = 12), legend.box = "horizontal") + guides(color = guide_legend(nrow = 1, byrow=FALSE, override.aes = list(size = 2, shape = NA))) + 
+  geom_vline(aes(xintercept = 40), size=0.6, lty=2, color="grey70", alpha=0.9) +
   facet_grid(. ~ species)
 
 plot_mm
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 ### ANI plot
 
@@ -220,13 +235,14 @@ plot_ani <- ggplot(data=df, aes(x=cov, y=ANI_Q, color=type)) +
   theme(legend.position = "bottom", legend.text=element_text(size=14), legend.box.just = "center",
         axis.title.y = element_text(size = 12), axis.text.x = element_text(size = 10), strip.text = element_text(size=10),
         axis.text.y = element_text(size = 10), legend.title = element_text(size=14),
-        axis.title.x = element_text(size = 12), legend.box = "horizontal") + guides(color = guide_legend(nrow = 1, byrow=FALSE, override.aes = list(size = 2, shape = NA))) +
+        axis.title.x = element_text(size = 12), legend.box = "horizontal") + guides(color = guide_legend(nrow = 1, byrow=FALSE, override.aes = list(size = 2, shape = NA))) + 
+  geom_vline(aes(xintercept = 40), size=0.6, lty=2, color="grey70", alpha=0.9) +
   facet_grid(. ~ species)
 
 plot_ani
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ### IDEEL score plot
 
@@ -241,13 +257,15 @@ plot_ideel <- ggplot(data=df, aes(x=cov, y=proteins_full_frac*100, color=type)) 
   theme(legend.position = "bottom", legend.text=element_text(size=14), legend.box.just = "center",
         axis.title.y = element_text(size = 12), axis.text.x = element_text(size = 10), strip.text = element_text(size=10),
         axis.text.y = element_text(size = 10), legend.title = element_text(size=14),
-        axis.title.x = element_text(size = 12), legend.box = "horizontal") + geom_hline(data = ideel_ref_count, aes(yintercept = proteins_full_frac*100), size=0.6, lty=2, color="grey70", alpha=0.8) +  scale_linetype_manual(values = c(1, 1, 2, 2)) + 
-  guides(color = guide_legend(nrow = 1, byrow=FALSE, override.aes = list(size = 2, shape = NA))) + facet_grid(. ~ species)
+        axis.title.x = element_text(size = 12), legend.box = "horizontal") + 
+  geom_hline(data = ideel_ref_count, aes(yintercept = proteins_full_frac*100), size=0.65, lty=3, color="grey70", alpha=0.9) +  scale_linetype_manual(values = c(1, 1, 2, 2)) + 
+  guides(color = guide_legend(nrow = 1, byrow=FALSE, override.aes = list(size = 2, shape = NA))) + 
+  geom_vline(aes(xintercept = 40), size=0.6, lty=2, color="grey70", alpha=0.9) + facet_grid(. ~ species)
 
 plot_ideel
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 ### Merged ANI-QUAST-IDEEL plot
 
@@ -257,7 +275,11 @@ plot_merged <- ggarrange(plot_ani, plot_mm, plot_indel, plot_ideel, nrow=4, ncol
 plot_merged
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+
+``` r
+ggsave(plot_merged, file="zymo_qc.pdf", height = 12, width = 16, useDingbats=FALSE)
+```
 
 ### Load NanoPlot data for read mappings to reference sequences. Reads were subsetted to 100k.
 
@@ -297,13 +319,13 @@ message("ILMN: ",round((1-10**(-estimate_mode(reads_ilmn$V1)/10))*100,2), " %")
 message("R941: ",round((1-10**(-estimate_mode(reads_r941$V2)/10))*100,2), " %")
 ```
 
-    ## R941: 96.89 %
+    ## R941: 96.81 %
 
 ``` r
 message("R104: ",round((1-10**(-estimate_mode(reads_r104$V2)/10))*100,2), " %")
 ```
 
-    ## R104: 98.22 %
+    ## R104: 98.13 %
 
 ``` r
 message("Observed")
@@ -321,13 +343,13 @@ message("ILMN: ",round(estimate_mode(reads_ilmn$V6),2), " %")
 message("R941: ",round(estimate_mode(reads_r941$V7),2), " %")
 ```
 
-    ## R941: 97.59 %
+    ## R941: 97.56 %
 
 ``` r
 message("R104: ",round(estimate_mode(reads_r104$V7),2), " %")
 ```
 
-    ## R104: 99.07 %
+    ## R104: 99.14 %
 
 ### Observed read accuracy plot
 
@@ -351,7 +373,7 @@ plot_accur <- ggplot()  +
 plot_accur
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
 
 ### Load Counterr data for read mappings
 
@@ -493,7 +515,7 @@ plot_hp_merged <- plot_hp_merged + theme(plot.margin=unit(c(0,0,0,-0.0055), "nul
 plot_hp_merged
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
 
 ### Combined figure for read accuracy, homopolymers, indels and IDEEL scores
 
@@ -508,7 +530,11 @@ plot_fig1 <- ggarrange(plot_fig1_a, plot_fig1_b, nrow=2, align = c("v"), widths=
 plot_fig1
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+
+``` r
+ggsave(plot_fig1, file="fig1.pdf", height = 12, width = 14, useDingbats=FALSE)
+```
 
 ### Function for unmerged homopolymer plots
 
@@ -560,7 +586,11 @@ plot_hp_merged <- ggarrange(plot_hp_5,plot_hp_6, plot_hp_7, plot_hp_8, plot_hp_9
 plot_hp_merged
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+
+``` r
+ggsave(plot_hp_merged, file="zymo_hp_counterr_r9.pdf", height = 10, width = 12, useDingbats=FALSE)
+```
 
 ### Homopolymer plot: R10.4, 5-10
 
@@ -580,4 +610,8 @@ plot_hp_merged <- ggarrange(plot_hp_5,plot_hp_6, plot_hp_7, plot_hp_8, plot_hp_9
 plot_hp_merged
 ```
 
-![](plotting-zymo_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](plotting-zymo_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+
+``` r
+ggsave(plot_hp_merged, file="zymo_hp_counterr_r10.pdf", height = 10, width = 12, useDingbats=FALSE)
+```
