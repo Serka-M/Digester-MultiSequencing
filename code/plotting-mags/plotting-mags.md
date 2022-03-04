@@ -44,25 +44,25 @@ contigs_il=read.table("contigs-len/contigs_ilmn.tsv", sep="\t", header=T)
 ``` r
 # MAG count by quality and sequencing approach
 mags <- as.data.frame.matrix(with(bins, table(MAG_status, mags_workflow_name)))
-mags[5,] = colSums(mags[,1:8])
+mags[5,] = colSums(mags[,1:7])
 rownames(mags)[5] <- "Total"
 mags <- add_rownames(mags, var = "status")
 mags$status <- factor(mags$status, levels = c("HQ", "MQ","LQ","Contaminated", "Total"))
 
 mags <- mags[order(mags$status),]
-col_order <- c("status", "ilmn", "r9", "r9-il","r104", "r104-il", "pbccs")
+col_order <- c("status", "ilmn", "r9", "r9-il","r104", "r104-il", "pbccs", "pbccs-il")
 mags <- mags[, col_order]
 mags
 ```
 
-    ## # A tibble: 5 x 7
-    ##   status        ilmn    r9 `r9-il`  r104 `r104-il` pbccs
-    ##   <fct>        <dbl> <dbl>   <dbl> <dbl>     <dbl> <dbl>
-    ## 1 HQ               8    64      86    34        36    74
-    ## 2 MQ              83   114      95    65        67    72
-    ## 3 LQ               3    28      25     9        10    20
-    ## 4 Contaminated    10     6      13     5         6    14
-    ## 5 Total          104   212     219   113       119   180
+    ## # A tibble: 5 x 8
+    ##   status        ilmn    r9 `r9-il`  r104 `r104-il` pbccs `pbccs-il`
+    ##   <fct>        <dbl> <dbl>   <dbl> <dbl>     <dbl> <dbl>      <dbl>
+    ## 1 HQ               8    64      86    34        36    74         77
+    ## 2 MQ              83   114      95    65        67    72         68
+    ## 3 LQ               3    28      25     9        10    20         23
+    ## 4 Contaminated    10     6      13     5         6    14         15
+    ## 5 Total          104   212     219   113       119   180        183
 
 ``` r
 # Circular MAGs
@@ -78,6 +78,8 @@ mags_size$x <- mags_size$x/1000000
 mags_hq_size <- aggregate(bins[(bins$MAG_status == "HQ"), ]$Genome_size_bp,
                           by=list(bins[(bins$MAG_status == "HQ"), ]$mags_workflow_name), FUN=sum)
 mags_hq_size$x <- mags_hq_size$x/1000000
+
+mags_hq_single <- as.data.frame(table(bins[(bins$MAG_status == "HQ" & bins$contigs == "1"), ]$mags_workflow_name))
 ```
 
 ### Get estimated/observed modal read accuracies
@@ -97,8 +99,8 @@ message("Estimated read accuracies (modal estimate) derived from read PHRED scor
     ## Estimated read accuracies (modal estimate) derived from read PHRED scores
     ##  ILM: 99.98 %
     ##  PBCCS: 99.97 %
-    ##  R9: 96.49 %
-    ##  R104: 97.61 %
+    ##  R9: 96.45 %
+    ##  R104: 97.76 %
 
 ``` r
 message("Observed read accuracies (modal estimate) derived from mapping identities \n", 
@@ -109,10 +111,10 @@ message("Observed read accuracies (modal estimate) derived from mapping identiti
 ```
 
     ## Observed read accuracies (modal estimate) derived from mapping identities 
-    ##  ILM: 100.02 %
-    ##  PBCCS: 99.86 %
-    ##  R9: 96.76 %
-    ##  R104: 98.21 %
+    ##  ILM: 100.01 %
+    ##  PBCCS: 99.93 %
+    ##  R9: 96.77 %
+    ##  R104: 98.11 %
 
 ### 2D density plot for read lengths/estimated accuracy
 
@@ -121,7 +123,7 @@ plot_reads <- ggplot() +
 stat_density_2d(data=reads_il,aes(x=V2, y=V1, alpha = ..level.., fill = "Illumina"), geom = "polygon") +
 stat_density_2d(data=reads_r104,aes(x=V2, y=V1, alpha = ..level.., fill = "Nanopore R10.4"), geom = "polygon") +
 stat_density_2d(data=reads_r9,aes(x=V2, y=V1, alpha = ..level.., fill = "Nanopore R9"), geom = "polygon") +
-stat_density_2d(data=reads_pb,aes(x=V2, y=V1, alpha = ..level.., fill = "PacBio CCS"), geom = "polygon") +
+stat_density_2d(data=reads_pb,aes(x=V2, y=V1, alpha = ..level.., fill = "PacBio HiFi"), geom = "polygon") +
 scale_x_continuous(limits= c(0,19500), 
                      breaks = c(1000,4000,7000,10000,13000,16000,19000), labels=c(1,4,7,10,13,16,19)) + 
   theme(legend.position = "bottom", legend.text=element_text(size=10), axis.title.y = element_text(size = 12),
@@ -132,7 +134,7 @@ scale_x_continuous(limits= c(0,19500),
   scale_fill_manual(name = " ", 
                     values = c("Nanopore R9" = "#008837",
                                "Nanopore R10.4"="#ffd700",
-                               "PacBio CCS" = "#8e0152", 
+                               "PacBio HiFi" = "#8e0152", 
                                "Illumina" = "#543005")) +
   theme(legend.position = "none", legend.direction = "horizontal",legend.text=element_text(size=12)) +
   guides(alpha = FALSE)
@@ -155,7 +157,7 @@ get_Ns <- function(df_nanoplot, sample = NA){
   data <- data.frame(Nx = 1:99, Lx = sfn, bp = sfl, Mbp = sfl/10^6, sample)
   return(data)}
 
-N_pb <- get_Ns(contigs_pb, sample = "PacBio CCS")
+N_pb <- get_Ns(contigs_pb, sample = "PacBio HiFi")
 N_r9 <- get_Ns(contigs_r9, sample = "Nanopore R9")
 N_r104 <- get_Ns(contigs_r104, sample = "Nanopore R10.4")
 N_il <- get_Ns(contigs_il, sample = "Illumina")
@@ -167,7 +169,7 @@ plot_Nx <- ggplot(data=Nx,aes(x=Nx,y=Mbp)) + geom_smooth(aes(color=sample), size
   scale_x_continuous(expand = c(0, 0)) + theme_bw() +  coord_cartesian(ylim=c(0,3.5), xlim = c(0,101)) +
   theme(legend.text=element_text(size=14), axis.title.y = element_text(size = 12), axis.title.x = element_text(size = 12),
         axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), legend.position = "none") +
-scale_color_manual(values = c("Illumina" = "#543005", "Nanopore R9"="#008837", "Nanopore R10.4"="#ffd700", "PacBio CCS"="#8e0152")) + xlab("Nx") + ylab("Contig length (Mb)")
+scale_color_manual(values = c("Illumina" = "#543005", "Nanopore R9"="#008837", "Nanopore R10.4"="#ffd700", "PacBio HiFi"="#8e0152")) + xlab("Nx") + ylab("Contig length (Mb)")
 
 plot_Nx
 ```
@@ -250,7 +252,7 @@ plot_cont_r9 <- ggplot(data=contigs_r9_2,aes(x=cov_r9,y=cov_il, color=GC))  + ge
   labs(col="GC (%)", size="Contig length (Mb)") 
 
 
-cov_plot <- ggarrange(plot_cont_il,plot_cont_r9, ncol=2, nrow=1, common.legend = TRUE, legend = "bottom", labels = c("(c)", "(d)"), hjust=0.01, font.label = list(size = 16))
+cov_plot <- ggarrange(plot_cont_il,plot_cont_r9, ncol=2, nrow=1, common.legend = TRUE, legend = "bottom", labels = c("c", "d"), hjust=0.01, font.label = list(size = 16))
 cov_plot
 ```
 
@@ -263,17 +265,17 @@ bins_snp <- bins
 
 bins_snp <- bins_snp[(bins_snp$mags_workflow_mode == "Nanopore R9.4.1" & bins_snp$cov_r9 >= 10 | 
                         bins_snp$mags_workflow_mode == "Nanopore R10.4" & bins_snp$cov_r104 >= 10 |
-                      bins_snp$mags_workflow_mode == "PacBio CCS" & bins_snp$cov_pb >= 10 |
+                      bins_snp$mags_workflow_mode == "PacBio HiFi" & bins_snp$cov_pb >= 10 |
                       bins_snp$mags_workflow_mode == "Illumina" & bins_snp$cov_il >= 10), ]
 
 bins_snp <- bins_snp[!is.na(bins_snp$cluster), ]
 bins_snp <- bins_snp %>% group_by(bins_snp$cluster) %>% dplyr::filter(n() == 4)
 
-bins_snp2 <- bins_snp[(bins_snp$mags_workflow_mode == "PacBio CCS"), ] %>% select(cluster,percent_snp_rate)
+bins_snp2 <- bins_snp[(bins_snp$mags_workflow_mode == "PacBio HiFi"), ] %>% select(cluster,percent_snp_rate)
 names(bins_snp2)[names(bins_snp2) == 'percent_snp_rate'] <- 'percent_snp_rate_pb'
 bins_snp <- merge(bins_snp,bins_snp2, by="cluster")
 
-bins_snp$mags_workflow_mode <- factor(bins_snp$mags_workflow_mode, levels = c("Illumina","Nanopore R9.4.1","Nanopore R10.4","PacBio CCS"))
+bins_snp$mags_workflow_mode <- factor(bins_snp$mags_workflow_mode, levels = c("Illumina","Nanopore R9.4.1","Nanopore R10.4","PacBio HiFi"))
 
 plot_snp <- ggplot(data=bins_snp,aes(x=percent_snp_rate_pb,y=contigs)) +
   geom_smooth(aes(color=mags_workflow_mode), size=1.5, alpha=0.2, se = FALSE) + theme_bw() +
@@ -284,17 +286,36 @@ theme(legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
   scale_x_continuous(breaks=c(0,0.25,0.5,0.75,1,1.25,1.5,2,1.75), expand=c(0,0), labels=c(0,0.25,0.5,0.75,1,1.25,1.5,2,1.75), limits = c(-0.025,1.4))+
 xlab("Bin polymorphic site rate (%)") + ylab("Contigs per bin") + labs(color="") +
 scale_color_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837", 
-                              "Nanopore R10.4"="#ffd700", "PacBio CCS"="#8e0152"))
+                              "Nanopore R10.4"="#ffd700", "PacBio HiFi"="#8e0152"))
 
 plot_snp
 ```
 
 ![](plotting-mags_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
+### MAG SNP rates by strain heterogeneity
+
+``` r
+plot_snp_strain <- ggplot(data=bins_snp,aes(x=percent_snp_rate,y=Strain_heterogeneity)) +
+  geom_smooth(aes(color=mags_workflow_mode), size=1.5, alpha=0.2, se = FALSE) + theme_bw() +
+geom_point(aes(fill=mags_workflow_mode, colour=mags_workflow_mode), size=2.5) + geom_point(shape = 1,size = 2.2,colour = "black") + 
+  xlab("Bin polymorphic site rate (%)") + ylab("CheckM strain heterogeneity (%)") + labs(color="") +
+scale_color_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837", 
+                              "Nanopore R10.4"="#ffd700", "PacBio HiFi"="#8e0152")) +
+  theme(legend.text=element_text(size=12), axis.title.y = element_text(size = 12), axis.title.x = element_text(size = 12),
+        axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), legend.position = "bottom") + 
+  scale_y_continuous(trans = "log2", breaks=c(2,4,8,16,32,64)) +   guides(fill = FALSE)
+
+plot_snp_strain
+```
+
+![](plotting-mags_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
 ### MAG completeness values accross clustered MAGs
 
 ``` r
-bins_compl <-  bins[((bins$mags_workflow_mode=="PacBio CCS" & bins$cov_pb >= 10) |
+bins_compl <-  bins[((bins$mags_workflow_mode=="PacBio HiFi" & bins$cov_pb >= 10) |
+                       (bins$mags_workflow_mode=="PacBio HiFi + Illumina" & bins$cov_pb >= 10 & bins$cov_il >= 5) |
                      (bins$mags_workflow_mode=="Nanopore R9.4.1" & bins$cov_r9 >= 10) |
             (bins$mags_workflow_mode=="Nanopore R9.4.1 + Illumina" & bins$cov_r9 >= 10 & bins$cov_il >= 5) |
             (bins$mags_workflow_mode == "Illumina" & bins$cov_il >= 10) |
@@ -302,48 +323,51 @@ bins_compl <-  bins[((bins$mags_workflow_mode=="PacBio CCS" & bins$cov_pb >= 10)
                      (bins$mags_workflow_mode=="Nanopore R10.4" & bins$cov_r104 >= 10)), ]
 
 bins_compl <- bins_compl[!is.na(bins_compl$cluster), ]
-bins_compl <- bins_compl  %>% group_by(bins_compl$cluster) %>% dplyr::filter(n() == 6)
+bins_compl <- bins_compl  %>% group_by(bins_compl$cluster) %>% dplyr::filter(n() == 7)
 
-bins_compl$mags_workflow_mode <- gsub("Nanopore ",'NP-', bins_compl$mags_workflow_mode, fixed = TRUE)
-bins_compl$mags_workflow_mode <- gsub("Illumina","IL", bins_compl$mags_workflow_mode, fixed = TRUE)
-bins_compl$mags_workflow_mode <- gsub("PacBio CCS","PBCCS", bins_compl$mags_workflow_mode, fixed = TRUE)
-bins_compl$mags_workflow_mode <- gsub(" ","", bins_compl$mags_workflow_mode, fixed = TRUE)
+bins_compl$mags_workflow_name <- gsub("ilmn",'IL', bins_compl$mags_workflow_name, fixed = TRUE)
+bins_compl$mags_workflow_name <- gsub("r9","R9.4.1", bins_compl$mags_workflow_name, fixed = TRUE)
+bins_compl$mags_workflow_name <- gsub("r104","R10.4", bins_compl$mags_workflow_name, fixed = TRUE)
+bins_compl$mags_workflow_name <- gsub("pbccs","PB", bins_compl$mags_workflow_name, fixed = TRUE)
+bins_compl$mags_workflow_name <- gsub("-il","+IL", bins_compl$mags_workflow_name, fixed = TRUE)
+bins_compl$mags_workflow_name <- gsub(" ","", bins_compl$mags_workflow_name, fixed = TRUE)
 
-level_order <- c("IL","PBCCS","NP-R9.4.1","NP-R9.4.1+IL","NP-R10.4","NP-R10.4+IL")
-bins_compl$mags_workflow_mode <- factor(bins_compl$mags_workflow_mode, levels = c("IL","PBCCS","NP-R9.4.1","NP-R9.4.1+IL", "NP-R10.4","NP-R10.4+IL"))
+level_order <- c("IL","PB","PB+IL","R9.4.1","R9.4.1+IL","R10.4","R10.4+IL")
+bins_compl$mags_workflow_name <- factor(bins_compl$mags_workflow_name, levels = c("IL","PB","PB+IL","R9.4.1","R9.4.1+IL","R10.4","R10.4+IL"))
 
 Completeness <- data.frame(rbind(tapply(bins_compl$Completeness,bins_compl$mags_workflow_mode, mean), tapply(bins_compl$Completeness,bins_compl$mags_workflow_mode, sd)))
 
-plot_compl <- ggplot(data=bins_compl,aes(x=factor(mags_workflow_mode,level=level_order),y=Completeness)) +
-geom_violin(aes(fill=mags_workflow_mode)) + geom_jitter(position = position_jitter(width = 0.2, height = 0.15)) + theme_bw() +
+plot_compl <- ggplot(data=bins_compl,aes(x=factor(mags_workflow_name,level=level_order),y=Completeness)) +
+geom_violin(aes(fill=mags_workflow_name)) + geom_jitter(position = position_jitter(width = 0.2, height = 0.15)) + theme_bw() +
 ylab("MAG completeness (%)") + xlab("Sequencing approach") + labs(fill="") + guides(fill = guide_legend(nrow = 1)) +
-  scale_x_discrete(guide = guide_axis(angle = 30)) +
+  scale_x_discrete(guide = guide_axis(angle = 0)) +
 theme(legend.position = "none", legend.text=element_text(size=14), axis.title.y = element_text(size = 12), axis.title.x = element_text(size = 12),
-        axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), legend.title = element_text(size=13)) + scale_fill_manual(values = c("IL" = "#543005", "NP-R9.4.1"="#008837", "NP-R9.4.1+IL"="#a6dba0", "NP-R10.4"="#ffd700", "NP-R10.4+IL"="#eee8aa", "PBCCS"="#8e0152")) + guides(fill = guide_legend(nrow = 6))
+        axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10), legend.title = element_text(size=13)) + scale_fill_manual(values = c("IL" = "#543005", "R9.4.1"="#008837", "R9.4.1+IL"="#a6dba0","R10.4"="#ffd700", "R10.4+IL"="#eee8aa", "PB"="#8e0152", "PB+IL"="#c994c7")) + guides(fill = guide_legend(nrow = 6))
 
 plot_compl <- ggarrange(plot_compl)
 plot_compl
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ### MAG contamination values accross clustered MAGs and legends for combined figures
 
 ``` r
-bins_cont <- bins[((bins$mags_workflow_mode=="PacBio CCS" & bins$cov_pb >= 10) |
+bins_cont <- bins[((bins$mags_workflow_mode=="PacBio HiFi" & bins$cov_pb >= 10) |
+                       (bins$mags_workflow_mode=="PacBio HiFi + Illumina" & bins$cov_pb >= 10 & bins$cov_il >= 5) |
                      (bins$mags_workflow_mode=="Nanopore R9.4.1" & bins$cov_r9 >= 10) |
             (bins$mags_workflow_mode=="Nanopore R9.4.1 + Illumina" & bins$cov_r9 >= 10 & bins$cov_il >= 5) |
             (bins$mags_workflow_mode == "Illumina" & bins$cov_il >= 10) |
             (bins$mags_workflow_mode=="Nanopore R10.4 + Illumina" & bins$cov_r104 >= 10 & bins$cov_il >= 5) |
                      (bins$mags_workflow_mode=="Nanopore R10.4" & bins$cov_r104 >= 10)), ]
 
-bins_cont <- bins_cont[!is.na(bins_cont$cluster), ]
-bins_cont <- bins_cont  %>% group_by(bins_cont$cluster) %>% dplyr::filter(n() == 6)
+bins_compl <- bins_compl[!is.na(bins_compl$cluster), ]
+bins_compl <- bins_compl  %>% group_by(bins_compl$cluster) %>% dplyr::filter(n() == 7)
 
-level_order <- c("Illumina","PacBio CCS", "Nanopore R9.4.1","Nanopore R9.4.1 + Illumina",
+level_order <- c("Illumina","PacBio HiFi","PacBio HiFi + Illumina", "Nanopore R9.4.1","Nanopore R9.4.1 + Illumina",
                  "Nanopore R10.4","Nanopore R10.4 + Illumina")
-bins_cont$mags_workflow_mode <- factor(bins_cont$mags_workflow_mode, levels = c("Illumina","PacBio CCS","Nanopore R9.4.1",
-                "Nanopore R9.4.1 + Illumina", "Nanopore R10.4","Nanopore R10.4 + Illumina"))
+bins_cont$mags_workflow_mode <- factor(bins_cont$mags_workflow_mode, levels = c("Illumina","PacBio HiFi","PacBio HiFi + Illumina",
+                          "Nanopore R9.4.1","Nanopore R9.4.1 + Illumina", "Nanopore R10.4","Nanopore R10.4 + Illumina"))
 
 # Horizontal legend - 6 values, 1 row
 plot_cont <- ggplot(data=bins_cont ,aes(x=factor(mags_workflow_mode,level=level_order),y=Contamination)) +
@@ -354,7 +378,8 @@ ylab("MAG contamination (%)") + xlab("") + labs(fill="") +
 scale_y_continuous(expand = c(0, 0), limits = c(0,10.2)) + guides(fill = guide_legend(nrow = 1)) +
 theme(legend.position = "bottom", legend.text=element_text(size=14), axis.title.y = element_text(size = 12),
         axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14)) +
-  scale_fill_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837", "Nanopore R9.4.1 + Illumina"="#a6dba0", "Nanopore R10.4 + Illumina"="#eee8aa",  "Nanopore R10.4"="#ffd700", "PacBio CCS"="#8e0152"))
+  scale_fill_manual(values = c("Nanopore R9.4.1"="#008837", "Nanopore R9.4.1 + Illumina"="#a6dba0", "Nanopore R10.4"="#ffd700",
+          "Nanopore R10.4 + Illumina"="#eee8aa", "PacBio HiFi"="#8e0152","PacBio HiFi + Illumina"="#c994c7","Illumina" = "#543005"))
 
 # Vertical legend - 6 values, 1 row
 plot_cont2 <- plot_cont + guides(fill = guide_legend(ncol = 1)) +
@@ -363,7 +388,7 @@ theme(legend.position = "right", legend.text=element_text(size=14), axis.title.y
 
 
 # Horizontal legend - 4 values
-bins_cont2 <- bins_cont[((bins_cont$mags_workflow_mode=="PacBio CCS") | (bins_cont$mags_workflow_mode=="Nanopore R9.4.1") |
+bins_cont2 <- bins_cont[((bins_cont$mags_workflow_mode=="PacBio HiFi") | (bins_cont$mags_workflow_mode=="Nanopore R9.4.1") |
                            (bins_cont$mags_workflow_mode=="Illumina") |  (bins_cont$mags_workflow_mode=="Nanopore R10.4")), ]
 
 plot_cont3 <- ggplot(data=bins_cont2 ,aes(x=factor(mags_workflow_mode,level=level_order),y=Contamination)) +
@@ -374,7 +399,7 @@ ylab("MAG contamination (%)") + xlab("") + labs(fill="") +
 scale_y_continuous(expand = c(0, 0), limits = c(0,10.2)) + guides(fill = guide_legend(nrow = 1)) +
 theme(legend.position = "bottom", legend.text=element_text(size=14), axis.title.y = element_text(size = 12),
         axis.text.x = element_text(size = 12), axis.text.y = element_text(size = 10), legend.title = element_text(size=14)) +
-  scale_fill_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837",   "Nanopore R10.4"="#ffd700", "PacBio CCS"="#8e0152"))
+  scale_fill_manual(values = c("Illumina" = "#543005", "Nanopore R9.4.1"="#008837",   "Nanopore R10.4"="#ffd700", "PacBio HiFi"="#8e0152"))
 
 # Horizontal legend - 6 values, 2 rows
 plot_cont4 <- plot_cont + guides(fill = guide_legend(nrow = 2, byrow=FALSE)) +
@@ -387,7 +412,7 @@ Contamination <- data.frame(rbind(tapply(bins_cont$Contamination,bins_cont$mags_
 plot_cont4
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 ### Wrangle data for polishing improvements
 
@@ -431,24 +456,26 @@ message("Indels: change of ",round(median(ratio_change$changeIND),2),"±",round(
 
 return(as.data.frame(df2))}
 
-bins_clean_R9 <- wrangle_quast(bins,"PacBio CCS", "cov_pb", "Nanopore R9.4.1","cov_r9", "Nanopore R9.4.1 + Illumina", "cov_il","R9_")
+bins_clean_R9 <- wrangle_quast(bins,"PacBio HiFi + Illumina", "cov_pb", "Nanopore R9.4.1","cov_r9",
+                               "Nanopore R9.4.1 + Illumina", "cov_il","R9_")
 ```
 
     ## For Nanopore R9.4.1:
 
-    ## Mismatches: change of 0.08±0.67, more than 50 % improvement in 3/18 bins
+    ## Mismatches: change of 0.27±0.31, more than 50 % improvement in 5/20 bins
 
-    ## Indels: change of 0.75±0.2, more than 50 % improvement in 16/18 bins
+    ## Indels: change of 0.83±0.23, more than 50 % improvement in 16/20 bins
 
 ``` r
-bins_clean_R104 <- wrangle_quast(bins,"PacBio CCS", "cov_pb", "Nanopore R10.4","cov_r104", "Nanopore R10.4 + Illumina", "cov_il","R104_")
+bins_clean_R104 <- wrangle_quast(bins,"PacBio HiFi + Illumina", "cov_pb", "Nanopore R10.4","cov_r104",
+                                 "Nanopore R10.4 + Illumina", "cov_il","R104_")
 ```
 
     ## For Nanopore R10.4:
 
-    ## Mismatches: change of 0.18±0.7, more than 50 % improvement in 5/16 bins
+    ## Mismatches: change of 0.42±0.31, more than 50 % improvement in 8/18 bins
 
-    ## Indels: change of 0.46±0.45, more than 50 % improvement in 8/16 bins
+    ## Indels: change of 0.51±0.36, more than 50 % improvement in 9/18 bins
 
 ### Mismatch and Indel plots
 
@@ -496,143 +523,11 @@ ylab("Indels per 100 kbp") + xlab("Bin coverage") +
 
 
 quast_plot <- ggarrange(plot_indel,plot_mm, ncol=2, nrow=1, common.legend = TRUE, legend = "none",
-                        labels = c("(c)", "(d)"), hjust=0.03, font.label = list(size = 16))
+                        labels = c("c", "d"), hjust=0.03, font.label = list(size = 16))
 quast_plot
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
-
-### Load protein search results (with Diamond) for IDEEL analysis
-
-``` r
-R9=read.table("ideel/prot_r9.tsv", sep="\t", header=F)
-R9$datatype="Nanopore R9.4.1"
-
-R9_ILM=read.table("ideel/prot_r9_ilm.tsv", sep="\t", header=F)
-R9_ILM$datatype="Nanopore R9.4.1 + Illumina"
-
-R104=read.table("ideel/prot_r104.tsv", sep="\t", header=F)
-R104$datatype="Nanopore R10.4"
-
-R104_ILM=read.table("ideel/prot_r104_ilm.tsv", sep="\t", header=F)
-R104_ILM$datatype="Nanopore R10.4 + Illumina"
-
-PBCCS=read.table("ideel/prot_pbccs.tsv", sep="\t", header=F)
-PBCCS$datatype="PacBio CCS"
-
-ILM=read.table("ideel/prot_ilm.tsv", sep="\t", header=F)
-ILM$datatype="Illumina"
-
-# Only use hits that are shared accross multiple sequencing approaches
-R9 <- R9[(R9$V2 %in% R9_ILM$V2),]
-R9 <- R9[(R9$V2 %in% R104$V2),]
-R9 <- R9[(R9$V2 %in% R104_ILM$V2),]
-R9 <- R9[(R9$V2 %in% ILM$V2),]
-R9 <- R9[(R9$V2 %in% PBCCS$V2),]
-
-data <- rbind(R9,R9_ILM,R104,R104_ILM,PBCCS,ILM)
-data <- data[(data$V2 %in% R9$V2),]
-
-colnames(data) <- c("query_id", "subject_id","query_len","subject_len","aligned_len","query_start","query_end",
-                  "subject_start","subject_end","e_value","bit_score", "percent_identity", "N_identical",
-                  "N_mismatch", "N_postive", "N_gaps", "datatype")
-
-data$qLen_sLen_ratio <- data$query_len/data$subject_len
-
-data$datatype <- factor(data$datatype, levels = c("Illumina","Nanopore R9.4.1 + Illumina","Nanopore R9.4.1",
-                                                  "Nanopore R10.4 + Illumina","Nanopore R10.4","PacBio CCS"))
-```
-
-### Load contig-bin links and get IDEEL scores for MAGs
-
-``` r
-L_R9=read.table("links/links_r9.tsv", sep="\t", header=F)
-L_R9_IL=read.table("links/links_r9-il.tsv", sep="\t", header=F)
-L_R104=read.table("links/links_r104.tsv", sep="\t", header=F)
-L_R104_IL=read.table("links/links_r104-il.tsv", sep="\t", header=F)
-L_PB=read.table("links/links_pbccs.tsv", sep="\t", header=F)
-L_IL=read.table("links/links_il.tsv", sep="\t", header=F)
-
-wrangle_ideel <- function(ideel,links,type) {
-
-ideel$V1 <- gsub("_[0-9]+$", "", ideel$V1)
-colnames(ideel) <- c("contig", "subject_id","query_len","subject_len","aligned_len","query_start","query_end",
-                  "subject_start","subject_end","e_value","bit_score", "percent_identity", "N_identical",
-                  "N_mismatch", "N_postive", "N_gaps", "datatype")
-colnames(links) <- c("contig", "bin")
-ideel <- merge(ideel,links,by="contig")
-
-ideel$qLen_sLen_ratio <- ideel$query_len/ideel$subject_len
-ideel$status <- ifelse((ideel$qLen_sLen_ratio >= 0.95), 1, 0)
-
-ideel_all <- aggregate(ideel$status, by=list(Category=ideel$bin), FUN=length)
-ideel_full <- aggregate(ideel$status, by=list(Category=ideel$bin), FUN=sum)
-ideel_count <- merge(ideel_all,ideel_full,by="Category")
-colnames(ideel_count) <- c("bin","ideel_all","ideel_full")
-ideel_count$ideel_frac <- ideel_count$ideel_full / ideel_count$ideel_all
-ideel_count$bin <- paste(type,ideel_count$bin,sep="_")
-
-return(ideel_count)}
-
-
-L_R9 <- wrangle_ideel(R9,L_R9,"r9")
-L_R9_IL <- wrangle_ideel(R9_ILM,L_R9_IL,"r9-il")
-L_R104 <- wrangle_ideel(R104,L_R104,"r104")
-L_R104_IL <- wrangle_ideel(R104_ILM,L_R104_IL,"r104-il")
-L_PB <- wrangle_ideel(PBCCS,L_PB,"pbccs")
-L_IL <- wrangle_ideel(ILM,L_IL,"ilmn")
-
-bins_ideel <- rbind(L_R9,L_R9_IL,L_R104,L_R104_IL,L_PB, L_IL)
-bins_ideel <- merge(bins,bins_ideel,by="bin")
-
-# Put coverage of the respective sequencing platform in one column
-bins_ideel$cov_rep <- ifelse(str_detect(bins_ideel$mags_workflow_mode,"R9.4.1"), bins_ideel$cov_r9,
-                             ifelse(str_detect(bins_ideel$mags_workflow_mode,"R10.4"), bins_ideel$cov_r104,
-                                    ifelse(str_detect(bins_ideel$mags_workflow_mode,"CCS"), bins_ideel$cov_pb,bins_ideel$cov_il)))
-
-bins_ideel$index <- ifelse(str_detect(bins_ideel$mags_workflow_mode,"R9.4.1"), "r9",
-                             ifelse(str_detect(bins_ideel$mags_workflow_mode,"R10.4"), "r104",
-                                    ifelse(str_detect(bins_ideel$mags_workflow_mode,"CCS"), "pb","il")))
-
-bins_ideel$index2 <- paste(bins_ideel$index, bins_ideel$cluster, sep="_")
-
-bins_ideel$index  <- gsub('r9', "Nanopore R9.4.1", bins_ideel$index, fixed=TRUE)
-bins_ideel$index  <- gsub('r104', "Nanopore R10.4", bins_ideel$index, fixed=TRUE)
-bins_ideel$index  <- gsub('pb', "PacBio CCS", bins_ideel$index, fixed=TRUE)
-bins_ideel$index  <- factor(bins_ideel$index , levels = c("PacBio CCS","Nanopore R9.4.1","Nanopore R10.4"))
-```
-
-### IDEEL score plot
-
-``` r
-bins_plot <- bins_ideel[!(bins_ideel$mags_workflow_mode=="Illumina"),]
-bins_plot <- bins_plot %>% group_by(bins_plot$cluster) %>% dplyr::filter(n() == 5)
-
-
-plot_ideel_bin <- ggplot(data=bins_plot,aes(x=cov_rep,y=ideel_frac*100)) + geom_line(aes(group=index2),col="black", size=0.4, alpha =0.7) +
-geom_point(aes(col=mags_workflow_mode), alpha=0.9, size=3)   + theme_bw() +
-  scale_x_continuous(breaks=c(2.5,5,10,20,40,80,160,320,640),trans = "log2") +
-  scale_y_continuous(breaks=c(50,60,70,80,90,100),limits=c(47,100), expand=c(0,0)) +
-   scale_color_manual(values = c("PacBio CCS"="#8e0152","Nanopore R9.4.1"="#008837",
-                                "Nanopore R9.4.1 + Illumina"="#a6dba0", 
-                                "Nanopore R10.4"="#ffd700","Nanopore R10.4 + Illumina"="#eee8aa")) +
-  theme(legend.position = "none",legend.text=element_text(size=12), axis.title.y = element_text(size = 12),
-  axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10), axis.text.y = element_text(size = 10),
-  legend.title = element_text(size=9), strip.text = element_text(size=10)) + 
-  labs(col="",y="IDEEL score (%)",x="Bin coverage") + facet_grid(. ~index)
-
-plot_ideel_bin <- annotate_figure(plot_ideel_bin, bottom = text_grob("Nanopore R9.4.1", size = 12, vjust = -5.25, hjust = 0.6,
-                                                                     color = "#008837", face = "bold"))
-plot_ideel_bin <- annotate_figure(plot_ideel_bin, bottom = text_grob("Nanopore R10.4", size = 12, vjust = -7.2, hjust = -1.35,
-                                                                     color = "#ffd700", face = "bold"))
-plot_ideel_bin <- annotate_figure(plot_ideel_bin, bottom = text_grob("+ Illumina", size = 12, vjust = -8.95, hjust = -0.68,
-                                                                     color = "#a6dba0", face = "bold"))
-plot_ideel_bin <- annotate_figure(plot_ideel_bin, bottom = text_grob("+ Illumina", size = 12, vjust = -10.95, hjust = -3.85,
-                                                                     color = "#eee8aa", face = "bold"))
-plot_ideel_bin <- plot_ideel_bin + theme(plot.margin=unit(c(0,0,-0.11,0), "null"))
-
-ggsave(plot_ideel_bin, file="ideel_bin.pdf", height = 7, width = 8, useDingbats=FALSE)
-```
+![](plotting-mags_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 ### Load Counterr result data for bin alignments
 
@@ -641,7 +536,7 @@ hp_r9=read.table("counterr/counterr_r9.csv", sep=",", header=F)
 hp_r104=read.table("counterr/counterr_r104.csv", sep=",", header=F) 
 hp_r9_il=read.table("counterr/counterr_r9_il.csv", sep=",", header=F) 
 hp_r104_il=read.table("counterr/counterr_r104_il.csv", sep=",", header=F)
-hp_il=read.table("counterr/counterr_il.csv", sep=",", header=F)
+hp_pb=read.table("counterr/counterr_pb.csv", sep=",", header=F)
 ```
 
 ### Wrangle Counterr data
@@ -682,27 +577,27 @@ df_hp$datatype <- sample
 
 return(df_hp)}
 
-hp_il_  <- abund(hp_il,"Illumina","count")
+hp_pb_  <- abund(hp_pb,"PacBio HiFi","count")
 hp_r9_   <- abund(hp_r9,"Nanopore R9","count")
 hp_r104_   <- abund(hp_r104,"Nanopore R10.4","count")
 hp_r9_il_   <- abund(hp_r9_il,"Nanopore R9 + Illumina","count")
 hp_r104_il_   <- abund(hp_r104_il,"Nanopore R10.4 + Illumina","count")
 
-hp_ <- rbind(hp_il_,hp_r9_,hp_r104_,hp_r9_il_,hp_r104_il_)
+hp_ <- rbind(hp_pb_,hp_r9_,hp_r104_,hp_r9_il_,hp_r104_il_)
 hp_$id <- factor(hp_$id, levels = c("A","T","G","C"))
-hp_$datatype <- factor(hp_$datatype, levels = c("Illumina","Nanopore R9 + Illumina","Nanopore R9",
+hp_$datatype <- factor(hp_$datatype, levels = c("PacBio HiFi","Nanopore R9 + Illumina","Nanopore R9",
 "Nanopore R10.4 + Illumina","Nanopore R10.4"))
 
 
-hp_il  <- abund(hp_il,"Illumina","frac")
+hp_pb  <- abund(hp_pb,"Illumina","frac")
 hp_r9  <- abund(hp_r9,"Nanopore R9","frac")
 hp_r104  <- abund(hp_r104,"Nanopore R10.4","frac")
 hp_r9_il  <- abund(hp_r9_il,"Nanopore R9 + Illumina","frac")
 hp_r104_il  <- abund(hp_r104_il,"Nanopore R10.4 + Illumina","frac")
 
-hp <- rbind(hp_il,hp_r9,hp_r104,hp_r9_il,hp_r104_il)
+hp <- rbind(hp_pb,hp_r9,hp_r104,hp_r9_il,hp_r104_il)
 hp$id <- factor(hp$id, levels = c("A","T","G","C"))
-hp$datatype <- factor(hp$datatype, levels = c("Illumina","Nanopore R9 + Illumina","Nanopore R9","Nanopore R10.4 + Illumina","Nanopore R10.4"))
+hp$datatype <- factor(hp$datatype, levels = c("PacBio HiFi","Nanopore R9 + Illumina","Nanopore R9","Nanopore R10.4 + Illumina","Nanopore R10.4"))
 ```
 
 ### Calculate observations for Counterr data
@@ -734,7 +629,7 @@ hp_gen <- rbind(hp_6,hp_7,hp_8,hp_9,hp_10)
 hp_gen_ <- hp_gen %>% select(length, sum, id, datatype) %>% pivot_wider(names_from = id, values_from = sum, values_fill = 0)
 hp_gen_ <- hp_gen_[ , c("length","datatype","A","T","C","G")]
 
-hp_gen$datatype <- factor(hp_gen$datatype, levels = c("Illumina","Nanopore R9 + Illumina","Nanopore R9",
+hp_gen$datatype <- factor(hp_gen$datatype, levels = c("PacBio HiFi","Nanopore R9 + Illumina","Nanopore R9",
                                                       "Nanopore R10.4 + Illumina","Nanopore R10.4"))
 
 hp_gen$fraction_corr <- round(hp_gen$sum_corr/hp_gen$sum*100,3)
@@ -751,7 +646,7 @@ hp_t <- hp_gen_[(hp_gen_$id == "T"), ]
 hp_g <- hp_gen_[(hp_gen_$id == "G"), ]
 hp_c <- hp_gen_[(hp_gen_$id == "C"), ]
 
-level_order <- c("Nanopore R10.4 + Illumina","Nanopore R10.4", "Nanopore R9.4.1 + Illumina","Nanopore R9.4.1","Illumina")
+level_order <- c("Nanopore R10.4 + Illumina","Nanopore R10.4", "Nanopore R9.4.1 + Illumina","Nanopore R9.4.1","PacBio HiFi")
 
 hp_heatmap <- function(df,label) {
 
@@ -781,12 +676,16 @@ plot_hp_nuc <- ggarrange(plot_hpa, plot_hpt, plot_hpg, plot_hpc, ncol=2, nrow=2,
 plot_hp_nuc
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+
+``` r
+ggsave(plot_hp_nuc, file="counterr_nuc.pdf", height = 9, width = 12, useDingbats=FALSE)
+```
 
 ### Clustered MAG relative abundace plots
 
 ``` r
-bins_abund_2 <- bins[((bins$mags_workflow_mode=="PacBio CCS" & bins$cov_pb >= 10) |
+bins_abund_2 <- bins[((bins$mags_workflow_mode=="PacBio HiFi" & bins$cov_pb >= 10) |
                      (bins$mags_workflow_mode=="Nanopore R9.4.1" & bins$cov_r9 >= 10) |
             (bins$mags_workflow_mode == "Illumina" & bins$cov_il >= 10) |
                      (bins$mags_workflow_mode=="Nanopore R10.4" & bins$cov_r104 >= 10)), ]
@@ -806,7 +705,7 @@ plot <- ggplot(data=df,aes(x=x,y=y)) + geom_abline() +
   theme(legend.position = "right", legend.text=element_text(size=10), axis.title.y = element_text(size = 12),
       axis.title.x = element_text(size = 12), axis.text.x = element_text(size = 10),
       axis.text.y = element_text(size = 10), legend.title = element_text(size=12))  + 
-  scale_shape_manual(values = c("Illumina" = 16, "Nanopore R9.4.1"=17,"Nanopore R10.4"=15,"PacBio CCS"=18)) +
+  scale_shape_manual(values = c("Illumina" = 16, "Nanopore R9.4.1"=17,"Nanopore R10.4"=15,"PacBio HiFi"=18)) +
   scale_color_gradient2(midpoint = 50, low = "#2c7fb8", mid= "#fed976", high = "#800026", limits=c(25,70), breaks=c(25,40,55,70)) +
   labs(col="GC (%)", shape="Platform:") + guides(size = FALSE, shape = guide_legend(order = 2, override.aes = list(size = 3.5)))
 
@@ -814,7 +713,7 @@ return(plot)}
 
 
 plot_abund_pb <- abund_plot(bins_abund_2,bins_abund_2$r_abund_r9,bins_abund_2$r_abund_pb,
-                            "Bin relative abundance (Nanopore R9, %)","Bin relative abundance (PacBio CCS, %)")
+                            "Bin relative abundance (Nanopore R9, %)","Bin relative abundance (PacBio HiFi, %)")
 
 plot_abund_il <- abund_plot(bins_abund_2,bins_abund_2$r_abund_r9,bins_abund_2$r_abund_il,
                             "Bin relative abundance (Nanopore R9, %)","Bin relative abundance (Illumina, %)")
@@ -827,13 +726,17 @@ plot_leg <- as_ggplot(plot_leg)
 
 plot_abund_2 <- ggarrange(plot_abund_pb, plot_abund_il, plot_abund_r104,plot_leg,
                           nrow=2, ncol=2, legend = "none",
-                       labels = c("(a)", "(b)", "(c)"), hjust=0.01, font.label = list(size = 16), align = c("h"))
+                       labels = c("a", "b", "c"), hjust=0.01, font.label = list(size = 16), align = c("h"))
 
 
 plot_abund_2
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+
+``` r
+ggsave(plot_abund_2, file="abund_plot.pdf", height = 9, width = 9, useDingbats=FALSE)
+```
 
 ### Generate Figure 1
 
@@ -842,7 +745,7 @@ leg <- get_legend(plot_cont3)
 leg <- as_ggplot(leg)
 
 fig1 <- ggarrange(plot_reads, plot_Nx, ncol=2, nrow=1, legend = "none",
-                  labels = c("(a)", "(b)"), font.label = list(size = 16), align = c("h"), hjust=0.01, vjust = 3)
+                  labels = c("a", "b"), font.label = list(size = 16), align = c("h"), hjust=0.01, vjust = 3)
 
 fig1 <- ggarrange(fig1, leg, ncol=1, nrow=2, legend = "none", align = c("h"), heights = c(11.5, 1))
 
@@ -851,7 +754,11 @@ fig1 <- ggarrange(fig1, cov_plot, ncol=1, nrow=2, legend = "none", align = c("h"
 fig1
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+
+``` r
+ggsave(fig1, file="fig1.pdf", height = 9 , width = 11, useDingbats=FALSE)
+```
 
 ### Generate Figure 2
 
@@ -866,10 +773,11 @@ blank<-rectGrob(gp=gpar(col="white"))
 
 
 fig2_1 <- ggarrange(plot_snp, plot_compl, ncol=2, nrow=1, common.legend = FALSE, legend = "none", 
-                  labels = c("(a)", "(b)"), font.label = list(size = 16), align = c("v"), hjust=0.01)
+                  labels = c("a", "b"), font.label = list(size = 16), hjust=0.01)
+
 
 fig2_2 <- ggarrange(plot_indel, plot_mm, ncol=2, nrow=1, common.legend = FALSE, legend = "none", 
-                  labels = c("(c)", "(d)"), font.label = list(size = 16), align = c("h"), hjust=0.01)
+                  labels = c("c", "d"), font.label = list(size = 16), align = c("h"), hjust=0.01)
 
 fig2 <- ggarrange(fig2_1, fig2_2 , ncol=1, nrow=2, common.legend = FALSE, legend = "none", 
                   font.label = list(size = 16), align = c("h"), hjust=0.01)
@@ -878,4 +786,8 @@ fig2 <- ggarrange(fig2, leg1, ncol=1, nrow=2, legend = "none", align = c("h"), h
 fig2
 ```
 
-![](plotting-mags_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](plotting-mags_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+
+``` r
+ggsave(fig2, file="fig2.pdf", height = 9, width = 11, useDingbats=FALSE)
+```
