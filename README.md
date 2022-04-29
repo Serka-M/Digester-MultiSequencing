@@ -12,5 +12,5 @@ Repository for scripts and resources used for long-read metagenomics of anaerobi
 <br/>
 <br/>
 
-**Bioinformatics overview for anaerobic digester sludge:**
+**Bioinformatics overview for anaerobic digester sludge data:**
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/misc/mags-workflow-v2.png" alt="AD-bioinf" style="zoom:100%;" />
