@@ -338,7 +338,7 @@ bins_compl$mags_workflow_name <- factor(bins_compl$mags_workflow_name, levels = 
 Completeness <- data.frame(rbind(tapply(bins_compl$Completeness,bins_compl$mags_workflow_mode, mean), tapply(bins_compl$Completeness,bins_compl$mags_workflow_mode, sd)))
 
 plot_compl <- ggplot(data=bins_compl,aes(x=factor(mags_workflow_name,level=level_order),y=Completeness)) +
-geom_violin(aes(fill=mags_workflow_name)) + geom_jitter(position = position_jitter(width = 0.2, height = 0.15)) + theme_bw() +
+geom_violin(aes(fill=mags_workflow_name)) + geom_jitter(position = position_jitter(width = 0.2, height = 0)) + theme_bw() +
 ylab("MAG completeness (%)") + xlab("Sequencing approach") + labs(fill="") + guides(fill = guide_legend(nrow = 1)) +
   scale_x_discrete(guide = guide_axis(angle = 0)) +
 theme(legend.position = "none", legend.text=element_text(size=14), axis.title.y = element_text(size = 12), axis.title.x = element_text(size = 12),
@@ -678,10 +678,6 @@ plot_hp_nuc
 
 ![](plotting-mags_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
-``` r
-ggsave(plot_hp_nuc, file="counterr_nuc.pdf", height = 9, width = 12, useDingbats=FALSE)
-```
-
 ### Clustered MAG relative abundace plots
 
 ``` r
@@ -734,11 +730,7 @@ plot_abund_2
 
 ![](plotting-mags_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
-``` r
-ggsave(plot_abund_2, file="abund_plot.pdf", height = 9, width = 9, useDingbats=FALSE)
-```
-
-### Generate Figure 1
+### Generate combined Figure 1
 
 ``` r
 leg <- get_legend(plot_cont3)
