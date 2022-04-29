@@ -11,3 +11,6 @@ Repository for scripts and resources used for long-read metagenomics of anaerobi
 * MAGs and Zymo assembly sequences can be downloaded from [Figshare](https://doi.org/10.6084/m9.figshare.17008801) 
 <br/>
 <br/>
+
+**Bioinformatics overview for anaerobic digester sludge:**
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/misc/mags-workflow-v2.pdf" alt="AD-bioinf" style="zoom:100%;" />
