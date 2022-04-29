@@ -1,7 +1,7 @@
 # Digester-MultiSequencing
 
 **Description:**
-Repository for scripts and resources used for long-read metagenomics of anaerobic digester sludge (and Zymo Mock) using different sequencing approaches (Nanopore R9/R10 and PacBio HiFi).
+Repository for scripts and resources used for long-read metagenomics of anaerobic digester sludge (and Zymo Mock) using different sequencing approaches (Nanopore R9/R10, PacBio HiFi, Illumina short reads).
 <br/>
 <br/>
 
