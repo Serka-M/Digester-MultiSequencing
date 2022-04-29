@@ -324,14 +324,17 @@ plot_hp_long_gc
 #ggsave(hp_long_gc, file="hp_long_gc.pdf", height = 4.5, width = 8, useDingbats=FALSE)
 ```
 
-### Plot 11+ homopolymer rates by GTDB phyla with subsampled genomes, no grouping by nucleotide, and homopolymer absence included
+### Plot 11+ homopolymer rates by GTDB phyla with subsampled genomes, no grouping by nucleotide, and homopolymer absence included, with minimum of 10 genomes per phyla.
 
 ``` r
 hp_sum_11_p <- merge(hp_sum2[(hp_sum2$len == "11+"), ], gtdb, by="name")
+
+hp_sum_11_p_sum <- aggregate(hp_sum_11_p$GTDB_phylum, by=list(hp_sum_11_p$GTDB_phylum), FUN=length)
+hp_sum_11_p <- hp_sum_11_p[(hp_sum_11_p$GTDB_phylum %in% hp_sum_11_p_sum[(hp_sum_11_p_sum$x >= 10), ]$Group.1),]
 message("n=",length(unique(hp_sum_11_p$name)))
 ```
 
-    ## n=1149
+    ## n=1043
 
 ``` r
 plot_hp_long_p <- ggplot(data=hp_sum_11_p, aes(x=GTDB_phylum, y=sum_norm)) + geom_boxplot(alpha=0.6, width=0.6, fill="#2d004b") +
@@ -356,11 +359,13 @@ plot_hp_long_p
 fig_hp <- ggarrange(plot_hp_all_norm, plot_hp_long_p, ncol=2, nrow=1, common.legend = TRUE, legend = "bottom", 
                   labels = c("a", "b"), font.label = list(size = 16), hjust=0.01)
 
+
 fig_hp
 ```
 
 ![](plotting-homopol_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 ``` r
-ggsave(fig_hp, file="fig_hp.pdf", height = 7.5, width = 11, useDingbats=FALSE)
+#ggsave(fig_hp, file="fig_hp.pdf", height = 7.5, width = 11, useDingbats=FALSE)
+ggsave(fig_hp, file="Fig_S5.pdf", height = 90, width = 180, useDingbats=FALSE,  units ="mm", dpi = 300)
 ```
