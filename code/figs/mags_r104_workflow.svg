@@ -1,16 +1,15 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488.03 363.82">
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1572.98 831.77">
   <defs>
     <style>
-      .cls-1, .cls-10, .cls-4 {
+      .cls-1, .cls-22, .cls-9 {
         fill: none;
       }
 
       .cls-1 {
         stroke: #b3b3b3;
-        stroke-width: 0.75px;
       }
 
-      .cls-1, .cls-10, .cls-11, .cls-20, .cls-21, .cls-22, .cls-23, .cls-24, .cls-25, .cls-26, .cls-27, .cls-3, .cls-5, .cls-7 {
+      .cls-1, .cls-10, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20, .cls-21, .cls-3, .cls-5, .cls-6, .cls-9 {
         stroke-miterlimit: 10;
       }
 
@@ -18,381 +17,382 @@
         fill: #b3b3b3;
       }
 
-      .cls-3, .cls-7 {
-        fill: #765937;
-      }
-
-      .cls-10, .cls-11, .cls-20, .cls-21, .cls-22, .cls-23, .cls-24, .cls-25, .cls-26, .cls-27, .cls-3, .cls-5, .cls-7 {
-        stroke: #000;
-      }
-
-      .cls-5 {
+      .cls-3 {
         fill: #543005;
       }
 
-      .cls-11, .cls-20, .cls-21, .cls-22, .cls-23, .cls-24, .cls-25, .cls-26, .cls-27, .cls-5, .cls-7 {
+      .cls-10, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20, .cls-21, .cls-3, .cls-5, .cls-6, .cls-9 {
+        stroke: #000;
+      }
+
+      .cls-10, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18, .cls-19, .cls-20, .cls-21, .cls-3, .cls-5 {
         opacity: 0.85;
       }
 
-      .cls-6 {
-        font-size: 6px;
+      .cls-4 {
+        font-size: 12px;
+        font-family: Helvetica, Helvetica;
       }
 
-      .cls-6, .cls-8 {
-        font-family: ArialMT, Arial;
+      .cls-5, .cls-6 {
+        fill: #765937;
+      }
+
+      .cls-7 {
+        font-size: 10px;
       }
 
       .cls-8 {
-        font-size: 5px;
-      }
-
-      .cls-9 {
         letter-spacing: -0.02em;
       }
 
-      .cls-11 {
+      .cls-10 {
         fill: #8e0152;
       }
 
+      .cls-11 {
+        letter-spacing: -0.07em;
+      }
+
       .cls-12 {
-        letter-spacing: -0.07em;
-      }
-
-      .cls-13 {
-        letter-spacing: -0.07em;
-      }
-
-      .cls-14 {
-        letter-spacing: -0.02em;
-      }
-
-      .cls-15 {
         letter-spacing: -0.11em;
       }
 
-      .cls-16 {
-        letter-spacing: 0em;
-      }
-
-      .cls-17 {
-        letter-spacing: -0.07em;
-      }
-
-      .cls-18 {
+      .cls-13 {
         letter-spacing: -0.04em;
       }
 
-      .cls-19 {
-        letter-spacing: -0.02em;
-      }
-
-      .cls-20 {
+      .cls-14 {
         fill: #c994c7;
       }
 
-      .cls-21 {
+      .cls-15 {
         fill: #48c7ff;
       }
 
-      .cls-22 {
+      .cls-16 {
         fill: #ed1e79;
       }
 
-      .cls-23 {
+      .cls-17 {
         fill: #65f04e;
       }
 
-      .cls-24 {
+      .cls-18 {
         fill: #008837;
       }
 
-      .cls-25 {
+      .cls-19 {
         fill: #a6dba0;
       }
 
-      .cls-26 {
+      .cls-20 {
         fill: #eee8aa;
       }
 
-      .cls-27 {
+      .cls-21 {
         fill: gold;
       }
     </style>
   </defs>
-  <title>mags-workflow</title>
+  <title>mags-workflow-v1</title>
   <g>
-    <path class="cls-1" d="M388.28,41.53c-37.31-1.9-56.75,12-68.95,53.18" transform="translate(-5.5 -3.32)"/>
-    <polygon class="cls-2" points="312.85 90 314.01 90.97 315.51 90.81 313.21 93.55 312.85 90"/>
+    <path class="cls-1" d="M1272.07,92.33C1156.34,89.44,1016.44,135,991,218" transform="translate(-16.17 -6.71)"/>
+    <polygon class="cls-2" points="972.03 207.57 975.17 210.09 979.16 209.57 973.22 217.02 972.03 207.57"/>
   </g>
   <g>
-    <path class="cls-1" d="M386.84,41.53C284,7.76,226.08,6,191.69,94.9" transform="translate(-5.5 -3.32)"/>
-    <polygon class="cls-2" points="185.32 90.1 186.39 91.16 187.9 91.13 185.4 93.67 185.32 90.1"/>
+    <path class="cls-1" d="M1272.07,92.33C1025.86-32.14,597.66,58.69,572.16,217.81" transform="translate(-16.17 -6.71)"/>
+    <polygon class="cls-2" points="552.75 207.82 556.2 209.88 560.09 208.83 555.22 217.02 552.75 207.82"/>
   </g>
   <g>
-    <path class="cls-1" d="M388.28,41.53c-189-66-285.19-44.1-323.88,53.25" transform="translate(-5.5 -3.32)"/>
-    <polygon class="cls-2" points="58.06 89.98 59.12 91.05 60.63 91.04 58.09 93.55 58.06 89.98"/>
+    <path class="cls-1" d="M1272.07,92.33C1026.05-60.15,188.88-2.06,153.64,220.81" transform="translate(-16.17 -6.71)"/>
+    <polygon class="cls-2" points="134.23 210.83 137.69 212.89 141.57 211.82 136.72 220.03 134.23 210.83"/>
   </g>
   <g>
-    <line class="cls-2" x1="441.85" y1="127" x2="25.34" y2="127"/>
+    <line class="cls-2" x1="1403.22" y1="296.36" x2="54.74" y2="296.36"/>
     <g>
-      <line class="cls-1" x1="441.85" y1="127" x2="27.57" y2="127"/>
-      <polygon class="cls-2" points="28.63 125.61 28.04 127 28.63 128.39 25.34 127 28.63 125.61"/>
+      <line class="cls-1" x1="1403.22" y1="296.36" x2="60.71" y2="296.36"/>
+      <polygon class="cls-2" points="63.52 292.65 61.94 296.36 63.52 300.06 54.74 296.36 63.52 292.65"/>
     </g>
   </g>
-  <rect class="cls-3" x="440.55" y="118.2" width="46.77" height="31.18" rx="12" ry="12"/>
-  <path class="cls-4" d="M328.93,95.4" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M390.89,41.67" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M201.48,95.4" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M390.89,41.67" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M74.28,97" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M390.89,41.67" transform="translate(-5.5 -3.32)"/>
-  <rect class="cls-5" x="382.79" y="25.88" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(386.49 40)">Illumina MiSeq<tspan x="12.17" y="7.2">reads</tspan></text>
-  <rect class="cls-7" x="440.75" y="120.93" width="46.77" height="31.18" rx="12" ry="12"/>
-  <rect class="cls-7" x="440.75" y="124.49" width="46.77" height="31.18" rx="12" ry="12"/>
-  <rect class="cls-7" x="440.75" y="127.88" width="46.77" height="31.18" rx="12" ry="12"/>
-  <rect class="cls-7" x="440.75" y="130.94" width="46.77" height="31.18" rx="12" ry="12"/>
-  <rect class="cls-7" x="440.75" y="134.04" width="46.77" height="31.18" rx="12" ry="12"/>
-  <rect class="cls-7" x="440.75" y="137.29" width="46.77" height="31.18" rx="12" ry="12"/>
-  <rect class="cls-7" x="440.75" y="140.57" width="46.77" height="31.18" rx="12" ry="12"/>
-  <rect class="cls-3" x="440.75" y="143.89" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(449.8 156.17)">9x Illumina<tspan x="-7.67" y="7.2">timeseries reads</tspan></text>
-  <rect class="cls-5" x="383.1" y="92.65" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(395.83 106.66)">Illumina<tspan x="-7.17" y="7.2">metagenome</tspan></text>
-  <rect class="cls-5" x="382.79" y="161.32" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(395.83 176.25)">Illumina<tspan x="2" y="7.2">MAGs</tspan></text>
-  <text class="cls-8" transform="translate(409.09 72.03)">Assembly:<tspan x="0" y="6">MEGAHI</tspan><tspan class="cls-9" x="19.72" y="6">T</tspan></text>
+  <rect class="cls-3" x="1255.89" y="54.13" width="103.49" height="63" rx="12" ry="12"/>
+  <text class="cls-4" transform="translate(1268.29 81.23)">Illumina MiSeq<tspan x="24.34" y="14.4">reads</tspan></text>
   <g>
-    <path class="cls-4" d="M411.67,100" transform="translate(-5.5 -3.32)"/>
-    <path class="cls-4" d="M411.67,48.35" transform="translate(-5.5 -3.32)"/>
-  </g>
-  <line class="cls-10" x1="23.97" y1="193.22" x2="23.97" y2="206.16"/>
-  <line class="cls-10" x1="93.32" y1="193.22" x2="93.32" y2="206.16"/>
-  <line class="cls-10" x1="151.28" y1="193.22" x2="151.28" y2="206.16"/>
-  <line class="cls-10" x1="221.14" y1="193.22" x2="221.14" y2="206.16"/>
-  <g>
-    <line class="cls-10" x1="23.97" y1="229.32" x2="23.97" y2="239.29"/>
-    <polygon points="22.12 237.88 23.97 238.67 25.83 237.88 23.97 242.27 22.12 237.88"/>
+    <rect class="cls-3" x="1401.51" y="262.62" width="103.49" height="63" rx="12" ry="12"/>
+    <rect class="cls-5" x="1408.51" y="270.39" width="103.49" height="63" rx="12" ry="12"/>
+    <rect class="cls-5" x="1417.24" y="277.62" width="103.49" height="63" rx="12" ry="12"/>
+    <rect class="cls-5" x="1426.24" y="285.62" width="103.49" height="63" rx="12" ry="12"/>
+    <rect class="cls-5" x="1434.24" y="294.12" width="103.49" height="63" rx="12" ry="12"/>
+    <rect class="cls-5" x="1442.74" y="301.89" width="103.49" height="63" rx="12" ry="12"/>
+    <rect class="cls-5" x="1451.26" y="309.12" width="103.49" height="63" rx="12" ry="12"/>
+    <rect class="cls-5" x="1460.26" y="317.12" width="103.49" height="63" rx="12" ry="12"/>
+    <rect class="cls-6" x="1468.99" y="325.62" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(1492.06 351.39)">9x Illumina<tspan x="-15.34" y="14.4">timeseries reads</tspan></text>
   </g>
   <g>
-    <line class="cls-10" x1="93.32" y1="229.32" x2="93.32" y2="239.29"/>
-    <polygon points="91.47 237.88 93.32 238.67 95.17 237.88 93.32 242.27 91.47 237.88"/>
+    <rect class="cls-3" x="1256.48" y="222.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(1287.55 249.46)">Illumina<tspan x="-14.35" y="14.4">metagenome</tspan></text>
   </g>
   <g>
-    <line class="cls-10" x1="151.28" y1="229.32" x2="151.28" y2="239.29"/>
-    <polygon points="149.43 237.88 151.28 238.67 153.13 237.88 151.28 242.27 149.43 237.88"/>
+    <rect class="cls-3" x="1255.89" y="393.12" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(1286.97 420.22)">Illumina<tspan x="4.01" y="14.4">MAGs</tspan></text>
+  </g>
+  <text class="cls-4" transform="translate(1313.13 165.12)">Assembly:<tspan class="cls-7"><tspan x="0" y="12">MEGAHI</tspan><tspan class="cls-8" x="39.45" y="12">T</tspan></tspan></text>
+  <g>
+    <line class="cls-9" x1="1307.64" y1="122.46" x2="1307.64" y2="213.82"/>
+    <polygon points="1303.94 211.01 1307.64 212.59 1311.34 211.01 1307.64 219.79 1303.94 211.01"/>
   </g>
   <g>
-    <line class="cls-10" x1="221.14" y1="229.32" x2="221.14" y2="239.29"/>
-    <polygon points="219.29 237.88 221.14 238.67 222.99 237.88 221.14 242.27 219.29 237.88"/>
+    <line class="cls-9" x1="52.25" y1="119.69" x2="52.25" y2="211.05"/>
+    <polygon points="48.54 208.25 52.25 209.82 55.95 208.25 52.25 217.02 48.54 208.25"/>
   </g>
   <g>
-    <line class="cls-10" x1="279.1" y1="229.32" x2="279.1" y2="239.29"/>
-    <polygon points="277.25 237.88 279.1 238.67 280.95 237.88 279.1 242.27 277.25 237.88"/>
+    <line class="cls-9" x1="52.25" y1="290.69" x2="52.25" y2="382.05"/>
+    <polygon points="48.54 379.24 52.25 380.81 55.95 379.24 52.25 388.02 48.54 379.24"/>
+  </g>
+  <line class="cls-9" x1="52.25" y1="459.28" x2="52.25" y2="483.69"/>
+  <line class="cls-9" x1="239.53" y1="459.28" x2="239.53" y2="483.69"/>
+  <line class="cls-9" x1="470.94" y1="459.28" x2="470.94" y2="483.69"/>
+  <line class="cls-9" x1="658.53" y1="459.28" x2="658.53" y2="483.69"/>
+  <g>
+    <line class="cls-9" x1="52.25" y1="536.61" x2="52.25" y2="555.05"/>
+    <polygon points="48.54 552.24 52.25 553.81 55.95 552.24 52.25 561.01 48.54 552.24"/>
   </g>
   <g>
-    <line class="cls-10" x1="348.96" y1="229.65" x2="348.96" y2="239.61"/>
-    <polygon points="347.11 238.21 348.96 238.99 350.81 238.21 348.96 242.6 347.11 238.21"/>
+    <line class="cls-9" x1="239.53" y1="536.61" x2="239.53" y2="555.05"/>
+    <polygon points="235.83 552.24 239.53 553.81 243.24 552.24 239.53 561.01 235.83 552.24"/>
   </g>
   <g>
-    <line class="cls-10" x1="406.48" y1="229.32" x2="406.48" y2="239.29"/>
-    <polygon points="404.63 237.88 406.48 238.67 408.33 237.88 406.48 242.27 404.63 237.88"/>
-  </g>
-  <line class="cls-10" x1="221.12" y1="206.39" x2="221.12" y2="229.48"/>
-  <line class="cls-10" x1="221.12" y1="287.14" x2="221.12" y2="310.23"/>
-  <line class="cls-10" x1="279.1" y1="193.22" x2="279.1" y2="206.16"/>
-  <line class="cls-10" x1="348.96" y1="193.54" x2="348.96" y2="206.49"/>
-  <line class="cls-10" x1="406.17" y1="193.22" x2="406.17" y2="206.16"/>
-  <rect class="cls-11" x="0.5" y="23.81" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(8.2 38.92)">PacBio HiFi<tspan x="8.17" y="7.2">reads</tspan></text>
-  <text class="cls-8" transform="translate(26.89 70.69)">Assembly:<tspan x="0" y="6">metaFlye</tspan></text>
-  <text class="cls-8" transform="translate(26.89 132.09)">Binning:<tspan x="0" y="6">MetaB</tspan><tspan class="cls-12" x="14.45" y="6">A</tspan><tspan x="17.41" y="6">T2</tspan><tspan x="0" y="12">MaxBin2</tspan><tspan class="cls-13" x="0" y="18">V</tspan><tspan x="2.96" y="18">AMB</tspan><tspan x="0" y="24">DAS</tspan><tspan class="cls-14" x="10.28" y="24"> </tspan><tspan class="cls-15" x="11.58" y="24">T</tspan><tspan class="cls-16" x="14.08" y="24">ool</tspan></text>
-  <text class="cls-8" transform="translate(96.23 132.09)">Binning:<tspan x="0" y="6">MetaB</tspan><tspan class="cls-12" x="14.45" y="6">A</tspan><tspan x="17.41" y="6">T2</tspan><tspan x="0" y="12">MaxBin2</tspan><tspan class="cls-13" x="0" y="18">V</tspan><tspan x="2.96" y="18">AMB</tspan><tspan x="0" y="24">DAS</tspan><tspan class="cls-14" x="10.28" y="24"> </tspan><tspan class="cls-15" x="11.58" y="24">T</tspan><tspan class="cls-16" x="14.08" y="24">ool</tspan></text>
-  <text class="cls-8" transform="translate(154.19 132.09)">Binning:<tspan x="0" y="6">MetaB</tspan><tspan class="cls-17" x="14.45" y="6">A</tspan><tspan class="cls-16" x="17.42" y="6">T2</tspan><tspan x="0" y="12">MaxBin2</tspan><tspan class="cls-13" x="0" y="18">V</tspan><tspan x="2.96" y="18">AMB</tspan><tspan x="0" y="24">DAS</tspan><tspan class="cls-14" x="10.28" y="24"> </tspan><tspan class="cls-15" x="11.58" y="24">T</tspan><tspan x="14.08" y="24">ool</tspan></text>
-  <text class="cls-8" transform="translate(223.89 132.09)">Binning:<tspan x="0" y="6">MetaB</tspan><tspan class="cls-12" x="14.45" y="6">A</tspan><tspan x="17.41" y="6">T2</tspan><tspan x="0" y="12">MaxBin2</tspan><tspan class="cls-13" x="0" y="18">V</tspan><tspan x="2.96" y="18">AMB</tspan><tspan x="0" y="24">DAS</tspan><tspan class="cls-14" x="10.28" y="24"> </tspan><tspan class="cls-15" x="11.58" y="24">T</tspan><tspan class="cls-16" x="14.08" y="24">ool</tspan></text>
-  <text class="cls-8" transform="translate(224.05 212.89)">MAG processing:<tspan x="0" y="6">CheckM</tspan><tspan x="0" y="12">dRep</tspan></text>
-  <text class="cls-8" transform="translate(64.96 321.62)">Homopolymer counting:<tspan x="0" y="6">Counterr</tspan></text>
-  <text class="cls-8" transform="translate(386.4 321.62)">Protein truncation inference:<tspan x="0" y="6">IDEE</tspan><tspan class="cls-18" x="11.67" y="6">L</tspan></text>
-  <text class="cls-8" transform="translate(224.07 321.62)">Consensus error calculation:<tspan x="0" y="6">QUAS</tspan><tspan class="cls-19" x="14.17" y="6">T</tspan></text>
-  <text class="cls-8" transform="translate(282.01 132.09)">Binning:<tspan x="0" y="6">MetaB</tspan><tspan class="cls-12" x="14.45" y="6">A</tspan><tspan x="17.41" y="6">T2</tspan><tspan x="0" y="12">MaxBin2</tspan><tspan class="cls-13" x="0" y="18">V</tspan><tspan x="2.96" y="18">AMB</tspan><tspan x="0" y="24">DAS</tspan><tspan class="cls-14" x="10.28" y="24"> </tspan><tspan class="cls-15" x="11.58" y="24">T</tspan><tspan class="cls-16" x="14.08" y="24">ool</tspan></text>
-  <text class="cls-8" transform="translate(351.87 132.41)">Binning:<tspan x="0" y="6">MetaB</tspan><tspan class="cls-12" x="14.45" y="6">A</tspan><tspan x="17.41" y="6">T2</tspan><tspan x="0" y="12">MaxBin2</tspan><tspan class="cls-13" x="0" y="18">V</tspan><tspan x="2.96" y="18">AMB</tspan><tspan x="0" y="24">DAS</tspan><tspan class="cls-14" x="10.28" y="24"> </tspan><tspan class="cls-15" x="11.58" y="24">T</tspan><tspan class="cls-16" x="14.08" y="24">ool</tspan></text>
-  <text class="cls-8" transform="translate(409.09 132.76)">Binning:<tspan x="0" y="6">MetaB</tspan><tspan class="cls-12" x="14.45" y="6">A</tspan><tspan x="17.41" y="6">T2</tspan><tspan x="0" y="12">MaxBin2</tspan><tspan class="cls-13" x="0" y="18">V</tspan><tspan x="2.96" y="18">AMB</tspan><tspan x="0" y="24">DAS</tspan><tspan class="cls-14" x="10.28" y="24"> </tspan><tspan class="cls-15" x="11.58" y="24">T</tspan><tspan class="cls-16" x="14.08" y="24">ool</tspan></text>
-  <text class="cls-8" transform="translate(48.36 97.25)">Polishing:<tspan x="0" y="6">Racon</tspan></text>
-  <rect class="cls-11" x="0.59" y="92.65" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(8.2 106.66)">PacBio HiFi<tspan x="-1.84" y="7.2">metagenome</tspan></text>
-  <rect class="cls-20" x="69.93" y="92.65" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(70.84 105.41)">Illumina-polished<tspan x="6.84" y="7.2">PacBio HiFi</tspan><tspan x="5" y="14.4">metagenome</tspan></text>
-  <g>
-    <line class="cls-10" x1="47.36" y1="108.24" x2="65.84" y2="108.24"/>
-    <polygon points="64.43 110.09 65.22 108.24 64.43 106.39 68.82 108.24 64.43 110.09"/>
+    <line class="cls-9" x1="470.94" y1="536.61" x2="470.94" y2="555.05"/>
+    <polygon points="467.24 552.24 470.94 553.81 474.65 552.24 470.94 561.01 467.24 552.24"/>
   </g>
   <g>
-    <line class="cls-10" x1="174.67" y1="108.24" x2="193.14" y2="108.24"/>
-    <polygon points="191.74 110.09 192.52 108.24 191.74 106.39 196.13 108.24 191.74 110.09"/>
+    <line class="cls-9" x1="658.23" y1="536.61" x2="658.23" y2="555.05"/>
+    <polygon points="654.53 552.24 658.23 553.81 661.93 552.24 658.23 561.01 654.53 552.24"/>
   </g>
   <g>
-    <line class="cls-10" x1="302.48" y1="108.24" x2="320.96" y2="108.24"/>
-    <polygon points="319.55 110.09 320.34 108.24 319.55 106.39 323.94 108.24 319.55 110.09"/>
-  </g>
-  <line class="cls-10" x1="23.89" y1="206.05" x2="406.48" y2="206.05"/>
-  <line class="cls-10" x1="23.97" y1="274.35" x2="23.97" y2="287.3"/>
-  <line class="cls-10" x1="93.32" y1="274.35" x2="93.32" y2="287.3"/>
-  <line class="cls-10" x1="151.28" y1="274.35" x2="151.28" y2="287.3"/>
-  <line class="cls-10" x1="221.14" y1="274.35" x2="221.14" y2="287.3"/>
-  <g>
-    <line class="cls-10" x1="62.05" y1="310.28" x2="62.05" y2="328.4"/>
-    <polygon points="60.2 326.99 62.05 327.78 63.9 326.99 62.05 331.38 60.2 326.99"/>
+    <line class="cls-9" x1="889.64" y1="536.61" x2="889.64" y2="555.05"/>
+    <polygon points="885.94 552.24 889.64 553.81 893.34 552.24 889.64 561.01 885.94 552.24"/>
   </g>
   <g>
-    <line class="cls-10" x1="221.12" y1="310.28" x2="221.12" y2="328.4"/>
-    <polygon points="219.27 326.99 221.12 327.78 222.97 326.99 221.12 331.38 219.27 326.99"/>
+    <line class="cls-9" x1="1076.53" y1="536.6" x2="1076.53" y2="555.04"/>
+    <polygon points="1072.83 552.23 1076.53 553.8 1080.24 552.23 1076.53 561.01 1072.83 552.23"/>
   </g>
   <g>
-    <line class="cls-10" x1="382.79" y1="310.28" x2="382.79" y2="328.4"/>
-    <polygon points="380.93 326.99 382.79 327.78 384.64 326.99 382.79 331.38 380.93 326.99"/>
+    <line class="cls-9" x1="1308.22" y1="536.61" x2="1308.22" y2="555.05"/>
+    <polygon points="1304.52 552.24 1308.22 553.81 1311.93 552.24 1308.22 561.01 1304.52 552.24"/>
   </g>
-  <path class="cls-4" d="M226.64,341.88" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M226.64,313.59" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M388.78,341.84" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M388.78,313.55" transform="translate(-5.5 -3.32)"/>
-  <line class="cls-10" x1="279.1" y1="274.35" x2="279.1" y2="287.3"/>
-  <line class="cls-10" x1="349.17" y1="274.68" x2="349.17" y2="287.62"/>
-  <line class="cls-10" x1="406.17" y1="274.35" x2="406.17" y2="287.3"/>
-  <line class="cls-10" x1="23.8" y1="287.3" x2="406.17" y2="287.3"/>
-  <line class="cls-10" x1="23.97" y1="229.87" x2="406.48" y2="229.87"/>
-  <line class="cls-10" x1="62.05" y1="310.45" x2="383.49" y2="310.45"/>
-  <rect class="cls-11" x="0.59" y="161.45" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(8.2 176.25)">PacBio HiFi<tspan x="7.34" y="7.2">MAGs</tspan></text>
-  <rect class="cls-21" x="38.79" y="332.14" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(43.5 342.08)">Homopolymer<tspan x="9.33" y="7.2">calling </tspan><tspan x="4.33" y="14.4">accuracies</tspan></text>
-  <rect class="cls-22" x="197.88" y="332.14" width="46.77" height="31.18" rx="12" ry="12"/>
-  <rect class="cls-23" x="360.02" y="332.14" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(202.59 345.68)">Mismatch and<tspan x="4.83" y="7.2">indel rates</tspan></text>
-  <text class="cls-6" transform="translate(362.06 345.68)">Gene frameshift<tspan x="8.5" y="7.2">estimates</tspan></text>
-  <rect class="cls-20" x="69.93" y="161.45" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(70.84 174.92)">Illumina-polished<tspan x="6.84" y="7.2">PacBio HiFi</tspan><tspan x="14.18" y="14.4">MAGs</tspan></text>
-  <rect class="cls-24" x="127.89" y="24.41" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(128.35 38.92)">Nanopore R9.4.1<tspan x="15.34" y="7.2">reads</tspan></text>
-  <rect class="cls-24" x="127.89" y="92.65" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(128.35 106.66)">Nanopore R9.4.1<tspan x="5.34" y="7.2">metagenome</tspan></text>
-  <text class="cls-8" transform="translate(154.44 60.24)">Assembly:<tspan x="0" y="6">metaFlye</tspan></text>
-  <text class="cls-8" transform="translate(154.44 75.36)">Polishing:<tspan x="0" y="6">3x Racon</tspan><tspan x="0" y="12">2x Medaka</tspan></text>
+  <line class="cls-9" x1="770.87" y1="483.69" x2="770.87" y2="537.02"/>
   <g>
-    <line class="cls-10" x1="151.28" y1="55.35" x2="151.28" y2="89.1"/>
-    <polygon points="149.43 87.69 151.28 88.48 153.13 87.69 151.28 92.08 149.43 87.69"/>
+    <line class="cls-9" x1="889.64" y1="459.28" x2="889.64" y2="483.69"/>
+    <line class="cls-9" x1="1076.93" y1="459.28" x2="1076.93" y2="483.69"/>
+    <line class="cls-9" x1="1307.64" y1="459.28" x2="1307.64" y2="483.69"/>
   </g>
   <g>
-    <line class="cls-10" x1="279.1" y1="55.35" x2="279.1" y2="89.1"/>
-    <polygon points="277.25 87.69 279.1 88.48 280.95 87.69 279.1 92.08 277.25 87.69"/>
+    <rect class="cls-10" x="0.5" y="51.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(20.91 78.46)">PacBio HiFi<tspan x="16.33" y="14.4">reads</tspan></text>
+  </g>
+  <text class="cls-4" transform="translate(57.74 162.36)">Assembly:<tspan class="cls-7"><tspan x="0" y="12">metaFlye</tspan></tspan></text>
+  <text class="cls-4" transform="translate(57.74 315.69)">Binning:<tspan class="cls-7"><tspan x="0" y="12">MetaB</tspan><tspan class="cls-11" x="28.9" y="12">A</tspan><tspan x="34.83" y="12">T2</tspan><tspan x="0" y="24">MaxBin2</tspan><tspan class="cls-11" x="0" y="36">V</tspan><tspan x="5.93" y="36">AMB</tspan><tspan x="0" y="48">DAS</tspan><tspan class="cls-8" x="20.56" y="48"> </tspan><tspan class="cls-12" x="23.16" y="48">T</tspan><tspan x="28.16" y="48">ool</tspan></tspan></text>
+  <g>
+    <line class="cls-9" x1="239.53" y1="290.69" x2="239.53" y2="382.05"/>
+    <polygon points="235.83 379.24 239.53 380.81 243.24 379.24 239.53 388.02 235.83 379.24"/>
+  </g>
+  <text class="cls-4" transform="translate(245.03 315.69)">Binning:<tspan class="cls-7"><tspan x="0" y="12">MetaB</tspan><tspan class="cls-11" x="28.9" y="12">A</tspan><tspan x="34.83" y="12">T2</tspan><tspan x="0" y="24">MaxBin2</tspan><tspan class="cls-11" x="0" y="36">V</tspan><tspan x="5.93" y="36">AMB</tspan><tspan x="0" y="48">DAS</tspan><tspan class="cls-8" x="20.56" y="48"> </tspan><tspan class="cls-12" x="23.16" y="48">T</tspan><tspan x="28.16" y="48">ool</tspan></tspan></text>
+  <g>
+    <line class="cls-9" x1="470.94" y1="290.69" x2="470.94" y2="382.05"/>
+    <polygon points="467.24 379.24 470.94 380.81 474.65 379.24 470.94 388.02 467.24 379.24"/>
+  </g>
+  <text class="cls-4" transform="translate(476.44 315.69)">Binning:<tspan class="cls-7"><tspan x="0" y="12">MetaB</tspan><tspan class="cls-11" x="28.9" y="12">A</tspan><tspan x="34.83" y="12">T2</tspan><tspan x="0" y="24">MaxBin2</tspan><tspan class="cls-11" x="0" y="36">V</tspan><tspan x="5.93" y="36">AMB</tspan><tspan x="0" y="48">DAS</tspan><tspan class="cls-8" x="20.56" y="48"> </tspan><tspan class="cls-12" x="23.16" y="48">T</tspan><tspan x="28.16" y="48">ool</tspan></tspan></text>
+  <g>
+    <line class="cls-9" x1="658.23" y1="290.69" x2="658.23" y2="382.05"/>
+    <polygon points="654.53 379.24 658.23 380.81 661.93 379.24 658.23 388.02 654.53 379.24"/>
+  </g>
+  <text class="cls-4" transform="translate(663.72 315.69)">Binning:<tspan class="cls-7"><tspan x="0" y="12">MetaB</tspan><tspan class="cls-11" x="28.9" y="12">A</tspan><tspan x="34.83" y="12">T2</tspan><tspan x="0" y="24">MaxBin2</tspan><tspan class="cls-11" x="0" y="36">V</tspan><tspan x="5.93" y="36">AMB</tspan><tspan x="0" y="48">DAS</tspan><tspan class="cls-8" x="20.56" y="48"> </tspan><tspan class="cls-12" x="23.16" y="48">T</tspan><tspan x="28.16" y="48">ool</tspan></tspan></text>
+  <text class="cls-4" transform="translate(776.39 501.69)">MAG processing:<tspan class="cls-7"><tspan x="0" y="12">CheckM</tspan><tspan x="0" y="24">dRep</tspan></tspan></text>
+  <text class="cls-4" transform="translate(476.44 729.94)">Homopolymer counting:<tspan class="cls-7"><tspan x="0" y="12">Counterr</tspan></tspan></text>
+  <text class="cls-4" transform="translate(1082.42 729.94)">Protein truncation inference:<tspan class="cls-7"><tspan x="0" y="12">IDEE</tspan><tspan class="cls-13" x="23.34" y="12">L</tspan></tspan></text>
+  <text class="cls-4" transform="translate(776.39 729.94)">Consensus error calculation:<tspan class="cls-7"><tspan x="0" y="12">QUAS</tspan><tspan class="cls-8" x="28.34" y="12">T</tspan></tspan></text>
+  <g>
+    <line class="cls-9" x1="889.64" y1="290.69" x2="889.64" y2="382.05"/>
+    <polygon points="885.94 379.24 889.64 380.81 893.34 379.24 889.64 388.02 885.94 379.24"/>
+  </g>
+  <text class="cls-4" transform="translate(895.13 315.69)">Binning:<tspan class="cls-7"><tspan x="0" y="12">MetaB</tspan><tspan class="cls-11" x="28.9" y="12">A</tspan><tspan x="34.83" y="12">T2</tspan><tspan x="0" y="24">MaxBin2</tspan><tspan class="cls-11" x="0" y="36">V</tspan><tspan x="5.93" y="36">AMB</tspan><tspan x="0" y="48">DAS</tspan><tspan class="cls-8" x="20.56" y="48"> </tspan><tspan class="cls-12" x="23.16" y="48">T</tspan><tspan x="28.16" y="48">ool</tspan></tspan></text>
+  <g>
+    <line class="cls-9" x1="1076.93" y1="290.69" x2="1076.93" y2="382.05"/>
+    <polygon points="1073.22 379.24 1076.93 380.81 1080.63 379.24 1076.93 388.02 1073.22 379.24"/>
+  </g>
+  <text class="cls-4" transform="translate(1082.42 315.69)">Binning:<tspan class="cls-7"><tspan x="0" y="12">MetaB</tspan><tspan class="cls-11" x="28.9" y="12">A</tspan><tspan x="34.83" y="12">T2</tspan><tspan x="0" y="24">MaxBin2</tspan><tspan class="cls-11" x="0" y="36">V</tspan><tspan x="5.93" y="36">AMB</tspan><tspan x="0" y="48">DAS</tspan><tspan class="cls-8" x="20.56" y="48"> </tspan><tspan class="cls-12" x="23.16" y="48">T</tspan><tspan x="28.16" y="48">ool</tspan></tspan></text>
+  <g>
+    <line class="cls-9" x1="1307.64" y1="290.57" x2="1307.64" y2="381.93"/>
+    <polygon points="1303.94 379.12 1307.64 380.7 1311.34 379.12 1307.64 387.9 1303.94 379.12"/>
+  </g>
+  <text class="cls-4" transform="translate(1313.13 316.95)">Binning:<tspan class="cls-7"><tspan x="0" y="12">MetaB</tspan><tspan class="cls-11" x="28.9" y="12">A</tspan><tspan x="34.83" y="12">T2</tspan><tspan x="0" y="24">MaxBin2</tspan><tspan class="cls-11" x="0" y="36">V</tspan><tspan x="5.93" y="36">AMB</tspan><tspan x="0" y="48">DAS</tspan><tspan class="cls-8" x="20.56" y="48"> </tspan><tspan class="cls-12" x="23.16" y="48">T</tspan><tspan x="28.16" y="48">ool</tspan></tspan></text>
+  <text class="cls-4" transform="translate(109.56 233.12)">Polishing:<tspan class="cls-7"><tspan x="0" y="12">Racon</tspan></tspan></text>
+  <g>
+    <rect class="cls-10" x="0.5" y="222.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(20.91 249.45)">PacBio HiFi<tspan x="-3.68" y="14.4">metagenome</tspan></text>
   </g>
   <g>
-    <line class="cls-10" x1="406.17" y1="57.06" x2="406.17" y2="89.1"/>
-    <polygon points="404.32 87.69 406.17 88.48 408.02 87.69 406.17 92.08 404.32 87.69"/>
-  </g>
-  <path class="cls-4" d="M284.59,91.4" transform="translate(-5.5 -3.32)"/>
-  <text class="cls-8" transform="translate(175.6 97.25)">Polishing:<tspan x="0" y="6">Racon</tspan></text>
-  <rect class="cls-25" x="197.75" y="92.65" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(198.65 105.41)">Illumina-polished<tspan x="-0.34" y="7.2">Nanopore R9.4.1</tspan><tspan x="5" y="14.4">metagenome</tspan></text>
-  <path class="cls-4" d="M214.24,111.56" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M180.43,111.56" transform="translate(-5.5 -3.32)"/>
-  <rect class="cls-24" x="127.89" y="161.45" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(128.35 176.25)">Nanopore R9.4.1<tspan x="14.51" y="7.2">MAGs</tspan></text>
-  <rect class="cls-25" x="197.75" y="161.45" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(198.66 174.92)">Illumina-polished<tspan x="-0.34" y="7.2">Nanopore R9.4.1</tspan><tspan x="14.18" y="14.4">MAGs</tspan></text>
-  <text class="cls-8" transform="translate(303.48 97.25)">Polishing:<tspan x="0" y="6">Racon</tspan></text>
-  <rect class="cls-26" x="325.37" y="92.98" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(326.3 105.74)">Illumina-polished<tspan x="0.5" y="7.2">Nanopore R10.4</tspan><tspan x="5" y="14.4">metagenome</tspan></text>
-  <rect class="cls-27" x="255.71" y="24.41" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(257 38.92)">Nanopore R10.4<tspan x="14.51" y="7.2">reads</tspan></text>
-  <rect class="cls-27" x="255.71" y="92.65" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(257 106.66)">Nanopore R10.4<tspan x="4.5" y="7.2">metagenome</tspan></text>
-  <rect class="cls-26" x="325.37" y="161.77" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(326.3 174.92)">Illumina-polished<tspan x="0.5" y="7.2">Nanopore R10.4</tspan><tspan x="14.18" y="14.4">MAGs</tspan></text>
-  <rect class="cls-27" x="255.71" y="161.45" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(257 176.25)">Nanopore R10.4<tspan x="13.68" y="7.2">MAGs</tspan></text>
-  <rect class="cls-5" x="382.79" y="242.6" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(393.33 252.9)">Clustered<tspan x="2.5" y="7.2">Illumina</tspan><tspan x="4.51" y="14.4">MAGs</tspan></text>
-  <rect class="cls-11" x="0.59" y="242.72" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(11.03 252.9)">Clustered<tspan x="-2.83" y="7.2">PacBio HiFi</tspan><tspan x="4.51" y="14.4">MAGs</tspan></text>
-  <rect class="cls-20" x="69.94" y="242.72" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(80.51 249.3)">Clustered<tspan x="-9.67" y="7.2">Illumina-polished</tspan><tspan x="-2.83" y="14.4">PacBio HiFi</tspan><tspan x="4.51" y="21.6">MAGs</tspan></text>
-  <rect class="cls-24" x="127.89" y="242.72" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(138.36 252.9)">Clustered<tspan x="-10.01" y="7.2">Nanopore R9.4.1</tspan><tspan x="4.51" y="14.4">MAGs</tspan></text>
-  <rect class="cls-25" x="197.75" y="242.72" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(208.33 249.3)">Clustered<tspan x="-9.67" y="7.2">Illumina-polished</tspan><tspan x="-10.01" y="14.4">Nanopore R9.4.1</tspan><tspan x="4.51" y="21.6">MAGs</tspan></text>
-  <rect class="cls-26" x="325.58" y="243.05" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(335.97 249.63)">Clustered<tspan x="-9.67" y="7.2">Illumina-polished</tspan><tspan x="-9.18" y="14.4">Nanopore R10.4</tspan><tspan x="4.51" y="21.6">MAGs</tspan></text>
-  <rect class="cls-27" x="255.71" y="242.72" width="46.77" height="31.18" rx="12" ry="12"/>
-  <text class="cls-6" transform="translate(266.17 252.9)">Clustered<tspan x="-9.18" y="7.2">Nanopore R10.4</tspan><tspan x="4.51" y="14.4">MAGs</tspan></text>
-  <g>
-    <text class="cls-8" transform="translate(282.01 60.24)">Assembly:<tspan x="0" y="6">metaFlye</tspan></text>
-    <text class="cls-8" transform="translate(282.01 75.36)">Polishing:<tspan x="0" y="6">3x Racon</tspan><tspan x="0" y="12">2x Medaka</tspan></text>
-    <path class="cls-4" d="M284.59,43.77" transform="translate(-5.5 -3.32)"/>
-  </g>
-  <path class="cls-4" d="M79.15,95.4" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M546.82,26.35" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M206.61,95.4" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M-28.36-75.05" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M334.06,95.4" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M411.67,28.08" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M74.28,97" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M37.12-51.1" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M203.56,97" transform="translate(-5.5 -3.32)"/>
-  <path class="cls-4" d="M264.09-76.82" transform="translate(-5.5 -3.32)"/>
-  <g>
-    <path class="cls-1" d="M94.3,130.32c-16.11,0-16.28,14.59-.12,14.59" transform="translate(-5.5 -3.32)"/>
-    <polygon class="cls-2" points="87.67 142.96 88.22 141.56 87.61 140.19 90.93 141.5 87.67 142.96"/>
+    <rect class="cls-14" x="187.79" y="222.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(194.51 244.45)">Illumina-polished<tspan x="13.68" y="14.4">PacBio HiFi</tspan><tspan x="10" y="28.8">metagenome</tspan></text>
   </g>
   <g>
-    <path class="cls-1" d="M152.22,130.32c-16.11,0-16.28,14.59-.12,14.59" transform="translate(-5.5 -3.32)"/>
-    <polygon class="cls-2" points="145.59 142.96 146.15 141.56 145.53 140.19 148.85 141.5 145.59 142.96"/>
+    <line class="cls-9" x1="109.56" y1="253.85" x2="176.25" y2="253.85"/>
+    <polygon points="173.45 257.56 175.02 253.85 173.45 250.15 182.22 253.85 173.45 257.56"/>
+  </g>
+  <line class="cls-9" x1="51.91" y1="483.69" x2="1308.22" y2="483.69"/>
+  <line class="cls-9" x1="52.25" y1="631.15" x2="52.25" y2="655.56"/>
+  <line class="cls-9" x1="239.53" y1="631.15" x2="239.53" y2="655.56"/>
+  <line class="cls-9" x1="470.94" y1="631.15" x2="470.94" y2="655.56"/>
+  <line class="cls-9" x1="658.53" y1="631.15" x2="658.53" y2="655.56"/>
+  <line class="cls-9" x1="770.87" y1="655.56" x2="770.87" y2="708.89"/>
+  <g>
+    <line class="cls-9" x1="470.94" y1="708.56" x2="470.94" y2="755.92"/>
+    <polygon points="467.24 753.12 470.94 754.69 474.65 753.12 470.94 761.89 467.24 753.12"/>
   </g>
   <g>
-    <path class="cls-1" d="M221.61,130.32c-16.11,0-16.28,14.59-.12,14.59" transform="translate(-5.5 -3.32)"/>
-    <polygon class="cls-2" points="214.97 142.96 215.53 141.56 214.91 140.19 218.23 141.5 214.97 142.96"/>
+    <line class="cls-9" x1="770.87" y1="708.56" x2="770.87" y2="755.92"/>
+    <polygon points="767.17 753.12 770.87 754.69 774.57 753.12 770.87 761.89 767.17 753.12"/>
   </g>
   <g>
-    <path class="cls-1" d="M279.64,130.32c-16.11,0-16.28,14.59-.12,14.59" transform="translate(-5.5 -3.32)"/>
-    <polygon class="cls-2" points="273 142.96 273.56 141.56 272.94 140.19 276.27 141.5 273 142.96"/>
+    <line class="cls-9" x1="1076.53" y1="708.48" x2="1076.53" y2="755.84"/>
+    <polygon points="1072.83 753.03 1076.53 754.61 1080.24 753.03 1076.53 761.81 1072.83 753.03"/>
+  </g>
+  <line class="cls-9" x1="889.64" y1="631.15" x2="889.64" y2="655.56"/>
+  <line class="cls-9" x1="1076.93" y1="631.15" x2="1076.93" y2="655.56"/>
+  <line class="cls-9" x1="1307.64" y1="631.15" x2="1307.64" y2="655.56"/>
+  <line class="cls-9" x1="51.91" y1="655.56" x2="1308.22" y2="655.56"/>
+  <line class="cls-9" x1="51.91" y1="537.02" x2="1308.22" y2="537.02"/>
+  <line class="cls-9" x1="470.94" y1="708.89" x2="1076.93" y2="708.89"/>
+  <g>
+    <rect class="cls-10" x="0.5" y="393.35" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(20.91 420.45)">PacBio HiFi<tspan x="14.67" y="14.4">MAGs</tspan></text>
   </g>
   <g>
-    <path class="cls-1" d="M349.41,130.32c-16.11,0-16.28,14.59-.12,14.59" transform="translate(-5.5 -3.32)"/>
-    <polygon class="cls-2" points="342.77 142.96 343.33 141.56 342.71 140.19 346.03 141.5 342.77 142.96"/>
+    <rect class="cls-15" x="419.2" y="768.27" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(433.6 795.37)">Homopolymer<tspan x="-10.01" y="14.4">calling accuracies</tspan></text>
   </g>
   <g>
-    <path class="cls-1" d="M406.92,130.32c-16.11,0-16.28,14.59-.12,14.59" transform="translate(-5.5 -3.32)"/>
-    <polygon class="cls-2" points="400.29 142.96 400.85 141.56 400.23 140.19 403.55 141.5 400.29 142.96"/>
+    <rect class="cls-16" x="719.12" y="768.27" width="103.49" height="63" rx="12" ry="12"/>
+    <rect class="cls-17" x="1024.79" y="768.27" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(733.52 795.37)">Mismatch and<tspan x="9.67" y="14.4">indel rates</tspan></text>
+    <text class="cls-4" transform="translate(1033.85 795.37)">Gene frameshift<tspan x="17.01" y="14.4">estimates</tspan></text>
   </g>
   <g>
-    <line class="cls-10" x1="23.8" y1="55.35" x2="23.8" y2="89.1"/>
-    <polygon points="21.95 87.69 23.8 88.48 25.65 87.69 23.8 92.08 21.95 87.69"/>
+    <rect class="cls-14" x="187.79" y="393.35" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(194.51 415.45)">Illumina-polished<tspan x="13.68" y="14.4">PacBio HiFi</tspan><tspan x="28.36" y="28.8">MAGs</tspan></text>
   </g>
   <g>
-    <line class="cls-10" x1="23.8" y1="124.16" x2="23.8" y2="157.91"/>
-    <polygon points="21.95 156.5 23.8 157.29 25.65 156.5 23.8 160.89 21.95 156.5"/>
+    <rect class="cls-18" x="419.2" y="51.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(425.25 78.46)">Nanopore R9.4.1<tspan x="30.69" y="14.4">reads</tspan></text>
   </g>
   <g>
-    <line class="cls-10" x1="93.32" y1="124.16" x2="93.32" y2="157.91"/>
-    <polygon points="91.47 156.5 93.32 157.29 95.17 156.5 93.32 160.89 91.47 156.5"/>
+    <rect class="cls-18" x="419.2" y="222.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(425.25 249.45)">Nanopore R9.4.1<tspan x="10.68" y="14.4">metagenome</tspan></text>
+  </g>
+  <text class="cls-4" transform="translate(476.91 139.79)">Assembly:<tspan class="cls-7"><tspan x="0" y="12">metaFlye</tspan></tspan></text>
+  <text class="cls-4" transform="translate(476.91 171.12)">Polishing:<tspan class="cls-7"><tspan x="0" y="12">3x Racon</tspan><tspan x="0" y="24">2x Medaka</tspan></tspan></text>
+  <g>
+    <line class="cls-9" x1="470.94" y1="119.69" x2="470.94" y2="211.05"/>
+    <polygon points="467.24 208.25 470.94 209.82 474.65 208.25 470.94 217.02 467.24 208.25"/>
+  </g>
+  <text class="cls-4" transform="translate(528.56 233.12)">Polishing:<tspan class="cls-7"><tspan x="0" y="12">Racon</tspan></tspan></text>
+  <g>
+    <rect class="cls-19" x="606.79" y="222.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(613.51 244.45)">Illumina-polished<tspan x="-0.67" y="14.4">Nanopore R9.4.1</tspan><tspan x="10" y="28.8">metagenome</tspan></text>
   </g>
   <g>
-    <line class="cls-10" x1="151.28" y1="124.16" x2="151.28" y2="157.91"/>
-    <polygon points="149.43 156.5 151.28 157.29 153.13 156.5 151.28 160.89 149.43 156.5"/>
+    <line class="cls-9" x1="528.56" y1="253.85" x2="595.25" y2="253.85"/>
+    <polygon points="592.45 257.56 594.02 253.85 592.45 250.15 601.22 253.85 592.45 257.56"/>
   </g>
   <g>
-    <line class="cls-10" x1="221.14" y1="124.16" x2="221.14" y2="157.91"/>
-    <polygon points="219.29 156.5 221.14 157.29 222.99 156.5 221.14 160.89 219.29 156.5"/>
+    <rect class="cls-18" x="419.2" y="393.35" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(425.25 420.45)">Nanopore R9.4.1<tspan x="29.03" y="14.4">MAGs</tspan></text>
   </g>
   <g>
-    <line class="cls-10" x1="279.1" y1="124.16" x2="279.1" y2="157.91"/>
-    <polygon points="277.25 156.5 279.1 157.29 280.95 156.5 279.1 160.89 277.25 156.5"/>
+    <rect class="cls-19" x="606.79" y="393.35" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(613.51 415.45)">Illumina-polished<tspan x="-0.67" y="14.4">Nanopore R9.4.1</tspan><tspan x="28.36" y="28.8">MAGs</tspan></text>
+  </g>
+  <text class="cls-4" transform="translate(946.56 233.12)">Polishing:<tspan class="cls-7"><tspan x="0" y="12">Racon</tspan></tspan></text>
+  <g>
+    <rect class="cls-20" x="1024.79" y="222.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(1031.51 244.45)">Illumina-polished<tspan x="0.99" y="14.4">Nanopore R10.4</tspan><tspan x="10" y="28.8">metagenome</tspan></text>
   </g>
   <g>
-    <line class="cls-10" x1="348.96" y1="124.49" x2="348.96" y2="158.24"/>
-    <polygon points="347.11 156.83 348.96 157.62 350.81 156.83 348.96 161.22 347.11 156.83"/>
+    <line class="cls-9" x1="946.56" y1="253.85" x2="1013.25" y2="253.85"/>
+    <polygon points="1010.45 257.56 1012.02 253.85 1010.45 250.15 1019.22 253.85 1010.45 257.56"/>
   </g>
   <g>
-    <line class="cls-10" x1="406.17" y1="124.16" x2="406.17" y2="157.91"/>
-    <polygon points="404.32 156.5 406.17 157.29 408.02 156.5 406.17 160.89 404.32 156.5"/>
+    <rect class="cls-21" x="837.89" y="51.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(845.61 78.46)">Nanopore R10.4<tspan x="29.02" y="14.4">reads</tspan></text>
+  </g>
+  <g>
+    <rect class="cls-21" x="837.89" y="222.36" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(845.61 249.45)">Nanopore R10.4<tspan x="9.01" y="14.4">metagenome</tspan></text>
+  </g>
+  <g>
+    <rect class="cls-20" x="1024.79" y="393.35" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(1031.51 415.45)">Illumina-polished<tspan x="0.99" y="14.4">Nanopore R10.4</tspan><tspan x="28.36" y="28.8">MAGs</tspan></text>
+  </g>
+  <g>
+    <rect class="cls-21" x="837.89" y="393.35" width="103.49" height="63" rx="12" ry="12"/>
+    <text class="cls-4" transform="translate(845.61 420.45)">Nanopore R10.4<tspan x="27.36" y="14.4">MAGs</tspan></text>
+  </g>
+  <rect class="cls-3" x="1255.89" y="564.35" width="103.49" height="63" rx="12" ry="12"/>
+  <text class="cls-4" transform="translate(1281.96 586.05)">Clustered<tspan x="5" y="14.4">Illumina</tspan><tspan x="9.01" y="28.8">MAGs</tspan></text>
+  <rect class="cls-10" x="0.5" y="564.58" width="103.49" height="63" rx="12" ry="12"/>
+  <text class="cls-4" transform="translate(26.57 586.06)">Clustered<tspan x="-5.66" y="14.4">PacBio HiFi</tspan><tspan x="9.01" y="28.8">MAGs</tspan></text>
+  <rect class="cls-14" x="187.79" y="564.58" width="103.49" height="63" rx="12" ry="12"/>
+  <text class="cls-4" transform="translate(213.86 578.85)">Clustered<tspan x="-19.34" y="14.4">Illumina-polished</tspan><tspan x="-5.66" y="28.8">PacBio HiFi</tspan><tspan x="9.01" y="43.2">MAGs</tspan></text>
+  <rect class="cls-18" x="419.2" y="564.58" width="103.49" height="63" rx="12" ry="12"/>
+  <text class="cls-4" transform="translate(445.26 586.05)">Clustered<tspan x="-20.02" y="14.4">Nanopore R9.4.1</tspan><tspan x="9.01" y="28.8">MAGs</tspan></text>
+  <rect class="cls-19" x="606.79" y="564.58" width="103.49" height="63" rx="12" ry="12"/>
+  <text class="cls-4" transform="translate(632.86 578.85)">Clustered<tspan x="-19.34" y="14.4">Illumina-polished</tspan><tspan x="-20.02" y="28.8">Nanopore R9.4.1</tspan><tspan x="9.01" y="43.2">MAGs</tspan></text>
+  <rect class="cls-20" x="1024.79" y="564.58" width="103.49" height="63" rx="12" ry="12"/>
+  <text class="cls-4" transform="translate(1050.86 578.86)">Clustered<tspan x="-19.34" y="14.4">Illumina-polished</tspan><tspan x="-18.35" y="28.8">Nanopore R10.4</tspan><tspan x="9.01" y="43.2">MAGs</tspan></text>
+  <rect class="cls-21" x="837.89" y="564.58" width="103.49" height="63" rx="12" ry="12"/>
+  <text class="cls-4" transform="translate(863.96 586.05)">Clustered<tspan x="-18.35" y="14.4">Nanopore R10.4</tspan><tspan x="9.01" y="28.8">MAGs</tspan></text>
+  <g>
+    <text class="cls-4" transform="translate(895.61 139.79)">Assembly:<tspan class="cls-7"><tspan x="0" y="12">metaFlye</tspan></tspan></text>
+    <text class="cls-4" transform="translate(895.61 171.12)">Polishing:<tspan class="cls-7"><tspan x="0" y="12">3x Racon</tspan><tspan x="0" y="24">2x Medaka</tspan></tspan></text>
+    <g>
+      <line class="cls-9" x1="889.64" y1="119.69" x2="889.64" y2="211.05"/>
+      <polygon points="885.94 208.25 889.64 209.82 893.34 208.25 889.64 217.02 885.94 208.25"/>
+    </g>
+  </g>
+  <path class="cls-22" d="M162.07,223.73" transform="translate(-16.17 -6.71)"/>
+  <path class="cls-22" d="M1371,63.44" transform="translate(-16.17 -6.71)"/>
+  <path class="cls-22" d="M581.07,223.73" transform="translate(-16.17 -6.71)"/>
+  <path class="cls-22" d="M-40.6-97.6" transform="translate(-16.17 -6.71)"/>
+  <path class="cls-22" d="M999.07,223.73" transform="translate(-16.17 -6.71)"/>
+  <path class="cls-22" d="M1323.81,60.83" transform="translate(-16.17 -6.71)"/>
+  <path class="cls-22" d="M152.9,226.73" transform="translate(-16.17 -6.71)"/>
+  <path class="cls-22" d="M82.83-52.46" transform="translate(-16.17 -6.71)"/>
+  <path class="cls-22" d="M575.32,226.73" transform="translate(-16.17 -6.71)"/>
+  <path class="cls-22" d="M510.73-100.95" transform="translate(-16.17 -6.71)"/>
+  <g>
+    <path class="cls-1" d="M247.2,303.06c-29.77,0-30.67,26.45-2,27.47" transform="translate(-16.17 -6.71)"/>
+    <polygon class="cls-2" points="226.28 327.49 227.82 323.77 226.2 320.09 235.02 323.69 226.28 327.49"/>
+  </g>
+  <g>
+    <path class="cls-1" d="M478.54,303.06c-29.77,0-30.67,26.45-2,27.47" transform="translate(-16.17 -6.71)"/>
+    <polygon class="cls-2" points="457.62 327.49 459.15 323.77 457.54 320.09 466.36 323.69 457.62 327.49"/>
+  </g>
+  <g>
+    <path class="cls-1" d="M665.23,303.06c-29.77,0-30.67,26.45-2,27.47" transform="translate(-16.17 -6.71)"/>
+    <polygon class="cls-2" points="644.32 327.49 645.85 323.77 644.23 320.09 653.05 323.69 644.32 327.49"/>
+  </g>
+  <g>
+    <path class="cls-1" d="M896.48,303.06c-29.77,0-30.67,26.45-2,27.47" transform="translate(-16.17 -6.71)"/>
+    <polygon class="cls-2" points="875.57 327.49 877.1 323.77 875.48 320.09 884.3 323.69 875.57 327.49"/>
+  </g>
+  <g>
+    <path class="cls-1" d="M1083.58,303.06c-29.77,0-30.67,26.45-2,27.47" transform="translate(-16.17 -6.71)"/>
+    <polygon class="cls-2" points="1062.67 327.49 1064.2 323.77 1062.59 320.09 1071.41 323.69 1062.67 327.49"/>
+  </g>
+  <g>
+    <path class="cls-1" d="M1314.87,303.06c-29.77,0-30.67,26.45-2,27.47" transform="translate(-16.17 -6.71)"/>
+    <polygon class="cls-2" points="1293.96 327.49 1295.49 323.77 1293.87 320.09 1302.69 323.69 1293.96 327.49"/>
   </g>
 </svg>
