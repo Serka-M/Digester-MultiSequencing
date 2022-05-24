@@ -17,7 +17,12 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_workflow.svg" alt="AD-bioinf" style="zoom:100%;" />
 <br/>
 
-* Using PacBio HiFi assembly, polished with Illumina reads, Nanopore R10.4 assembly featured improved homopolymer calling than Nanopore R9.4.1, especially for guanines and cytosines.
+* Using PacBio HiFi assembly polished with Illumina reads as a reference, Nanopore R10.4 assembly was found to feature improved homopolymer calling, compared to Nanopore R9.4.1, especially for guanines and cytosines:
 
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_hp.svg" alt="AD-bioinf" style="zoom:100%;" />
+<br/>
+
+* Improvement of homopolymer calling for Nanopore R10.4 data is significant for metagenomics as most microbial genomes do not feature many homopolymers above the length of 10. To illustrate this, homopolymer rates were counted in genomes from RefSeq database:
+
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/hp_refseq.svg" alt="AD-bioinf" style="zoom:100%;" />
 <br/>
