@@ -22,7 +22,7 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_hp.png" alt="mags_r104_hp" style="zoom:100%;" />
 <br/>
 
-* Improvement of homopolymer calling for Nanopore R10.4 data is significant for genome-centric metagenomics as most microbial genomes do not feature many homopolymers above the length of 10. To illustrate this, homopolymer rates were counted in genomes from RefSeq database:
+* Improvement in homopolymer calling for Nanopore R10.4 data is significant for genome-centric metagenomics, as most microbial genomes do not feature many homopolymers above the length of 10. To illustrate this, homopolymer rates were counted in genomes from RefSeq database:
 
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/hp_refseq.png" alt="hp_refseq" style="zoom:100%;" />
 <br/>
@@ -32,5 +32,5 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_ideel.png" alt="mags_r104_ideel" style="zoom:100%;" />
 <br/>
 
-**Conclusion:** Nanopore R10.4 chemistry is a significant improvement over Nanopore R9.4.1 in terms of hompolymer calling, which enables the recovery of microbial genomes with less systematic errors in consensus sequences.
+**Conclusion:** Nanopore R10.4 chemistry is a significant improvement over Nanopore R9.4.1 in terms of hompolymer calling, which enables the recovery of microbial genomes with vastly less systematic errors in consensus sequences.
 <br/>
