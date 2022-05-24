@@ -10,7 +10,7 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 * Anaerobic digester MAGs and Zymo assembly sequences can be downloaded from [Figshare](https://doi.org/10.6084/m9.figshare.17008801). 
 <br/>
 
-# Summary of using Nanopore R10.4 for genome-centric metagenomics
+## Summary of using Nanopore R10.4 for genome-centric metagenomics
 
 * A high complexity metagenomic sample (anaerobic digester sludge) was sequenced with Nanopore R10.4 as well as Illumina Miseq, Nanopore R9.4.1 and PacBio HiFi to compare the different sequencing platforms. Overview of bioinformatic processing steps is presented below:
 
