@@ -14,15 +14,20 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 
 * A high complexity metagenomic sample (anaerobic digester sludge) was sequenced with Nanopore R10.4 as well as Illumina Miseq, Nanopore R9.4.1 and PacBio HiFi to compare the different sequencing platforms. Overview of bionformatic processing steps is presented below:
 
-<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_workflow.svg" alt="AD-bioinf" style="zoom:100%;" />
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_workflow.svg" alt="mags_r104_workflow" style="zoom:100%;" />
 <br/>
 
 * Using PacBio HiFi assembly polished with Illumina reads as a reference, Nanopore R10.4 assembly was found to feature improved homopolymer calling, compared to Nanopore R9.4.1, especially for guanines and cytosines:
 
-<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_hp.svg" alt="AD-bioinf" style="zoom:100%;" />
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_hp.svg" alt="mags_r104_hp" style="zoom:100%;" />
 <br/>
 
 * Improvement of homopolymer calling for Nanopore R10.4 data is significant for metagenomics as most microbial genomes do not feature many homopolymers above the length of 10. To illustrate this, homopolymer rates were counted in genomes from RefSeq database:
 
-<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/hp_refseq.svg" alt="AD-bioinf" style="zoom:100%;" />
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/hp_refseq.svg" alt="hp_refseq" style="zoom:100%;" />
+<br/>
+
+* The [IDEEL test](http://www.opiniomics.org/a-simple-test-for-uncorrected-insertions-and-deletions-indels-in-bacterial-genomes/) was applied to observe that Illumina read polishing did not vastly improve the IDEEL score for MAGs from Nanopore R10.4 data above the coverage of 40, which is in contrast to Nanopore R9.4.1 data:
+
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_ideel" alt="mags_r104_ideel" style="zoom:100%;" />
 <br/>
