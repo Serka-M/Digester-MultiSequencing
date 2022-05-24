@@ -27,7 +27,7 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/hp_refseq.png" alt="hp_refseq" style="zoom:100%;" />
 <br/>
 
-* The [IDEEL test](http://www.opiniomics.org/a-simple-test-for-uncorrected-insertions-and-deletions-indels-in-bacterial-genomes/) was applied to observe that Illumina read polishing did not vastly improve the IDEEL score for MAGs from Nanopore R10.4 data above the coverage of 40, which is in contrast to Nanopore R9.4.1 data:
+* [IDEEL test](http://www.opiniomics.org/a-simple-test-for-uncorrected-insertions-and-deletions-indels-in-bacterial-genomes/) was applied to observe that Illumina read polishing did not vastly improve the IDEEL score for MAGs from Nanopore R10.4 data above the coverage of 40 (suggesting a minimal presence of artificial protein truncations in the consensus sequence), which is in contrast to Nanopore R9.4.1 data:
 
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_ideel.png" alt="mags_r104_ideel" style="zoom:100%;" />
 <br/>
