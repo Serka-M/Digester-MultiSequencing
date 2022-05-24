@@ -29,5 +29,5 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 
 * The [IDEEL test](http://www.opiniomics.org/a-simple-test-for-uncorrected-insertions-and-deletions-indels-in-bacterial-genomes/) was applied to observe that Illumina read polishing did not vastly improve the IDEEL score for MAGs from Nanopore R10.4 data above the coverage of 40, which is in contrast to Nanopore R9.4.1 data:
 
-<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_ideel" alt="mags_r104_ideel" style="zoom:100%;" />
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/mags_r104_ideel.svg" alt="mags_r104_ideel" style="zoom:100%;" />
 <br/>
