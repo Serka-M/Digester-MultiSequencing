@@ -8,7 +8,7 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 * Published paper featuring the presented results can be accessed [here](https://www.nature.com/articles/s41592-022-01539-7).
 * Sequencing read datasets are available at ENA for the [Zymo](https://www.ebi.ac.uk/ena/browser/view/PRJEB48692) and [anaerobic digester](https://www.ebi.ac.uk/ena/browser/view/PRJEB48021) samples.
 * Anaerobic digester MAGs and Zymo assembly sequences can be downloaded from [Figshare](https://doi.org/10.6084/m9.figshare.17008801).
-- [Summary for Nanopore R10.4 data](#summary-of-using-nanopore-r104-for-genome-centric-metagenomics)
+* [Summary for Nanopore R10.4 data](#summary-of-using-nanopore-r104-for-genome-centric-metagenomics)
 <br/>
 
 ## Summary of using Nanopore R10.4 for genome-centric metagenomics
