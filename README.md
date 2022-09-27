@@ -61,3 +61,6 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/r1041_ideel.png" alt="r1041_ideel" style="zoom:100%;" />
 <br/>
 
+**Conclusion:** Nanopore R10.4.1 chemistry preserves the improvements introduced by the R10.4 chemistry. Furthermore, we did not observe significant benefits in using the 260 bps mode over the 400 bps sequencing speed mode for MAG recovery.
+<br/>
+<br/>
