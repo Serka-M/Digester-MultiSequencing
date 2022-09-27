@@ -56,4 +56,8 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/r1041_hp_contigs.png" alt="r1041_hp_contigs" style="zoom:100%;" />
 <br/>
 
+* The IDEEL test for clustered MAGs also showed no vast differences in the estimated rates of protein truncation between different Nanopore R10.4.1 sequencing speed modes, when MAG coverage is comparable: 
+
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/r1041_ideel.png" alt="r1041_ideel" style="zoom:100%;" />
+<br/>
 
