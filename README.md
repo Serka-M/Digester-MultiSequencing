@@ -51,6 +51,9 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 <img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/r1041_hp_reads.png" alt="r1041_hp_reads" style="zoom:100%;" />
 <br/>
 
+* Similarly, most homopolymers up to the length of 10 in the consensus sequences of above 20x coverage were found to be correctly resolved in R10.4.1 data, regardless of sequencing speed and without the need for short read polishing: 
 
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/r1041_hp_contigs.png" alt="r1041_hp_contigs" style="zoom:100%;" />
+<br/>
 
 
