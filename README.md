@@ -40,4 +40,11 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 
 ## Summary of using Nanopore R10.4.1 for genome-centric metagenomics
 
+* The R10.4 Nanopore chemistry has been superceded by the R10.4.1 chemistry, which can perform at different sequencing speeds, allowing users to tune sequencing yield and read accuracy. To test the different run modes, we have sequenced anaerobic digester sludge DNA using the P2 sequencer and have generated approximately 47 gbp (400 bps) and 29 gbp (260 bps) of simplex read data on the same PromethION R10.4.1 flow cell from the same library (no reloading).
+* Mapping the simplex reads to the Illumina-polished PacBio HiFi metagenome assembly resulted in a modal read accuracy of 99 % (Q20) for the 260 bps run mode, while for the 400 bps mode read accuracy was slightly lower as expected: 
+
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/r1041_read_accur.png" alt="r1041_read_accur" style="zoom:100%;" />
+<br/>
+
+
 
