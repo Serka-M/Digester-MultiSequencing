@@ -48,7 +48,7 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 
 * Despite the difference in read accuracy, homopolymer calling rates in simplex reads were estimated to be mostly the same between the 400 and 260 bps modes: 
 
-<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/r1041_hp_readss.png" alt="r1041_hp_reads" style="zoom:100%;" />
+<img src="https://github.com/Serka-M/Digester-MultiSequencing/blob/main/code/figs/r1041_hp_reads.png" alt="r1041_hp_reads" style="zoom:100%;" />
 <br/>
 
 * Similarly, most homopolymers up to the length of 10 in the consensus sequences of above 20x coverage were found to be correctly resolved in R10.4.1 data, regardless of sequencing speed and without the need for short read polishing: 
