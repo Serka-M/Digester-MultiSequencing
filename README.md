@@ -9,7 +9,7 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 * Sequencing read datasets are available at ENA for the [Zymo](https://www.ebi.ac.uk/ena/browser/view/PRJEB48692) and [anaerobic digester](https://www.ebi.ac.uk/ena/browser/view/PRJEB48021) samples.
 * Anaerobic digester MAGs and Zymo assembly sequences can be downloaded from [Figshare](https://doi.org/10.6084/m9.figshare.17008801).
 * [Summary of using Nanopore R10.4 for MAG recovery.](#summary-of-using-nanopore-r104-for-genome-centric-metagenomics)
-* Summary of using Nanopore R10.4.1 for MAG recovery (coming soon).
+* [Summary of using Nanopore R10.4.1 for MAG recovery.](#summary-of-using-nanopore-r1041-for-genome-centric-metagenomics)
 <br/>
 
 ## Summary of using Nanopore R10.4 for genome-centric metagenomics
@@ -36,3 +36,8 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 
 **Conclusion:** Nanopore R10.4 chemistry is a significant improvement over Nanopore R9.4.1 in terms of hompolymer calling, which enables the recovery of microbial genomes with vastly less systematic errors in consensus sequences.
 <br/>
+<br/>
+
+## Summary of using Nanopore R10.4.1 for genome-centric metagenomics
+
+
