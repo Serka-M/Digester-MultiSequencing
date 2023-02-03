@@ -10,6 +10,7 @@ Repository for scripts and resources used for genome-centric metagenomics of ana
 * Anaerobic digester MAGs and Zymo assembly sequences can be downloaded from [Figshare](https://doi.org/10.6084/m9.figshare.17008801).
 * [Summary of using Nanopore R10.4 for MAG recovery.](#summary-of-using-nanopore-r104-for-genome-centric-metagenomics)
 * [Summary of using Nanopore R10.4.1 for MAG recovery.](#summary-of-using-nanopore-r1041-for-genome-centric-metagenomics)
+* For an updated workflow for microbial genome recovery, check out [mmlong2-lite](https://github.com/Serka-M/mmlong2-lite).
 <br/>
 
 ## Summary of using Nanopore R10.4 for genome-centric metagenomics
